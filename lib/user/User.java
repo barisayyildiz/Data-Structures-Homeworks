@@ -16,6 +16,14 @@ public class User {
 		this.password = password;
 	}
 
+	// getters
+	public int getId(){return this.id;}
+	public String getName(){return this.name;}
+	public String getSurname(){return this.surname;}
+	public String getMail(){return this.mail;}
+	public String getPassword(){return this.password;}
+
+	@Override
 	public String toString()
 	{
 		return String.valueOf(this.id) + "," + this.name + "," + this.surname + "," + this.mail + "," + this.password;

@@ -1,12 +1,17 @@
 package lib.user;
 
+import lib.furniture.*;
+import lib.*;
+
+
 public class Admin extends User implements AdminInterface {
 
-	private String company;
+	private Company company;
 
-	public Admin(int id, String name, String surname, String mail, String password)
+	public Admin(int id, String name, String surname, String mail, String password, Company company)
 	{
 		super(id, name, surname, mail, password);
+		this.company = company;
 	}
 
 	public boolean addBranch(int branchId)
@@ -28,5 +33,7 @@ public class Admin extends User implements AdminInterface {
 	{
 		return true;
 	}
+
+	public Company getCompany(){return this.company;}
 	
 }

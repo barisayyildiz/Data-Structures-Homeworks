@@ -1,13 +1,24 @@
 import lib.furniture.*;
 import lib.user.*;
+import lib.*;
 
 public class Main
 {
 	public static void main(String args[])
 	{
-		Admin u1 = new Admin(0, "baris", "ayyildiz", "99ayyldzbaris99@gmail.com", "123456");
+		List<Integer> l1 = new List<Integer>();
 
-		System.out.println(u1);
+		l1.insert(2);
+		l1.insert(4);
+		l1.insert(6);
+
+		l1.remove(1);
+
+		System.out.println(l1);
+
+		// Company c1 = new Company();
+		// c1.test();
 
 	}
 }
+
