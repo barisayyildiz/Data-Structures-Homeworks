@@ -1,0 +1,8 @@
+ The company has 4 different branches and
+sells both in-store and online. 
+
+The store sells office chairs (7 models and for each, 5 colors),
+office desks (5 models and for each, 4 colors), 
+meeting tables (10 models and for each, 4 colors), 
+bookcases (12 models) and 
+office cabinets (12 models).
