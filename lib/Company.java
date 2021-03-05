@@ -7,7 +7,8 @@ public class Company {
 	
 	private Admin companyAdmin;
 	private int branchNumber;
-	private Branch[] branches;
+	// private Branch[] branches;
+	private List<Branch> branches;
 
 
 	public Company()
@@ -15,16 +16,10 @@ public class Company {
 		this.companyAdmin = new Admin(0, "baris", "ayyildiz", "99ayyldzbaris99@gmail.com", "123456", this);
 		this.branchNumber = 2;
 
-		// branches = (Branch[]) new Object[this.branchNumber];
-		
-		this.branches = new Branch[this.branchNumber];
+		branches = new List<Branch>();
+		branches.insert(new Branch(0));
+		branches.insert(new Branch(1));
 
 	}
-
-	public void test()
-	{
-		branches[0] = new Branch(0);
-	}
-
 	
 }

@@ -4,4 +4,4 @@ run:
 	rm *.class
 
 clear:
-	rm ./lib/user/*.class
+	rm ./lib/*.class
