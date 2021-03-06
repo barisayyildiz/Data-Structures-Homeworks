@@ -1,14 +1,14 @@
-package lib.furniture;
+// package lib.furniture;
 
-public class Table extends Furniture {
+// public class Table extends Furniture {
 
-	private String color;
+// 	private String color;
 	
-	public Table(int modelId, String color)
-	{
-		super(modelId);
-		this.color = color;
+// 	public Table(int modelId, String color)
+// 	{
+// 		super(modelId);
+// 		this.color = color;
 
-	}
+// 	}
 
-}
+// }

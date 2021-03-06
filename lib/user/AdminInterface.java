@@ -5,7 +5,7 @@ import lib.*;
 
 public interface AdminInterface {
 
-	boolean addBranch(int branchId);
+	boolean addBranch();
 	boolean removeBranch(int branchId);
 
 	boolean addBranchEmployee(int branchId, String name, String surname, int employeeId);

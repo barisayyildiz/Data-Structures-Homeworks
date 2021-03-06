@@ -65,6 +65,22 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
+	public T get(int index)
+	{
+		return this.arr[index];
+	}
+
+	public void set(int index, T val)
+	{
+		this.arr[index] = val;
+
+		if(val == null)
+		{
+			this.size--;
+		}
+
+	}
+
 	public int length(){return size;}
 
 	@Override

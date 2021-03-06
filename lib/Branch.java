@@ -6,11 +6,18 @@ import lib.user.*;
 public class Branch 
 {
 	private int branchId;
+	private int stockIndex;
 
-	public Branch(int id)
+	public Branch(int id, int stockIndex)
 	{
 		this.branchId = id;
+		this.stockIndex = stockIndex;
+
+
 		System.out.println("hello");
 	}
+
+	public int getBranchId(){return branchId;}
+	public int getStockIndex(){return stockIndex;}
 
 }

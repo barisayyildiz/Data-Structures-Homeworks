@@ -18,6 +18,17 @@ public class Main
 
 		Company c1 = new Company();
 
+		Admin admin = c1.getAdmin();
+
+		admin.addBranch();
+		admin.addBranch();
+		admin.addBranch();
+		admin.addBranch();
+		admin.addBranch();
+		admin.removeBranch(2);
+		admin.removeBranch(1);
+
+
 	}
 }
 
