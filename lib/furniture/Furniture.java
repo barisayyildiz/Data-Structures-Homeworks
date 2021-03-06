@@ -29,5 +29,6 @@ public class Furniture {
 	}
 
 	public int getTotal(){return amount;}
+	public void setTotal(int val){this.amount = val;}
 
 }

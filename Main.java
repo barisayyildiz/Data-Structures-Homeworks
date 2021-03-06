@@ -40,10 +40,13 @@ public class Main
 		String password = "123";
 
 		c1.login(mail, password);
+		
+		// buyOnline(product_id, amount)
+		
+		c1.buyOnline(12, 10);
 
 		
-		
-		// System.out.println(c1);
+		System.out.println(c1);
 
 
 		// // Add branch employee

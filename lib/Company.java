@@ -85,6 +85,44 @@ public class Company {
 		return false;
 	}
 
+	public void buyOnline(int productId, int amount)
+	{
+		// 1. yeterli sayıda var mı
+		// 2. varsa mağazalardan sil
+
+		int total = 0;
+
+		for(int i=0; i<this.stocks.length(); i++)
+		{
+			total += this.stocks.get(i).getFurnitures().get(productId).getTotal();
+		}
+
+		if(amount > total)
+			throw new Error("Çok fazla istedin...");
+		
+		// mağazalardan sil
+		for(int i=0; i<this.stocks.length(); i++)
+		{
+			int current = this.stocks.get(i).getFurnitures().get(productId).getTotal();
+
+			System.out.println("current : " + current + ", amount : " + amount);
+			if(current >= amount)
+			{
+				System.out.println("qwetqyeqw");
+				this.stocks.get(i).getFurnitures().get(productId).setTotal(current-amount);
+				return;
+			}else
+			{
+				amount -= current;
+				this.stocks.get(i).getFurnitures().get(productId).setTotal(0);
+			}
+
+
+		}
+
+
+	}
+
 
 
 
