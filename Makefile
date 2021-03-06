@@ -5,3 +5,5 @@ run:
 
 clear:
 	rm ./lib/*.class
+	rm ./lib/user/*.class
+	rm ./lib/furniture/*.class
