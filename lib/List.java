@@ -50,7 +50,7 @@ public class List<T> implements ListInterface<T> {
 		if(index < 0 || index >= this.size)
 			throw new ArrayIndexOutOfBoundsException();
 
-		T[] temp = (T[]) new Object[this.size-1];
+		T[] temp = (T[]) new Object[this.cap];
 
 		for(int i=0, k=0; i<this.size; i++)
 		{

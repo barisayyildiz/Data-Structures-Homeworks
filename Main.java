@@ -16,6 +16,10 @@ public class Main
 
 		// System.out.println(l1);
 
+
+
+
+
 		Company c1 = new Company();
 
 		Admin admin = c1.getAdmin();
@@ -24,15 +28,25 @@ public class Main
 		admin.addBranch();
 		admin.addBranch();
 		admin.addBranch();
+		admin.removeBranch(2);
 		admin.removeBranch(1);
-
-		admin.addBranchEmployee(new Employee(0, "john", "doe", "johndoe@gmail.com", "123", 0));
-		admin.addBranchEmployee(new Employee(1, "john", "doe", "johndoe@gmail.com", "123", 0));
-		admin.addBranchEmployee(new Employee(2, "john", "doe", "johndoe@gmail.com", "123", 2));
-
-		admin.removeBranchEmployee(1);
+		admin.removeBranch(3);
+		admin.addBranch();
+		admin.removeBranch(4);
+		admin.addBranch();
+		admin.addBranch();
 
 		System.out.println(c1);
+
+
+
+		// admin.addBranchEmployee(new Employee(0, "john", "doe", "johndoe@gmail.com", "123", 0));
+		// admin.addBranchEmployee(new Employee(1, "john", "doe", "johndoe@gmail.com", "123", 0));
+		// admin.addBranchEmployee(new Employee(2, "john", "doe", "johndoe@gmail.com", "123", 2));
+
+		// admin.removeBranchEmployee(1);
+
+		// System.out.println(c1);
 
 
 

@@ -23,7 +23,10 @@ public class Admin extends User implements AdminInterface {
 
 
 		// adds new branch
-		branches.insert(new Branch(uniqueId, branchNumber));
+		// branches.insert(new Branch(uniqueId, branchNumber));
+		branches.insert(new Branch(uniqueId, uniqueId));
+
+		System.out.println("qweqwe");
 
 		// // insert new Furniture List for the new branch
 		// stocks.insert( new Stock(uniqueId, null) );
@@ -33,13 +36,6 @@ public class Admin extends User implements AdminInterface {
 		Type t[] = Type.values();
 		Color c[] = Color.values();
 		List<Furniture> furniture = new List<Furniture>();
-
-		// insert chairs
-		// furniture.insert(new Furniture(0, 0, Type.CHAIR, Color.RED, branches.get(branchNumber), 5));
-		// furniture.insert(new Furniture(1, 0, Type.CHAIR, Color.GREEN, branches.get(branchNumber), 5));
-		// furniture.insert(new Furniture(2, 0, Type.CHAIR, Color.BLUE, branches.get(branchNumber), 5));
-		// furniture.insert(new Furniture(3, 0, Type.CHAIR, Color.ORANGE, branches.get(branchNumber), 5));
-		// furniture.insert(new Furniture(4, 0, Type.CHAIR, Color.YELLOW, branches.get(branchNumber), 5));
 
 		int counter = 0;
 
@@ -111,7 +107,8 @@ public class Admin extends User implements AdminInterface {
 				{
 					if(stocks.get(j).getId() == stockIndex)
 					{
-						stocks.remove(stockIndex);
+						// stocks.remove(stockIndex);
+						stocks.remove(j);
 						break;
 					}
 				}
