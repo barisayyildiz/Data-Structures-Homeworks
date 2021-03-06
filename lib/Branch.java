@@ -13,8 +13,6 @@ public class Branch
 		this.branchId = id;
 		this.stockIndex = stockIndex;
 
-
-		System.out.println("hello");
 	}
 
 	public int getBranchId(){return branchId;}

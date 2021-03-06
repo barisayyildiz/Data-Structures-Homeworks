@@ -26,8 +26,6 @@ public class Admin extends User implements AdminInterface {
 		// branches.insert(new Branch(uniqueId, branchNumber));
 		branches.insert(new Branch(uniqueId, uniqueId));
 
-		System.out.println("qweqwe");
-
 		// // insert new Furniture List for the new branch
 		// stocks.insert( new Stock(uniqueId, null) );
 

@@ -9,6 +9,7 @@ public class Company {
 	private int counter;
 	private List<Branch> branches;
 	private List<Employee> employees;
+	private List<Customer> subs;
 
 	// private List< List<Furniture> > stocks; 
 
@@ -27,6 +28,7 @@ public class Company {
 		this.employees = new List<Employee>();
 		this.stocks = new List<Stock>();
 		this.branches = new List<Branch>();
+		this.subs = new List<Customer>();
 
 		// this.branches.insert(new Branch(0));
 		// this.branches.insert(new Branch(1));
@@ -37,18 +39,6 @@ public class Company {
 	public String toString()
 	{
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
-
-		// for(int i=0; i<this.stocks.length(); i++)
-		// {
-		// 	int total = 0;
-
-		// 	for(int j=0; j<this.stocks.get(i).getFurnitures().length() ; j++)
-		// 	{
-		// 		str += this.stocks.get(i).getFurnitures().get(j).toString();
-		// 		// total += this.stocks.get(i).getFurnitures().get(j).getTotal();
-		// 	}
-		// 	str += "--------------------\n";
-		// }
 
 		for(int i=0; i<this.stocks.get(0).getFurnitures().length(); i++)
 		{
@@ -67,12 +57,41 @@ public class Company {
 	}
 
 
+	public void subscribe(String name, String surname, String mail, String password)
+	{
+		Customer temp = new Customer(0, name, surname, mail, password);
+
+		for(int i=0; i<this.subs.length(); i++)
+		{
+			if(this.subs.get(i).getMail() == mail)
+			{
+				throw new Error("This email is already registered...");
+			}
+		}
+
+		subs.insert(temp);
+
+		System.out.println("user id is : " + 0);
+
+	}
+
+	public boolean login(String mail, String password)
+	{
+		for(int i=0; i<this.subs.length(); i++)
+		{
+			if(this.subs.get(i).getMail() == mail && this.subs.get(i).getPassword() == password)
+				return true;
+		}
+		return false;
+	}
+
+
+
+
+	// getters
 	public Admin getAdmin(){return companyAdmin;}
 	public int getCounter(){return counter;}
-	public void setCounter(int val){
-		this.counter = val;
-		System.out.println("counter : " +  this.counter);
-	}
+	public void setCounter(int val){this.counter = val;}
 	public List<Branch> getBranches(){return branches;}
 	public List<Employee> getEmployees(){return employees;}
 	public List<Stock> getStocks(){return stocks;}

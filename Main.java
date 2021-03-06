@@ -26,20 +26,27 @@ public class Main
 
 		admin.addBranch();
 		admin.addBranch();
-		admin.addBranch();
-		admin.addBranch();
-		admin.removeBranch(2);
+		admin.removeBranch(0);
 		admin.removeBranch(1);
-		admin.removeBranch(3);
-		admin.addBranch();
-		admin.removeBranch(4);
 		admin.addBranch();
 		admin.addBranch();
 
-		System.out.println(c1);
+		c1.subscribe("john", "doe", "asd@mail.com", "123");
+		// c1.subscribe("john", "doe", "asd@mail.com", "123");
+
+		String name = "john";
+		String surname = "doe";
+		String mail = "asd@mail.com";
+		String password = "123";
+
+		c1.login(mail, password);
+
+		
+		
+		// System.out.println(c1);
 
 
-
+		// // Add branch employee
 		// admin.addBranchEmployee(new Employee(0, "john", "doe", "johndoe@gmail.com", "123", 0));
 		// admin.addBranchEmployee(new Employee(1, "john", "doe", "johndoe@gmail.com", "123", 0));
 		// admin.addBranchEmployee(new Employee(2, "john", "doe", "johndoe@gmail.com", "123", 2));
