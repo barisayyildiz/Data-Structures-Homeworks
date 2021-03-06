@@ -123,6 +123,33 @@ public class Company {
 
 	}
 
+	public void showSingleBranch(int branchId)
+	{
+		Stock tempStock = null;
+
+		for(int i=0; i<this.stocks.length(); i++)
+		{
+			if(this.stocks.get(i).getId() == branchId)
+				tempStock = this.stocks.get(i);
+		}
+
+
+		if(tempStock == null)
+			throw new Error("cannot find that branch...");
+
+		// String str = tempStock.toString();
+		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
+
+		for(int i=0; i<tempStock.getFurnitures().length() ; i++)
+		{
+			str += tempStock.getFurnitures().get(i).toString() + "\t\t" + tempStock.getFurnitures().get(i).getTotal() +  "\n";
+		}
+
+		System.out.println(str);
+
+
+	}
+
 
 
 

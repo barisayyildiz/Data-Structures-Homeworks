@@ -43,10 +43,12 @@ public class Main
 		
 		// buyOnline(product_id, amount)
 		
-		c1.buyOnline(12, 10);
+		c1.buyOnline(12, 4);
+
+		c1.showSingleBranch(2);
 
 		
-		System.out.println(c1);
+		// System.out.println(c1);
 
 
 		// // Add branch employee
