@@ -14,13 +14,6 @@ public class Stock {
 		this.furnArr = furnArr;
 	}
 
-	@Override
-	public String toString()
-	{
-		String str = "";
-		return str;
-
-	}
 
 	public int getId(){return id;}
 	public List<Furniture> getFurnitures(){return furnArr;}

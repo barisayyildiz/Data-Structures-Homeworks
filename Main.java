@@ -43,10 +43,14 @@ public class Main
 		
 		// buyOnline(product_id, amount)
 		
-		c1.buyOnline(12, 4);
+		// c1.buyOnline(12, 4);
 
+		
+		// // buyInShop(branchId, productId, amount)
+		
+		c1.buyInShop(2,12,1);
 		c1.showSingleBranch(2);
-
+		
 		
 		// System.out.println(c1);
 

@@ -150,6 +150,34 @@ public class Company {
 
 	}
 
+	public void buyInShop(int branchId, int productId, int amount)
+	{
+		Stock tempStock = null;
+		
+		for(int i=0; i<this.stocks.length(); i++)
+		{
+			if(this.stocks.get(i).getId() == branchId)
+			{
+				tempStock = this.stocks.get(i);
+				break;
+			}
+		}
+
+		if(tempStock == null)
+			throw new Error("branch is not found...");
+
+		int total = tempStock.getFurnitures().get(productId).getTotal();
+		
+		// System.out.println("total : " + total + ", amount : " + amount);
+
+		if(amount > total)
+			throw new Error("çok fazla istedin...");
+
+		tempStock.getFurnitures().get(productId).setTotal(total - amount);
+
+
+	}
+
 
 
 
