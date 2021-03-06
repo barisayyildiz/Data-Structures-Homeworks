@@ -32,6 +32,10 @@ public class Main
 
 		admin.removeBranchEmployee(1);
 
+		System.out.println(c1);
+
+
+
 
 
 	}

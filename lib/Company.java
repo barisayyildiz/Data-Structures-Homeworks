@@ -36,15 +36,31 @@ public class Company {
 	@Override
 	public String toString()
 	{
-		String str = "";
+		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
 
-		for(int i=0; i<this.stocks.length(); i++)
+		// for(int i=0; i<this.stocks.length(); i++)
+		// {
+		// 	int total = 0;
+
+		// 	for(int j=0; j<this.stocks.get(i).getFurnitures().length() ; j++)
+		// 	{
+		// 		str += this.stocks.get(i).getFurnitures().get(j).toString();
+		// 		// total += this.stocks.get(i).getFurnitures().get(j).getTotal();
+		// 	}
+		// 	str += "--------------------\n";
+		// }
+
+		for(int i=0; i<this.stocks.get(0).getFurnitures().length(); i++)
 		{
-			for(int j=0; j<this.stocks.get(i).getFurnitures().length() ; j++)
+			int total = 0;
+			int j;
+
+			for(j=0; j<this.stocks.length(); j++)
 			{
-				str += this.stocks.get(i).getFurnitures().get(j).toString();
-				System.out.println("qweqweqwe");
+				total += this.stocks.get(j).getFurnitures().get(i).getTotal();
 			}
+			str +=  this.stocks.get(0).getFurnitures().get(i).toString() + "\t\t" + total + "\n";
+
 		}
 
 		return str;

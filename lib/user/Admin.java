@@ -34,16 +34,74 @@ public class Admin extends User implements AdminInterface {
 		Color c[] = Color.values();
 		List<Furniture> furniture = new List<Furniture>();
 
-		// add products to stocks
-		for(Type type : t)
-		{
-			for(Color color : c)
-			{
-				furniture.insert(new Furniture(0, type, color, branches.get(branchNumber), 5));
+		// insert chairs
+		// furniture.insert(new Furniture(0, 0, Type.CHAIR, Color.RED, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(1, 0, Type.CHAIR, Color.GREEN, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(2, 0, Type.CHAIR, Color.BLUE, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(3, 0, Type.CHAIR, Color.ORANGE, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(4, 0, Type.CHAIR, Color.YELLOW, branches.get(branchNumber), 5));
 
-				// stocks.get(branchNumber).insert(new Furniture(0, type, color, branches.get(branchNumber), 5));
+		int counter = 0;
+
+		// insert chairs
+		for(int i=0; i<7; i++)
+		{
+			for(int j=0; j<5; j++)
+			{
+				furniture.insert(new Furniture(counter++, i, t[0], c[j], branches.get(branchNumber), 5));
 			}
 		}
+
+		// insert desks
+		for(int i=0; i<5; i++)
+		{
+			for(int j=0; j<4; j++)
+			{
+				furniture.insert(new Furniture(counter++, i, t[1], c[j], branches.get(branchNumber), 5));
+			}
+		}
+
+		// insert tables
+		for(int i=0; i<10; i++)
+		{
+			for(int j=0; j<4; j++)
+			{
+				furniture.insert(new Furniture(counter++, i, t[2], c[j], branches.get(branchNumber), 5));
+			}
+		}
+
+		// insert bookcases
+		for(int i=0; i<12; i++)
+		{
+			furniture.insert(new Furniture(counter++, i, t[3], Color.NONE, branches.get(branchNumber), 5));
+		}
+
+		// insert cabinets
+		for(int i=0; i<12; i++)
+		{
+			furniture.insert(new Furniture(counter++, i, t[4], Color.NONE, branches.get(branchNumber), 5));
+		}
+
+		
+
+		// furniture.insert(new Furniture(1, 1, Type.CHAIR, Color.GREEN, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(2, 2, Type.CHAIR, Color.BLUE, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(3, 3, Type.CHAIR, Color.ORANGE, branches.get(branchNumber), 5));
+		// furniture.insert(new Furniture(4, 4, Type.CHAIR, Color.YELLOW, branches.get(branchNumber), 5));
+
+
+
+		// // add products to stocks
+		// for(Type type : t)
+		// {
+		// 	for(Color color : c)
+		// 	{
+		// 		furniture.insert(new Furniture(0, type, color, branches.get(branchNumber), 5));
+
+		// 		// stocks.get(branchNumber).insert(new Furniture(0, type, color, branches.get(branchNumber), 5));
+		// 	}
+		// }
+
 		stocks.insert(new Stock(uniqueId, furniture));
 
 		// stocks.get(branchNumber).insert(new Stock(uniqueId, new Furniture(0, type, color, branches.get(branchNumber), 5)));
