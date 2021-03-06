@@ -20,11 +20,11 @@ public class Company {
 		this.companyAdmin = new Admin(0, "baris", "ayyildiz", "99ayyldzbaris99@gmail.com", "123456", this);
 		// this.branchNumber = 2;
 		this.counter = 0;
-		this.employees = null;
 
 		// init 2d array
 		// this.stocks = new List < List <Furniture> >();
 
+		this.employees = new List<Employee>();
 		this.stocks = new List<Stock>();
 		this.branches = new List<Branch>();
 

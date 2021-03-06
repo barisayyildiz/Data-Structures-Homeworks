@@ -89,14 +89,26 @@ public class Admin extends User implements AdminInterface {
 
 	}
 
-	public boolean addBranchEmployee(int branchId, String name, String surname, int employeeId)
+	public boolean addBranchEmployee(Employee person)
 	{
+		this.company.getEmployees().insert(person);
+
 		return true;
 	}
 
-	public boolean removeBranchEmployee(int branchId, String name, String surname, int employeeId)
+	public boolean removeBranchEmployee(int id)
 	{
-		return true;
+		List<Employee> employees = this.company.getEmployees();
+
+		for(int i=0; i<employees.length(); i++)
+		{
+			if(employees.get(i).getId() == id)
+			{
+				employees.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Company getCompany(){return this.company;}

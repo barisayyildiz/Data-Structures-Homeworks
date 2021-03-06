@@ -4,9 +4,22 @@ public class Employee extends User
 {
 	private int branchId;
 
-	public Employee(int id, String name, String surname, String mail, String password)
+	public Employee(int id, String name, String surname, String mail, String password, int branchId)
 	{
 		super(id, name, surname, mail, password);
+		this.branchId = branchId;
 	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		Employee temp = (Employee)obj;
+
+		if(temp.getId() == this.getId())
+			return true;
+		return false;
+
+	}
+
 	
 }

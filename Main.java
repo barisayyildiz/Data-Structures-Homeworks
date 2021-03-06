@@ -24,9 +24,14 @@ public class Main
 		admin.addBranch();
 		admin.addBranch();
 		admin.addBranch();
-		admin.addBranch();
-		admin.removeBranch(2);
 		admin.removeBranch(1);
+
+		admin.addBranchEmployee(new Employee(0, "john", "doe", "johndoe@gmail.com", "123", 0));
+		admin.addBranchEmployee(new Employee(1, "john", "doe", "johndoe@gmail.com", "123", 0));
+		admin.addBranchEmployee(new Employee(2, "john", "doe", "johndoe@gmail.com", "123", 2));
+
+		admin.removeBranchEmployee(1);
+
 
 
 	}

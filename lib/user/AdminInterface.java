@@ -8,8 +8,8 @@ public interface AdminInterface {
 	boolean addBranch();
 	boolean removeBranch(int branchId);
 
-	boolean addBranchEmployee(int branchId, String name, String surname, int employeeId);
-	boolean removeBranchEmployee(int branchId, String name, String surname, int employeeId);
+	boolean addBranchEmployee(Employee person);
+	boolean removeBranchEmployee(int id);
 
 	Company getCompany();
 	
