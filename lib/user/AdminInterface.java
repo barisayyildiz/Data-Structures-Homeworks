@@ -11,6 +11,14 @@ public interface AdminInterface {
 	boolean addBranchEmployee(Employee person);
 	boolean removeBranchEmployee(int id);
 
+	void productsNeedToBeSupplied();
+
+	void addCustomer(Customer customer);
+	void removeCustomer(int customerId);
+
+	void addProducts(int branchId, int productId, int amount);
+	void removeProducts(int branchId, int productId, int amount);
+
 	Company getCompany();
 	
 }
