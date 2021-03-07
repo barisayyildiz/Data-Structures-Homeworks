@@ -30,10 +30,11 @@ public class Main
 		admin.addBranch();
 		admin.addBranch();
 
-		// Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
-		// Customer customer2 = new Customer("baris", "ayyildiz", "asd", "123", c1);
+		Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
+		Customer customer2 = new Customer("baris", "ayyildiz", "qwe", "123", c1);
 
-		// customer.subscribe();
+		customer.subscribe();
+		customer2.subscribe();
 
 		// customer.login();
 		// customer2.buyInShop(2, 8, 5);

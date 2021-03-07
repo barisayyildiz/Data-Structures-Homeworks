@@ -10,6 +10,18 @@ public class Customer extends User
 	private boolean isSubscribed;
 	private int counter; // to generate unique stock id
 
+	public Customer(int id, String name, String surname, String mail, String password, Company company)
+	{
+		super(id, name, surname, mail, password);
+
+		this.orderHistory = new List<Stock>();
+		this.company = company;
+		this.isSubscribed = false;
+		this.counter = 0;
+
+	}
+
+
 	public Customer(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password);
@@ -36,6 +48,7 @@ public class Customer extends User
 			}
 		}
 
+		this.setId(this.company.getCustomerCounter());
 		subs.insert(this);
 		this.isSubscribed = true;
 

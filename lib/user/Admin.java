@@ -167,7 +167,12 @@ public class Admin extends User implements AdminInterface {
 
 	}
 
-	
+	// admin.addCustomer(new Customer("baris", "ayyildiz", "@gmail.com", "123"))
+
+	public void addCustomer(Customer customer)
+	{
+		customer.subscribe();
+	}
 
 	public Company getCompany(){return this.company;}
 	
