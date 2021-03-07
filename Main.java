@@ -64,6 +64,8 @@ public class Main
 
 		e1.addProducts(2, 34, 500);
 
+		e1.sell(0, 34, 100);
+
 		System.out.println(c1);
 
 

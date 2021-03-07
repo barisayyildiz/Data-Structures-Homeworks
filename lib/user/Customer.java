@@ -166,5 +166,12 @@ public class Customer extends User
 
 	}
 
+	public void addNewOrder(Stock newOrder)
+	{
+		this.orderHistory.insert(newOrder);
+	}
+
+	public int getCounter(){return this.counter++;}
+
 	
 }
