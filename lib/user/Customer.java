@@ -99,12 +99,14 @@ public class Customer extends User
 
 		}
 
-		List<Furniture> temp = new List<Furniture>();
-		temp.insert(stocks.get(0).getFurnitures().get(productId));
-		temp.get(0).setTotal(amount);
+		List<Furniture> newPurchase = new List<Furniture>();
+		Furniture temp = stocks.get(0).getFurnitures().get(productId);
+		
+		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
+		newPurchase.get(0).setTotal(amount);
 
 		// previous order a ekle
-		this.orderHistory.insert(new Stock(this.counter++, temp));
+		this.orderHistory.insert(new Stock(this.counter++, newPurchase));
 
 
 	}
@@ -112,6 +114,7 @@ public class Customer extends User
 	public void buyInShop(int branchId, int productId, int amount)
 	{
 		List<Stock> stocks = this.company.getStocks();
+		int index = -1;
 
 		Stock tempStock = null;
 		
@@ -119,30 +122,33 @@ public class Customer extends User
 		{
 			if(stocks.get(i).getId() == branchId)
 			{
-				tempStock = stocks.get(i);
+				index = i;
 				break;
 			}
 		}
 
-		if(tempStock == null)
+		if(index == -1)
 			throw new Error("branch is not found...");
 
-		int total = tempStock.getFurnitures().get(productId).getTotal();
+		// int total = tempStock.getFurnitures().get(productId).getTotal();
+		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
 		
 		// System.out.println("total : " + total + ", amount : " + amount);
 
 		if(amount > total)
 			throw new Error("çok fazla istedin...");
 
-		tempStock.getFurnitures().get(productId).setTotal(total - amount);
+		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 
 
-		List<Furniture> temp = new List<Furniture>();
-		temp.insert(stocks.get(0).getFurnitures().get(productId));
-		temp.get(0).setTotal(amount);
+		List<Furniture> newPurchase = new List<Furniture>();
+		Furniture temp = stocks.get(0).getFurnitures().get(productId);
+		
+		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
+		newPurchase.get(0).setTotal(amount);
 
 		// previous order a ekle
-		this.orderHistory.insert(new Stock(this.counter++, temp));
+		this.orderHistory.insert(new Stock(this.counter++, newPurchase));
 
 
 	}

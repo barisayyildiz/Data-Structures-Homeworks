@@ -145,6 +145,28 @@ public class Admin extends User implements AdminInterface {
 		return false;
 	}
 
+	public void productsNeedToBeSupplied()
+	{
+		List<Stock> stocks = this.company.getStocks();
+
+		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
+
+		for(int i=0; i<stocks.length(); i++)
+		{
+			for(int j=0; j<stocks.get(i).getFurnitures().length(); j++)
+			{
+				int total = stocks.get(i).getFurnitures().get(j).getTotal();
+				if(total == 0)
+					str += stocks.get(i).getFurnitures().get(i).toString() + "\t\t" + total + "\n";
+			}
+		}
+
+		System.out.println(str);
+
+
+	}
+
+
 	public Company getCompany(){return this.company;}
 	
 }

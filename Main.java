@@ -36,9 +36,11 @@ public class Main
 		customer.login();
 		customer2.buyInShop(2, 12, 5);
 
-		customer.buyOnline(3, 9);
+		customer.buyOnline(48, 10);
 
-		System.out.println(c1);
+		admin.productsNeedToBeSupplied();
+
+		// System.out.println(c1);
 
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");

@@ -28,7 +28,11 @@ public class Furniture {
 		return this.id + "\t" + this.modelId + "\t" + this.type + "\t" + this.color;
 	}
 
-	public int getTotal(){return amount;}
+	public int getTotal(){return this.amount;}
 	public void setTotal(int val){this.amount = val;}
+	public int getModelId(){return this.modelId;}
+	public Type getType(){return this.type;}
+	public Color getColor(){return this.color;}
+	public Branch getBranch(){return this.branch;}
 
 }
