@@ -42,27 +42,26 @@ class Stock
 
 class Admin
 {
-	company : Company
 	Admin(Integer, String, String, String, String, Company)
 	boolean addBranch()
 	boolean removeBranch(Integer)
 	boolean addBranchEmployee(Employee)
-	boolean removeBranchEmployee(Integer)
-	void productsNeedToBeSupplied()
-	void addCustomer(Customer)
-	void addProducts(Integer, Integer, Integer)
-	void removeProducts(Integer, Integer, Integer)
-	Company getCompany()
+	boolean removeBranchEmployee(Integer
+	' void removeCustomer(Integer);
+	' void productsNeedToBeSupplied()
+	' void addCustomer(Customer)
+	' void addProducts(Integer, Integer, Integer)
+	' void removeProducts(Integer, Integer, Integer)
 
 }
 
-interface AdminInterface {
+interface CompanyMembersInterface {
 
-	boolean addBranch();
-	boolean removeBranch(Integer);
+	' boolean addBranch();
+	' boolean removeBranch(Integer);
 
-	boolean addBranchEmployee(Employee);
-	boolean removeBranchEmployee(Integer);
+	' boolean addBranchEmployee(Employee);
+	' boolean removeBranchEmployee(Integer);
 
 	void productsNeedToBeSupplied();
 
@@ -71,15 +70,25 @@ interface AdminInterface {
 
 	void addProducts(Integer, Integer, Integer);
 	void removeProducts(Integer, Integer, Integer);
-
-	Company getCompany();
 	
+}
+
+class CompanyMembers
+{
+	CompanyMembers(Integer, String, String, String, String, Company)
+	CompanyMembers(String, String, String, String, Company)
+	
+	void productsNeedToBeSupplied()
+	void addCustomer(Customer);
+	void removeCustomer(Integer);
+	void addProducts(Integer, Integer, Integer);
+	void removeProducts(Integer, Integer, Integer);
+
 }
 
 class Customer
 {
 	List<Stock> orderHistory
-	Company company
 	boolean isSubscribed
 	Integer counter
 
@@ -98,16 +107,15 @@ class Customer
 class Employee
 {
 	Integer branchId
-	Company company
 
 	Employee(Integer, String, String surname, String, String, Integer, Company)
 	Employee(String name, String, String, String, Integer, Company)
-	addProducts(Integer, Integer, Integer)
-	void removeProducts(Integer, Integer, Integer)
+	' addProducts(Integer, Integer, Integer)
+	' void removeProducts(Integer, Integer, Integer)
 	void sell(Integer, Integer, Integer)
-	void productsNeedToBeSupplied()
-	void addCustomer(Customer)
-	void removeCustomer(Integer)
+	' void productsNeedToBeSupplied()
+	' void addCustomer(Customer)
+	' void removeCustomer(Integer)
 	boolean equals(Object)
 }
 
@@ -206,10 +214,15 @@ Employee --* Company
 Customer --* Company
 Stock --* Company
 Admin --* Company
-Admin --|> User
-Employee --|> User
+' Admin --|> User
+' Employee --|> User
+Admin --|> CompanyMembers
+Employee --|> CompanyMembers
+CompanyMembers ..|> CompanyMembersInterface
+CompanyMembers --|> User
+
 Customer --|> User
-Admin ..|> AdminInterface
+' Admin ..|> CompanyMembersInterface
 List ..|> ListInterface
 Furniture --* Stock
 Color --* Furniture

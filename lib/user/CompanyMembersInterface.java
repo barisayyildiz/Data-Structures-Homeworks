@@ -3,13 +3,13 @@ package lib.user;
 import lib.furniture.*;
 import lib.*;
 
-public interface AdminInterface {
+public interface CompanyMembersInterface {
 
-	boolean addBranch();
-	boolean removeBranch(int branchId);
+	// boolean addBranch();
+	// boolean removeBranch(int branchId);
 
-	boolean addBranchEmployee(Employee person);
-	boolean removeBranchEmployee(int id);
+	// boolean addBranchEmployee(Employee person);
+	// boolean removeBranchEmployee(int id);
 
 	void productsNeedToBeSupplied();
 
@@ -18,7 +18,5 @@ public interface AdminInterface {
 
 	void addProducts(int branchId, int productId, int amount);
 	void removeProducts(int branchId, int productId, int amount);
-
-	Company getCompany();
 	
 }

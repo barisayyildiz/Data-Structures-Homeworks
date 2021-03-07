@@ -1,5 +1,8 @@
 package lib.user;
 
+import lib.furniture.*;
+import lib.*;
+
 public class User {
 
 	protected int id;
@@ -7,22 +10,25 @@ public class User {
 	protected String surname;
 	protected String mail;
 	protected String password;
+	protected Company company;
 
-	public User(int id, String name, String surname, String mail, String password)
+	public User(int id, String name, String surname, String mail, String password, Company company)
 	{
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.mail = mail;
 		this.password = password;
+		this.company = company;
 	}
 
-	public User(String name, String surname, String mail, String password)
+	public User(String name, String surname, String mail, String password, Company company)
 	{
 		this.name = name;
 		this.surname = surname;
 		this.mail = mail;
 		this.password = password;
+		this.company = company;
 	}
 
 	// getters

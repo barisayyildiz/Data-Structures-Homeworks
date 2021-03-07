@@ -6,16 +6,14 @@ import lib.furniture.*;
 public class Customer extends User
 {
 	private List<Stock> orderHistory;
-	private Company company;
 	private boolean isSubscribed;
 	private int counter; // to generate unique stock id
 
 	public Customer(int id, String name, String surname, String mail, String password, Company company)
 	{
-		super(id, name, surname, mail, password);
+		super(id, name, surname, mail, password, company);
 
 		this.orderHistory = new List<Stock>();
-		this.company = company;
 		this.isSubscribed = false;
 		this.counter = 0;
 
@@ -24,10 +22,9 @@ public class Customer extends User
 
 	public Customer(String name, String surname, String mail, String password, Company company)
 	{
-		super(name, surname, mail, password);
+		super(name, surname, mail, password, company);
 
 		this.orderHistory = new List<Stock>();
-		this.company = company;
 		this.isSubscribed = false;
 		this.counter = 0;
 
