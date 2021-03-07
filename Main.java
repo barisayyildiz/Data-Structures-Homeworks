@@ -39,9 +39,12 @@ public class Main
 		// customer.login();
 		// customer2.buyInShop(2, 8, 5);
 
-		// customer.buyOnline(2, 10);
+		customer.buyOnline(60, 20);
 
-		// admin.productsNeedToBeSupplied();
+		admin.productsNeedToBeSupplied();
+
+		admin.addProducts(2, 60, 30);
+		admin.removeProducts(2, 59, 2);
 
 		// // admin.test(3,4);
 

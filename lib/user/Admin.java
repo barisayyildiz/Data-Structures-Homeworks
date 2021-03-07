@@ -191,6 +191,64 @@ public class Admin extends User implements AdminInterface {
 
 	}
 
+
+	// admin.addProducts(int branchId, int productId, int amount)
+	// admin.addProduts(2,60,11)
+
+	public void addProducts(int branchId, int productId, int amount)
+	{
+		List<Stock> stocks = this.company.getStocks();
+		int index = -1;
+
+		Stock tempStock = null;
+		
+		for(int i=0; i<stocks.length(); i++)
+		{
+			if(stocks.get(i).getId() == branchId)
+			{
+				index = i;
+				break;
+			}
+		}
+
+		if(index == -1)
+			throw new Error("branch is not found...");
+
+		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
+		stocks.get(index).getFurnitures().get(productId).setTotal(total + amount);
+
+	}
+
+	public void removeProducts(int branchId, int productId, int amount)
+	{
+		List<Stock> stocks = this.company.getStocks();
+		int index = -1;
+
+		Stock tempStock = null;
+		
+		for(int i=0; i<stocks.length(); i++)
+		{
+			if(stocks.get(i).getId() == branchId)
+			{
+				index = i;
+				break;
+			}
+		}
+
+		if(index == -1)
+			throw new Error("branch is not found...");
+
+		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
+
+		if(amount > total)
+			throw new Error("çok fazla istedin...");
+
+		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
+
+	}
+
+
+
 	public Company getCompany(){return this.company;}
 	
 }
