@@ -1,0 +1,210 @@
+@startuml "Order Taking Classes"
+
+class Company
+{
+	companyAdmin : Admin
+	branchCounter : Integer
+	customerCounter : Integer
+	employeeCounter : Integer
+	branches : List<Branch>
+	employees : List<Employee>
+	subs : List<Customer>
+	stocks : List<Stock>
+
+	Company()
+	void showSingleBranch(Integer)
+	Admin getAdmin()
+	Integer getBranchCounter()
+	Integer getCustomerCounter()
+	Integer getEmployeeCounter()
+	void setCounter(Integer)
+	List<Branch> getBranches()
+	List<Employee> getEmployees()
+	List<Stock> getStocks()
+	List<Customer> getSubs()
+	String toString()
+}
+
+class Branch
+{
+	branchId : Integer 
+	stockIndex : Integer
+}
+
+class Stock
+{
+	id : Integer
+	furnArr : List<Furniture>
+	Stock(Integer, List<Furniture>)
+	Integer getId()
+	List<Furniture> getFurnitures()
+}
+
+class Admin
+{
+	company : Company
+	Admin(Integer, String, String, String, String, Company)
+	boolean addBranch()
+	boolean removeBranch(Integer)
+	boolean addBranchEmployee(Employee)
+	boolean removeBranchEmployee(Integer)
+	void productsNeedToBeSupplied()
+	void addCustomer(Customer)
+	void addProducts(Integer, Integer, Integer)
+	void removeProducts(Integer, Integer, Integer)
+	Company getCompany()
+
+}
+
+interface AdminInterface {
+
+	boolean addBranch();
+	boolean removeBranch(Integer);
+
+	boolean addBranchEmployee(Employee);
+	boolean removeBranchEmployee(Integer);
+
+	void productsNeedToBeSupplied();
+
+	void addCustomer(Customer);
+	void removeCustomer(Integer);
+
+	void addProducts(Integer, Integer, Integer);
+	void removeProducts(Integer, Integer, Integer);
+
+	Company getCompany();
+	
+}
+
+class Customer
+{
+	List<Stock> orderHistory
+	Company company
+	boolean isSubscribed
+	Integer counter
+
+	Customer(Integer, String, String, String, String, Company)
+	Customer(String, String, String, String, Company)
+	void subscribe()
+	boolean login()
+	void buyOnline(Integer productId, Integer amount)
+	void buyInShop(Integer branchId, Integer productId, Integer amount)
+	void addNewOrder(Stock newOrder)
+	Integer getCounter()
+
+
+}
+
+class Employee
+{
+	Integer branchId
+	Company company
+
+	Employee(Integer, String, String surname, String, String, Integer, Company)
+	Employee(String name, String, String, String, Integer, Company)
+	addProducts(Integer, Integer, Integer)
+	void removeProducts(Integer, Integer, Integer)
+	void sell(Integer, Integer, Integer)
+	boolean equals(Object)
+}
+
+class User
+{
+	Integer id
+	String name
+	String surname
+	String mail
+	String password
+
+	User(Integer, String, String, String, String)
+	User(String, String, String, String)
+	int getId()
+	String getName()
+	String getSurname()
+	String getMail()
+	String getPassword()
+	void setId(Integer id)
+	void setName(String name)
+	void setSurname(String surname)
+	void setMail(String mail)
+	void setPassword(String password)
+}
+
+enum Color
+{
+	RED
+	GREEN
+	BLUE
+	ORANGE
+	YELLOW
+	NONE
+}
+
+enum Type {
+
+	CHAIR
+	DESK
+	TABLE
+	BOOKCASE
+	CABINET
+	
+}
+
+class Furniture
+{
+	Integer id
+	Integer modelId
+	Type type
+	Color color
+	Branch branch
+	Integer amount
+
+	Furniture(Integer, Integer, Type, Color, Branch, Integer)
+	Integer getTotal()
+	void setTotal(Integer)
+	Integer getModelId()
+	Type getType()
+	Color getColor()
+	Branch getBranch()
+	String toString()
+}
+
+class List< T > 
+{
+	Integer size;
+	Integer cap;
+	T[] arr;
+
+	List()
+	List(Integer cap)
+	void insert(T val)
+	void remove(Integer index)
+	T get(Integer index)
+	void set(Integer index, T val)
+	Integer length()
+	String toString()
+
+}
+
+interface ListInterface<T> {
+
+	public void insert(T val);
+	public void remove(int index);
+	public int length();
+	public T get(int index);
+	public void set(int index, T val);
+	
+}
+
+
+
+Branch --* Company
+Employee --* Company
+Customer --* Company
+Stock --* Company
+Admin --* Company
+
+
+
+
+@enduml
