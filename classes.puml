@@ -203,6 +203,19 @@ Employee --* Company
 Customer --* Company
 Stock --* Company
 Admin --* Company
+Admin --|> User
+Employee --|> User
+Customer --|> User
+Admin ..|> AdminInterface
+List ..|> ListInterface
+Furniture --* Stock
+Color --* Furniture
+Type --* Furniture
+List --* Stock
+List --* Customer
+List --* Company
+
+
 
 
 
