@@ -105,6 +105,9 @@ class Employee
 	addProducts(Integer, Integer, Integer)
 	void removeProducts(Integer, Integer, Integer)
 	void sell(Integer, Integer, Integer)
+	void productsNeedToBeSupplied()
+	void addCustomer(Customer)
+	void removeCustomer(Integer)
 	boolean equals(Object)
 }
 

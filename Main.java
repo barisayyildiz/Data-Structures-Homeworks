@@ -55,9 +55,9 @@ public class Main
 
 		admin.removeBranchEmployee(2);
 
-		admin.addCustomer(new Customer("asya", "ayyildiz", "@mail", "345", c1));
+		e1.addCustomer(new Customer("asya", "ayyildiz", "@mail", "345", c1));
 
-		admin.removeCustomer(1);
+		e1.removeCustomer(1);
 
 		e1.productsNeedToBeSupplied();
 

@@ -152,6 +152,28 @@ public class Employee extends User
 
 	}
 
+	public void addCustomer(Customer customer)
+	{
+		customer.subscribe();
+	}
+	
+	public void removeCustomer(int customerId)
+	{
+		List<Customer> customerList = this.company.getSubs();
+
+		for(int i=0; i<customerList.length(); i++)
+		{
+			if(customerList.get(i).getId() == customerId)
+			{
+				customerList.remove(customerId);
+				return;
+			}
+		}
+
+
+
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{
