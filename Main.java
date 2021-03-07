@@ -17,9 +17,6 @@ public class Main
 		// System.out.println(l1);
 
 
-
-
-
 		Company c1 = new Company();
 
 		Admin admin = c1.getAdmin();
@@ -31,25 +28,38 @@ public class Main
 		admin.addBranch();
 		admin.addBranch();
 
-		c1.subscribe("john", "doe", "asd@mail.com", "123");
+		Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
+		Customer customer2 = new Customer("baris", "ayyildiz", "asd", "123", c1);
+
+		customer.subscribe();
+
+		customer.login();
+		customer2.buyInShop(2, 12, 5);
+
+		customer.buyOnline(3, 9);
+
+		System.out.println(c1);
+
+
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");
+		// // c1.subscribe("john", "doe", "asd@mail.com", "123");
 
-		String name = "john";
-		String surname = "doe";
-		String mail = "asd@mail.com";
-		String password = "123";
+		// String name = "john";
+		// String surname = "doe";
+		// String mail = "asd@mail.com";
+		// String password = "123";
 
-		c1.login(mail, password);
+		// c1.login(mail, password);
 		
-		// buyOnline(product_id, amount)
+		// // buyOnline(product_id, amount)
 		
-		// c1.buyOnline(12, 4);
+		// // c1.buyOnline(12, 4);
 
 		
-		// // buyInShop(branchId, productId, amount)
+		// // // buyInShop(branchId, productId, amount)
 		
-		c1.buyInShop(2,12,1);
-		c1.showSingleBranch(2);
+		// c1.buyInShop(2,12,1);
+		// c1.showSingleBranch(2);
 		
 		
 		// System.out.println(c1);
@@ -64,10 +74,9 @@ public class Main
 
 		// System.out.println(c1);
 
-
-
-
-
 	}
+
+
+
 }
 
