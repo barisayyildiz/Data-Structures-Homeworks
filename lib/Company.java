@@ -6,7 +6,9 @@ import lib.user.*;
 public class Company {
 	
 	private Admin companyAdmin;
-	private int counter;
+	private int branchCounter;
+	private int customerCounter;
+	private int employeeCounter;
 	private List<Branch> branches;
 	private List<Employee> employees;
 	private List<Customer> subs;
@@ -20,7 +22,9 @@ public class Company {
 	{
 		this.companyAdmin = new Admin(0, "baris", "ayyildiz", "99ayyldzbaris99@gmail.com", "123456", this);
 		// this.branchNumber = 2;
-		this.counter = 0;
+		this.branchCounter = 0;
+		this.customerCounter = 0;
+		this.employeeCounter = 0;
 
 		// init 2d array
 		// this.stocks = new List < List <Furniture> >();
@@ -88,8 +92,18 @@ public class Company {
 
 	// getters
 	public Admin getAdmin(){return companyAdmin;}
-	public int getCounter(){return counter;}
-	public void setCounter(int val){this.counter = val;}
+
+	public int getBranchCounter(){
+		return this.branchCounter++;
+	}
+	public int getCustomerCounter(){
+		return this.customerCounter++;
+	}
+	public int getEmployeeCounter(){
+		return this.employeeCounter++;
+	}
+	
+	public void setCounter(int val){this.branchCounter = val;}
 	public List<Branch> getBranches(){return branches;}
 	public List<Employee> getEmployees(){return employees;}
 	public List<Stock> getStocks(){return stocks;}

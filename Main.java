@@ -30,21 +30,28 @@ public class Main
 		admin.addBranch();
 		admin.addBranch();
 
-		Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
-		Customer customer2 = new Customer("baris", "ayyildiz", "asd", "123", c1);
+		// Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
+		// Customer customer2 = new Customer("baris", "ayyildiz", "asd", "123", c1);
 
-		customer.subscribe();
+		// customer.subscribe();
 
-		customer.login();
-		customer2.buyInShop(2, 8, 5);
+		// customer.login();
+		// customer2.buyInShop(2, 8, 5);
 
-		customer.buyOnline(2, 10);
+		// customer.buyOnline(2, 10);
 
-		admin.productsNeedToBeSupplied();
+		// admin.productsNeedToBeSupplied();
 
-		// admin.test(3,4);
+		// // admin.test(3,4);
 
 		System.out.println(c1);
+		
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 2));
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 3));
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 4));
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 2));
+
+		admin.removeBranchEmployee(2);
 
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");

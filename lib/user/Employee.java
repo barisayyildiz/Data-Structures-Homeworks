@@ -10,6 +10,12 @@ public class Employee extends User
 		this.branchId = branchId;
 	}
 
+	public Employee(String name, String surname, String mail, String password, int branchId)
+	{
+		super(name, surname, mail, password);
+		this.branchId = branchId;
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{

@@ -19,7 +19,7 @@ public class Admin extends User implements AdminInterface {
 		List<Branch> branches = this.company.getBranches();
 		List<Stock> stocks = this.company.getStocks();
 		int branchNumber = branches.length();
-		int uniqueId = this.company.getCounter();
+		int uniqueId = this.company.getBranchCounter();
 
 
 		// adds new branch
@@ -81,7 +81,7 @@ public class Admin extends User implements AdminInterface {
 
 		// stocks.get(branchNumber).insert(new Stock(uniqueId, new Furniture(0, type, color, branches.get(branchNumber), 5)));
 		
-		this.company.setCounter(uniqueId+1);
+		// this.company.setCounter(uniqueId+1);
 
 		return true;
 	}
@@ -125,6 +125,7 @@ public class Admin extends User implements AdminInterface {
 
 	public boolean addBranchEmployee(Employee person)
 	{
+		person.setId(this.company.getEmployeeCounter());
 		this.company.getEmployees().insert(person);
 
 		return true;
@@ -166,12 +167,7 @@ public class Admin extends User implements AdminInterface {
 
 	}
 
-	public void test(int i, int j)
-	{
-		String str = this.company.getStocks().get(i).getFurnitures().get(j).toString();
-		System.out.println(str);
-	}
-
+	
 
 	public Company getCompany(){return this.company;}
 	
