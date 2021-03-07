@@ -41,8 +41,6 @@ public class Main
 
 		customer.buyOnline(60, 20);
 
-		admin.productsNeedToBeSupplied();
-
 		admin.addProducts(2, 60, 30);
 		admin.removeProducts(2, 59, 2);
 
@@ -61,12 +59,16 @@ public class Main
 
 		admin.removeCustomer(1);
 
+		e1.productsNeedToBeSupplied();
 
-		e1.addProducts(2, 34, 500);
 
-		e1.sell(0, 34, 100);
+		e1.addProducts(3, 60, 500);
+
+		// e1.sell(0, 34, 100);
 
 		System.out.println(c1);
+
+		e1.productsNeedToBeSupplied();
 
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");

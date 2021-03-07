@@ -131,6 +131,27 @@ public class Employee extends User
 
 	}
 
+	public void productsNeedToBeSupplied()
+	{
+		List<Stock> stocks = this.company.getStocks();
+
+		String str = "ID\tModelId\tType\tColor\t\tBranchId\t\tAmount\n";
+
+		for(int i=0; i<stocks.length(); i++)
+		{
+			for(int j=0; j<stocks.get(i).getFurnitures().length(); j++)
+			{
+				int total = stocks.get(i).getFurnitures().get(j).getTotal();
+				if(total == 0)
+					str += stocks.get(i).getFurnitures().get(j).toString() + "\t\t" + stocks.get(i).getFurnitures().get(i).getBranch().getBranchId() + "\t\t" + total + "\n";
+			}
+		}
+
+		System.out.println(str);
+
+
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{
