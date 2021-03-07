@@ -27,6 +27,8 @@ public class Main
 		admin.removeBranch(1);
 		admin.addBranch();
 		admin.addBranch();
+		admin.addBranch();
+		admin.addBranch();
 
 		Customer customer = new Customer("baris", "ayyildiz", "asd", "123", c1);
 		Customer customer2 = new Customer("baris", "ayyildiz", "asd", "123", c1);
@@ -34,13 +36,15 @@ public class Main
 		customer.subscribe();
 
 		customer.login();
-		customer2.buyInShop(2, 12, 5);
+		customer2.buyInShop(2, 8, 5);
 
-		customer.buyOnline(48, 10);
+		customer.buyOnline(2, 10);
 
 		admin.productsNeedToBeSupplied();
 
-		// System.out.println(c1);
+		// admin.test(3,4);
+
+		System.out.println(c1);
 
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");

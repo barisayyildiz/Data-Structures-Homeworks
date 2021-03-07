@@ -85,7 +85,6 @@ public class Customer extends User
 		{
 			int current = stocks.get(i).getFurnitures().get(productId).getTotal();
 
-			System.out.println("current : " + current + ", amount : " + tempAmount);
 			if(current >= tempAmount)
 			{
 				stocks.get(i).getFurnitures().get(productId).setTotal(current-tempAmount);
@@ -111,6 +110,7 @@ public class Customer extends User
 
 	}
 
+	// 2,8,5
 	public void buyInShop(int branchId, int productId, int amount)
 	{
 		List<Stock> stocks = this.company.getStocks();

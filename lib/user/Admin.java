@@ -149,7 +149,7 @@ public class Admin extends User implements AdminInterface {
 	{
 		List<Stock> stocks = this.company.getStocks();
 
-		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
+		String str = "ID\tModelId\tType\tColor\t\tBranchId\t\tAmount\n";
 
 		for(int i=0; i<stocks.length(); i++)
 		{
@@ -157,13 +157,19 @@ public class Admin extends User implements AdminInterface {
 			{
 				int total = stocks.get(i).getFurnitures().get(j).getTotal();
 				if(total == 0)
-					str += stocks.get(i).getFurnitures().get(i).toString() + "\t\t" + total + "\n";
+					str += stocks.get(i).getFurnitures().get(j).toString() + "\t\t" + stocks.get(i).getFurnitures().get(i).getBranch().getBranchId() + "\t\t" + total + "\n";
 			}
 		}
 
 		System.out.println(str);
 
 
+	}
+
+	public void test(int i, int j)
+	{
+		String str = this.company.getStocks().get(i).getFurnitures().get(j).toString();
+		System.out.println(str);
 	}
 
 
