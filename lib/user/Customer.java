@@ -8,6 +8,7 @@ public class Customer extends User
 	private List<Stock> orderHistory;
 	private Company company;
 	private boolean isSubscribed;
+	private int counter; // to generate unique stock id
 
 	public Customer(String name, String surname, String mail, String password, Company company)
 	{
@@ -16,30 +17,9 @@ public class Customer extends User
 		this.orderHistory = new List<Stock>();
 		this.company = company;
 		this.isSubscribed = false;
+		this.counter = 0;
 
 	}
-
-	// public void subscribe(String name, String surname, String mail, String password, Company company)
-	// {
-	// 	Customer temp = new Customer(0, name, surname, mail, password, company);
-		
-	// 	List<Branch> branches = this.company.getBranches();
-	// 	List<Employee> employees = this.company.getEmployees();
-	// 	List<Customer> subs = this.company.getSubs();
-
-	// 	for(int i=0; i<subs.length(); i++)
-	// 	{
-	// 		if(subs.get(i).getMail() == mail)
-	// 		{
-	// 			throw new Error("This email is already registered...");
-	// 		}
-	// 	}
-
-	// 	subs.insert(temp);
-
-	// 	System.out.println("user id is : " + 0);
-
-	// }
 
 	public void subscribe()
 	{
@@ -83,6 +63,8 @@ public class Customer extends User
 
 	public void buyOnline(int productId, int amount)
 	{
+		int tempAmount = amount;
+
 		List<Stock> stocks = this.company.getStocks();
 
 		// 1. yeterli sayıda var mı
@@ -95,7 +77,7 @@ public class Customer extends User
 			total += stocks.get(i).getFurnitures().get(productId).getTotal();
 		}
 
-		if(amount > total)
+		if(tempAmount > total)
 			throw new Error("Çok fazla istedin...");
 		
 		// mağazalardan sil
@@ -103,19 +85,26 @@ public class Customer extends User
 		{
 			int current = stocks.get(i).getFurnitures().get(productId).getTotal();
 
-			System.out.println("current : " + current + ", amount : " + amount);
-			if(current >= amount)
+			System.out.println("current : " + current + ", amount : " + tempAmount);
+			if(current >= tempAmount)
 			{
-				stocks.get(i).getFurnitures().get(productId).setTotal(current-amount);
-				return;
+				stocks.get(i).getFurnitures().get(productId).setTotal(current-tempAmount);
+				break;
 			}else
 			{
-				amount -= current;
+				tempAmount -= current;
 				stocks.get(i).getFurnitures().get(productId).setTotal(0);
 			}
 
 
 		}
+
+		List<Furniture> temp = new List<Furniture>();
+		temp.insert(stocks.get(0).getFurnitures().get(productId));
+		temp.get(0).setTotal(amount);
+
+		// previous order a ekle
+		this.orderHistory.insert(new Stock(this.counter++, temp));
 
 
 	}
@@ -146,6 +135,14 @@ public class Customer extends User
 			throw new Error("çok fazla istedin...");
 
 		tempStock.getFurnitures().get(productId).setTotal(total - amount);
+
+
+		List<Furniture> temp = new List<Furniture>();
+		temp.insert(stocks.get(0).getFurnitures().get(productId));
+		temp.get(0).setTotal(amount);
+
+		// previous order a ekle
+		this.orderHistory.insert(new Stock(this.counter++, temp));
 
 
 	}
