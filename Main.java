@@ -48,18 +48,23 @@ public class Main
 
 		// // admin.test(3,4);
 
-		System.out.println(c1);
+		Employee e1 = new Employee("john", "doe", "@mail123", "123", 2, c1);
 		
-		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 2));
-		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 3));
-		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 4));
-		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 2));
+		admin.addBranchEmployee(e1);
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 3, c1));
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 4, c1));
+		admin.addBranchEmployee(new Employee("john", "doe", "@mail123", "123", 2, c1));
 
 		admin.removeBranchEmployee(2);
 
 		admin.addCustomer(new Customer("asya", "ayyildiz", "@mail", "345", c1));
 
 		admin.removeCustomer(1);
+
+
+		e1.addProducts(2, 34, 500);
+
+		System.out.println(c1);
 
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");
