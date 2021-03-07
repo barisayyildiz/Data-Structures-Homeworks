@@ -54,6 +54,10 @@ public class Main
 
 		admin.removeBranchEmployee(2);
 
+		admin.addCustomer(new Customer("asya", "ayyildiz", "@mail", "345", c1));
+
+		admin.removeCustomer(1);
+
 
 		// c1.subscribe("john", "doe", "asd@mail.com", "123");
 		// // c1.subscribe("john", "doe", "asd@mail.com", "123");
