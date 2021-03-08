@@ -6,13 +6,13 @@ import lib.*;
 
 public class Admin extends CompanyMembers{
 
-	public Admin(int id, String name, String surname, String mail, String password, Company company)
+	public Admin(String name, String surname, String mail, String password, Company company)
 	{
-		super(id, name, surname, mail, password, company);
+		super(name, surname, mail, password, company);
 	}
-	public Admin(int id, String name, String surname, String mail, String password)
+	public Admin(String name, String surname, String mail, String password)
 	{
-		super(id, name, surname, mail, password);
+		super(name, surname, mail, password);
 	}
 
 	public boolean addBranch()

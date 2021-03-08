@@ -7,12 +7,6 @@ public class Employee extends CompanyMembers
 {
 	private int branchId;
 
-	public Employee(int id, String name, String surname, String mail, String password, int branchId, Company company)
-	{
-		super(id, name, surname, mail, password, company);
-		this.branchId = branchId;
-	}
-
 	public Employee(String mail, String password, Company company)
 	{
 		super(mail, password, company);

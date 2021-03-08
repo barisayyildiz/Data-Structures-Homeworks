@@ -11,24 +11,14 @@ public class User {
 	protected String mail;
 	protected String password;
 	protected Company company;
-
-	public User(int id, String name, String surname, String mail, String password, Company company)
+	
+	public User(String name, String surname, String mail, String password)
 	{
-		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.mail = mail;
 		this.password = password;
-		this.company = company;
-	}
 
-	public User(int id, String name, String surname, String mail, String password)
-	{
-		this.id = id;
-		this.name = name;
-		this.surname = surname;
-		this.mail = mail;
-		this.password = password;
 	}
 
 	public User(String name, String surname, String mail, String password, Company company)

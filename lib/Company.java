@@ -20,6 +20,7 @@ public class Company {
 	public Company(Admin admin)
 	{
 		admin.setCompany(this);
+		admin.setId(0);
 		this.companyAdmin = admin;
 		this.branchCounter = 0;
 		this.customerCounter = 0;
@@ -29,22 +30,6 @@ public class Company {
 		this.stocks = new List<Stock>();
 		this.branches = new List<Branch>();
 		this.subs = new List<Customer>();
-	}
-
-
-	public Company()
-	{
-		this.companyAdmin = new Admin(0, "baris", "ayyildiz", "99ayyldzbaris99@gmail.com", "123456", this);
-		// this.branchNumber = 2;
-		this.branchCounter = 0;
-		this.customerCounter = 0;
-		this.employeeCounter = 0;
-
-		this.employees = new List<Employee>();
-		this.stocks = new List<Stock>();
-		this.branches = new List<Branch>();
-		this.subs = new List<Customer>();
-
 	}
 
 	// login x 2

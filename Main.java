@@ -7,9 +7,7 @@ public class Main
 {
 	public static Company initCompany()
 	{
-		Scanner myObj = new Scanner(System.in);
 		String name, surname, mail, password;
-		int id;
 
 		name = getString("Name : ");
 
@@ -19,10 +17,7 @@ public class Main
 
 		password = getString("Password : ");
 
-		id = getInteger("Id : ");
-
-		// return new Company(new Admin(0,name,surname,mail,password));
-		return new Company(new Admin(id, name, surname, mail, password)  );
+		return new Company(new Admin(name, surname, mail, password)  );
 
 	}
 
