@@ -65,7 +65,14 @@ public class User {
 	@Override
 	public String toString()
 	{
-		return String.valueOf(this.id) + "," + this.name + "," + this.surname + "," + this.mail + "," + this.password;
+		String str = "\n";
+		str += "Id : \t" + this.id + "\n";
+		str += "Name : \t" + this.name + "\n";
+		str += "Surname : \t" + this.surname + "\n";
+		str += "Mail : \t" + this.mail + "\n";
+		str += "Password : \t" + this.password + "\n";
+		
+		return str;
 	}
 
 }

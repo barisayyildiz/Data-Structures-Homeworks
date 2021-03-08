@@ -7,7 +7,6 @@ public class Main
 {
 	public static Company initCompany()
 	{
-		// Company company = new Company();
 		Scanner myObj = new Scanner(System.in);
 		String name, surname, mail, password;
 		int id;
