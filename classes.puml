@@ -11,7 +11,11 @@ class Company
 	subs : List<Customer>
 	stocks : List<Stock>
 
-	Company()
+	Company(Admin)
+	Employee login(Employee)
+	Customer login(Customer)
+	void showBranchIds()
+	void showAllProducts()
 	void showSingleBranch(Integer)
 	Admin getAdmin()
 	Integer getBranchCounter()
@@ -29,6 +33,10 @@ class Branch
 {
 	branchId : Integer 
 	stockIndex : Integer
+
+	Branch(Integer, Integer)
+	Integer getBranchId()
+	Integer getStockIndex()
 }
 
 class Stock
@@ -42,26 +50,17 @@ class Stock
 
 class Admin
 {
-	Admin(Integer, String, String, String, String, Company)
+	Admin(String, String, String, String, Company)
+	Admin(String, String, String, String)
 	boolean addBranch()
 	boolean removeBranch(Integer)
 	boolean addBranchEmployee(Employee)
 	boolean removeBranchEmployee(Integer
-	' void removeCustomer(Integer);
-	' void productsNeedToBeSupplied()
-	' void addCustomer(Customer)
-	' void addProducts(Integer, Integer, Integer)
-	' void removeProducts(Integer, Integer, Integer)
-
+	void listEmployees()
+	void listSubscribers()
 }
 
 interface CompanyMembersInterface {
-
-	' boolean addBranch();
-	' boolean removeBranch(Integer);
-
-	' boolean addBranchEmployee(Employee);
-	' boolean removeBranchEmployee(Integer);
 
 	void productsNeedToBeSupplied();
 
@@ -75,7 +74,7 @@ interface CompanyMembersInterface {
 
 class CompanyMembers
 {
-	CompanyMembers(Integer, String, String, String, String, Company)
+	CompanyMembers(String, String, String, String)
 	CompanyMembers(String, String, String, String, Company)
 	
 	void productsNeedToBeSupplied()
@@ -92,12 +91,13 @@ class Customer
 	boolean isSubscribed
 	Integer counter
 
-	Customer(Integer, String, String, String, String, Company)
+	Customer(String, String, Company)
 	Customer(String, String, String, String, Company)
 	void subscribe()
 	boolean login()
 	void buyOnline(Integer productId, Integer amount)
 	void buyInShop(Integer branchId, Integer productId, Integer amount)
+	void showOrderHistory()
 	void addNewOrder(Stock newOrder)
 	Integer getCounter()
 
@@ -127,9 +127,10 @@ class User
 	String mail
 	String password
 
-	User(Integer, String, String, String, String)
 	User(String, String, String, String)
-	int getId()
+	User(String, String, String, String, Company)
+	User(String, String, Company)
+	Integer getId()
 	String getName()
 	String getSurname()
 	String getMail()
@@ -139,6 +140,7 @@ class User
 	void setSurname(String surname)
 	void setMail(String mail)
 	void setPassword(String password)
+	String toString()
 }
 
 enum Color
@@ -200,10 +202,10 @@ class List< T >
 interface ListInterface<T> {
 
 	public void insert(T val);
-	public void remove(int index);
-	public int length();
-	public T get(int index);
-	public void set(int index, T val);
+	public void remove(Integer index);
+	public Integer length();
+	public T get(Integer index);
+	public void set(Integer index, T val);
 	
 }
 

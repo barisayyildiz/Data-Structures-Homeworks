@@ -13,8 +13,6 @@ public class Company {
 	private List<Employee> employees;
 	private List<Customer> subs;
 
-	// private List< List<Furniture> > stocks; 
-
 	private List<Stock> stocks;
 
 	public Company(Admin admin)
@@ -32,7 +30,7 @@ public class Company {
 		this.subs = new List<Customer>();
 	}
 
-	// login x 2
+
 	public Employee login(Employee employee)
 	{
 		for(int i=0; i<this.employees.length(); i++)
@@ -56,17 +54,13 @@ public class Company {
 	}
 
 
-
-
-
-
-
 	public void showBranchIds()
 	{
-		String str = "";
+		String str = "\n";
 		for(int i=0; i<this.branches.length(); i++)
 		{
-			str += this.branches.get(i).getBranchId() + " ";
+			// str += this.branches.get(i).getBranchId() + " ";
+			str += "BranchId : " + this.branches.get(i).getBranchId() + "\n";
 		}
 		str +="\n";
 		System.out.println(str);
