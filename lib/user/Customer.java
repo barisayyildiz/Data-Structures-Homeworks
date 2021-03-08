@@ -5,12 +5,23 @@ import lib.furniture.*;
 
 import java.util.Scanner;
 
+/**
+ * Customer class, inherits from User class
+ * @author Barış Ayyıldız
+ */
+
 public class Customer extends User
 {
 	private List<Stock> orderHistory;
 	private boolean isSubscribed;
 	private int counter; // to generate unique stock id
 
+	/**
+	 * Customer constructor
+	 * @param mail mail
+	 * @param password password
+	 * @param company company
+	 */
 	public Customer(String mail, String password, Company company)
 	{
 		super(mail, password, company);
@@ -20,7 +31,14 @@ public class Customer extends User
 		this.counter = 0;
 	}
 
-
+	/**
+	 * Customer constructor
+	 * @param name name
+	 * @param surname surname
+	 * @param mail mail
+	 * @param password password
+	 * @param company company
+	 */
 	public Customer(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password, company);
@@ -31,6 +49,10 @@ public class Customer extends User
 
 	}
 
+	/**
+	 * Handles subscription
+	 * @throws Exception throws when the email is already registered
+	 */
 	public void subscribe() throws Exception
 	{
 			
@@ -54,24 +76,12 @@ public class Customer extends User
 
 	}
 
-	public boolean login()
-	{
-		if(!this.isSubscribed)
-			throw new Error("you are not subscribed...");
-
-
-		List<Branch> branches = this.company.getBranches();
-		List<Employee> employees = this.company.getEmployees();
-		List<Customer> subs = this.company.getSubs();
-
-		for(int i=0; i<subs.length(); i++)
-		{
-			if(subs.get(i).getMail() == this.mail && subs.get(i).getPassword() == this.password)
-				return true;
-		}
-		return false;
-	}
-
+	/**
+	 * Handles buying online
+	 * @param productId product id
+	 * @param amount amount of product
+	 * @throws Exception throws when the amount is negative or there is not enough product in the company
+	 */
 	public void buyOnline(int productId, int amount) throws Exception
 	{
 		int tempAmount = amount;
@@ -80,9 +90,6 @@ public class Customer extends User
 			throw new Exception("amount cannot negative...");
 
 		List<Stock> stocks = this.company.getStocks();
-
-		// 1. yeterli sayıda var mı
-		// 2. varsa mağazalardan sil
 
 		int total = 0;
 
@@ -129,9 +136,18 @@ public class Customer extends User
 
 	}
 
-	// 2,8,5
-	public void buyInShop(int branchId, int productId, int amount)
+	/**
+	 * Handles buying in a shop
+	 * @param branchId branch id
+	 * @param productId product id
+	 * @param amount amount of product
+	 * @throws Exception throws when the amount is negative or there is not enough product in the company
+	 */
+	public void buyInShop(int branchId, int productId, int amount) throws Exception
 	{
+		if(amount < 0)
+			throw new Exception("amount cannot negative...");
+
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
 
@@ -147,7 +163,7 @@ public class Customer extends User
 		}
 
 		if(index == -1)
-			throw new Error("branch is not found...");
+			throw new Exception("branch is not found...");
 
 		// int total = tempStock.getFurnitures().get(productId).getTotal();
 		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
@@ -155,7 +171,7 @@ public class Customer extends User
 		// System.out.println("total : " + total + ", amount : " + amount);
 
 		if(amount > total)
-			throw new Error("çok fazla istedin...");
+			throw new Exception("çok fazla istedin...");
 
 		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 
@@ -172,6 +188,9 @@ public class Customer extends User
 
 	}
 
+	/**
+	 * Shows all the previous orders of the customer
+	 */
 	public void showOrderHistory()
 	{
 		// private List<Stock> orderHistory;
@@ -184,11 +203,19 @@ public class Customer extends User
 		System.out.println(str);
 	}
 
+	/**
+	 * Adds a new order to the order history
+	 * @param newOrder new order
+	 */
 	public void addNewOrder(Stock newOrder)
 	{
 		this.orderHistory.insert(newOrder);
 	}
 
+	/**
+	 * Returns the counter that is going the using to generate unique stock id's
+	 * @return counter
+	 */
 	public int getCounter(){return this.counter++;}
 
 	

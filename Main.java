@@ -143,7 +143,13 @@ public class Main
 					}
 					break;
 				case "3":
+					try
+					{
 						customer.buyInShop(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "4":
 					// System.out.println(company);

@@ -94,7 +94,6 @@ class Customer
 	Customer(String, String, Company)
 	Customer(String, String, String, String, Company)
 	void subscribe()
-	boolean login()
 	void buyOnline(Integer productId, Integer amount)
 	void buyInShop(Integer branchId, Integer productId, Integer amount)
 	void showOrderHistory()
@@ -110,13 +109,7 @@ class Employee
 
 	Employee(Integer, String, String surname, String, String, Integer, Company)
 	Employee(String name, String, String, String, Integer, Company)
-	' addProducts(Integer, Integer, Integer)
-	' void removeProducts(Integer, Integer, Integer)
 	void sell(Integer, Integer, Integer)
-	' void productsNeedToBeSupplied()
-	' void addCustomer(Customer)
-	' void removeCustomer(Integer)
-	boolean equals(Object)
 }
 
 class User

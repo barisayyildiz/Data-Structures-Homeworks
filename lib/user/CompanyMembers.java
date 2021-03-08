@@ -3,19 +3,45 @@ package lib.user;
 import lib.*;
 import lib.furniture.*;
 
+/**
+ * CompanyMembers class, superclass for Admin and Employee. Implements CompanyMembersInterface
+ * @author Barış Ayyıldız
+ */
+
 public class CompanyMembers extends User implements CompanyMembersInterface{
 
+	/**
+	 * CompanyMembers constructor
+	 * @param name name
+	 * @param surname surname
+	 * @param mail mail
+	 * @param password password
+	 */
 	public CompanyMembers(String name, String surname, String mail, String password)
 	{
 		super(name, surname, mail, password);
 	}
 
+	/**
+	 * CompanyMembers constructor
+	 * @param mail mail
+	 * @param password password
+	 * @param company company
+	 */
 	public CompanyMembers(String mail, String password, Company company)
 	{
 		super(mail, password, company);
 
 	}
 
+	/**
+	 * CompanyMembers constructor
+	 * @param name name
+	 * @param surname surname
+	 * @param mail mail
+	 * @param password password
+	 * @param company company
+	 */
 	public CompanyMembers(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password, company);
@@ -100,10 +126,11 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	public void removeProducts(int branchId, int productId, int amount) throws Exception
 	{
+		if(amount < 0)
+			throw new Exception("Amount should be greater than 0");
+
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
-
-		Stock tempStock = null;
 		
 		for(int i=0; i<stocks.length(); i++)
 		{

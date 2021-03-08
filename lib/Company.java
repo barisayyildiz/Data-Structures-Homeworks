@@ -3,6 +3,11 @@ package lib;
 import lib.furniture.*;
 import lib.user.*;
 
+/**
+ * Company class
+ * @author Barış Ayyıldız
+ */
+
 public class Company {
 	
 	private Admin companyAdmin;
@@ -15,6 +20,10 @@ public class Company {
 
 	private List<Stock> stocks;
 
+	/**
+	 * Company constructor
+	 * @param admin admin
+	 */
 	public Company(Admin admin)
 	{
 		admin.setCompany(this);
@@ -30,7 +39,11 @@ public class Company {
 		this.subs = new List<Customer>();
 	}
 
-
+	/**
+	 * Login method for the Employee
+	 * @param employee employee
+	 * @return Employee that is logged in
+	 */
 	public Employee login(Employee employee)
 	{
 		for(int i=0; i<this.employees.length(); i++)
@@ -42,6 +55,11 @@ public class Company {
 		return null;
 	}
 
+	/**
+	 * Login method for the Customer
+	 * @param customer customer
+	 * @return Customer that is logged in
+	 */
 	public Customer login(Customer customer)
 	{
 		for(int i=0; i<this.subs.length(); i++)
@@ -53,7 +71,9 @@ public class Company {
 		return null;
 	}
 
-
+	/**
+	 * Displays all branch id's
+	 */
 	public void showBranchIds()
 	{
 		String str = "\n";
@@ -66,6 +86,9 @@ public class Company {
 		System.out.println(str);
 	}
 
+	/**
+	 * Shows all the products in the company
+	 */
 	public void showAllProducts()
 	{
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
@@ -87,7 +110,11 @@ public class Company {
 		
 	}
 
-
+	/**
+	 * Shows a single branch
+	 * @param branchId branch id
+	 * @throws Exception throws when the id is not found
+	 */
 	public void showSingleBranch(int branchId) throws Exception
 	{
 		Stock tempStock = null;
@@ -131,22 +158,61 @@ public class Company {
 
 
 	// getters
+	/**
+	 * Returns admin
+	 * @return admin
+	 */
 	public Admin getAdmin(){return companyAdmin;}
 
+	/**
+	 * Returns branch counter
+	 * @return branch counter
+	 */
 	public int getBranchCounter(){
 		return this.branchCounter++;
 	}
+
+	/**
+	 * Returns customer counter
+	 * @return customer counter
+	 */
 	public int getCustomerCounter(){
 		return this.customerCounter++;
 	}
+
+	/**
+	 * Returns employee counter
+	 * @return employee counter
+	 */
 	public int getEmployeeCounter(){
 		return this.employeeCounter++;
 	}
 	
+	/**
+	 * Sets counter
+	 * @param val counter
+	 */
 	public void setCounter(int val){this.branchCounter = val;}
+
+	/**
+	 * Returns branches
+	 * @return branches
+	 */
 	public List<Branch> getBranches(){return branches;}
+	/**
+	 * Returns employees
+	 * @return employees
+	 */
 	public List<Employee> getEmployees(){return employees;}
+	/**
+	 * Returns stocks
+	 * @return stocks
+	 */
 	public List<Stock> getStocks(){return stocks;}
+	/**
+	 * Returns subs
+	 * @return subs
+	 */
 	public List<Customer> getSubs(){return subs;}
 
 	

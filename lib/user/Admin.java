@@ -3,18 +3,47 @@ package lib.user;
 import lib.furniture.*;
 import lib.*;
 
+/**
+ * Admin class, inherits from CompanyMembers
+ * @author Barış Ayyıldız
+ */
+
 
 public class Admin extends CompanyMembers{
 
+	/**
+	 * Admin constructor
+	 * @param name
+	 * @param surname
+	 * @param mail
+	 * @param password
+	 * @param company
+	 */
 	public Admin(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password, company);
 	}
+
+	/**
+	 * Alternative admin constructor
+	 * @param name
+	 * @param surname
+	 * @param mail
+	 * @param password
+	 */
 	public Admin(String name, String surname, String mail, String password)
 	{
 		super(name, surname, mail, password);
 	}
 
+	/**
+	 * Creates a new branch
+	 * Inserts
+	 * office chairs (7 models and for each, 5 colors),
+		office desks (5 models and for each, 4 colors), meeting tables (10 models and for each, 4
+		colors), bookcases (12 models) and office cabinets (12 models).
+	 * @return returns true when there is no error
+	 */
 	public boolean addBranch()
 	{
 		List<Branch> branches = this.company.getBranches();
@@ -75,6 +104,11 @@ public class Admin extends CompanyMembers{
 		return true;
 	}
 
+	/**
+	 * Removes branch from company
+	 * @param branchId removes the branch with this id
+	 * @return returns true when branch is removed
+	 */
 	public boolean removeBranch(int branchId)
 	{
 		List<Branch> branches = this.company.getBranches();
@@ -112,6 +146,11 @@ public class Admin extends CompanyMembers{
 
 	}
 
+	/**
+	 * Adds a new employee to the company
+	 * @param person new employee
+	 * @return returns true if the new employee's email is not already registered before
+	 */
 	public boolean addBranchEmployee(Employee person)
 	{
 		List<Employee> employees = this.company.getEmployees();
@@ -128,6 +167,11 @@ public class Admin extends CompanyMembers{
 		return true;
 	}
 
+	/**
+	 * Removes an employee from the company
+	 * @param id id of the employee
+	 * @return returns true when the employee is removed
+	 */
 	public boolean removeBranchEmployee(int id)
 	{
 		List<Employee> employees = this.company.getEmployees();
@@ -143,6 +187,9 @@ public class Admin extends CompanyMembers{
 		return false;
 	}
 
+	/**
+	 * Displays all the employees in the company
+	 */
 	public void listEmployees()
 	{
 		String str = "Name\tSurname\tMail\tPassword\tBranchId\tId\n";
@@ -158,6 +205,9 @@ public class Admin extends CompanyMembers{
 
 	}
 
+	/**
+	 * Displays all the subscribers of the company
+	 */
 	public void listSubscribers()
 	{
 		String str = "Name\tSurname\tMail\tPassword\tId\n";

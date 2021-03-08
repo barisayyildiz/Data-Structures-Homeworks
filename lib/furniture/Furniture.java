@@ -2,6 +2,11 @@ package lib.furniture;
 
 import lib.*;
 
+/**
+ * Furniture class
+ * @author Barış Ayyıldız
+ */
+
 public class Furniture {
 
 	private int id;
@@ -10,6 +15,16 @@ public class Furniture {
 	private Color color;
 	private Branch branch;
 	private int amount;
+
+	/**
+	 * Furniture class constructor
+	 * @param id
+	 * @param modelId
+	 * @param type
+	 * @param color
+	 * @param branch
+	 * @param amount
+	 */
 
 	public Furniture(int id, int modelId, Type type, Color color, Branch branch, int amount)
 	{
@@ -21,17 +36,46 @@ public class Furniture {
 		this.amount = amount;
 	}
 
+	/**
+	 * Returns a string representation of a Furniture object
+	 * @return string representation of a Furniture object
+	 */
 	@Override
 	public String toString()
 	{
 		return this.id + "\t" + this.modelId + "\t" + this.type + "\t" + this.color;
 	}
 
+	/**
+	 * Returns the amount of furniture
+	 * @return amount of furniture
+	 */
 	public int getTotal(){return this.amount;}
+	/**
+	 * Sets the amount of furniture
+	 * @param val amount of furniture
+	 */
 	public void setTotal(int val){this.amount = val;}
+	/**
+	 * Returns the model id of the furniture
+	 * @return model id of the furniture
+	 */
 	public int getModelId(){return this.modelId;}
+	/**
+	 * Returns the type of the furniture
+	 * @return type of the furniture
+	 */
 	public Type getType(){return this.type;}
+	/**
+	 * Returns the color of the furniture
+	 * @return color of the furniture
+	 */
 	public Color getColor(){return this.color;}
+
+	/**
+	 * Returns the branch of the furniture
+	 * @return branch of the furniture
+	 */
 	public Branch getBranch(){return this.branch;}
 
 }

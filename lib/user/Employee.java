@@ -3,24 +3,53 @@ package lib.user;
 import lib.furniture.*;
 import lib.*;
 
+/**
+ * Employee class
+ * @author Barış Ayyıldız
+ */
+
 public class Employee extends CompanyMembers
 {
 	private int branchId;
 
+	/**
+	 * Employee constructor
+	 * @param mail mail
+	 * @param password password
+	 * @param company company
+	 */
 	public Employee(String mail, String password, Company company)
 	{
 		super(mail, password, company);
 	}
 
+	/**
+	 * Employee constructor
+	 * @param name name
+	 * @param surname surname
+	 * @param mail mail
+	 * @param password password
+	 * @param branchId branch id
+	 * @param company company
+	 */
 	public Employee(String name, String surname, String mail, String password, int branchId, Company company)
 	{
 		super(name, surname, mail, password, company);
 		this.branchId = branchId;
 	}
 
-
+	/**
+	 * handles selling products to customers
+	 * @param customerId customer id
+	 * @param productId product id
+	 * @param amount amount of product
+	 * @throws Exception throws when the amount is negative or there is not enough product in the company
+	 */
 	public void sell(int customerId, int productId, int amount) throws Exception
 	{
+		if(amount < 0)
+			throw new Exception("amount cannot negative...");
+
 		List<Customer> subs = this.company.getSubs();
 		List<Stock> stocks = this.company.getStocks();
 
@@ -68,18 +97,10 @@ public class Employee extends CompanyMembers
 
 	}
 
-
-	@Override
-	public boolean equals(Object obj)
-	{
-		Employee temp = (Employee)obj;
-
-		if(temp.getId() == this.getId())
-			return true;
-		return false;
-
-	}
-
+	/**
+	 * Returns branch id
+	 * @return branch id
+	 */
 	public int getBranchId(){return this.branchId;}
 
 	

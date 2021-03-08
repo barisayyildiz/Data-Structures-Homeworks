@@ -5,12 +5,20 @@ import java.lang.reflect.Array;
 import lib.furniture.*;
 import lib.user.*;
 
+/**
+ * List class that implements ListInterface
+ * @param <T> generic T type
+ */
+
 public class List<T> implements ListInterface<T> {
 
 	private int size;
 	private int cap;
 	private T[] arr;
 
+	/**
+	 * List constructor
+	 */
 	public List()
 	{
 		this.size = 0;
@@ -19,6 +27,9 @@ public class List<T> implements ListInterface<T> {
 		this.arr = (T[]) new Object[this.cap];
 	}
 
+	/**
+	 * List constructor with initial cap
+	 */
 	public List(int cap)
 	{
 		this.size = 0;
@@ -74,7 +85,7 @@ public class List<T> implements ListInterface<T> {
 		return this.arr[index];
 	}
 
-	public void set(int index, T val)
+	public void set(int index, T val) throws ArrayIndexOutOfBoundsException
 	{
 		if(index >= this.size || index < 0)
 			throw new ArrayIndexOutOfBoundsException("Index is out of bounds");
