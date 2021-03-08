@@ -147,12 +147,36 @@ public class Main
 					}
 					break;
 				case "3":
+					if(employee.addCustomer(new Customer(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : "), company)))
+						System.out.println("Customer added...");
+					else
+						System.out.print("This email is already registered...\n\n");
 					break;
 				case "4":
+					if(employee.removeCustomer(getInteger("CustomerId : ")))
+						System.out.print("Customer removed\n\n");
+					else
+						System.out.print("Customer id is not found...\n\n");
 					break;
 				case "5":
+					// add products
+					try
+					{
+						employee.addProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "6":
+					// remove products
+					try
+					{
+						employee.removeProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "q":
 					flag = false;
@@ -242,10 +266,36 @@ public class Main
 					if(admin.addCustomer(new Customer(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : "), company)))
 						System.out.println("Customer added...");
 					else
-						System.out.println("Customer removed...");
+						System.out.print("This email is already registered...\n\n");
 
 					break;
 				case "7":
+					if(admin.removeCustomer(getInteger("CustomerId : ")))
+						System.out.print("Customer removed\n\n");
+					else
+						System.out.print("Customer id is not found...\n\n");
+					break;
+				
+				case "8":
+					// add products
+					try
+					{
+						admin.addProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+					break;
+				case "9":
+					// remove products
+					try
+					{
+						admin.removeProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+
 					break;
 
 				case "10":
@@ -255,14 +305,16 @@ public class Main
 					admin.listEmployees();
 					break;
 				case "12":
+					admin.productsNeedToBeSupplied();
 					break;
 				case "13":
+					System.out.println(company);
 					break;
 				case "14":
 					admin.listSubscribers();
 					break;
 				case "15":
-					System.out.println(company);
+					break;
 				case "q":
 					flag = false;
 					break;

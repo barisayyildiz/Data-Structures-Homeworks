@@ -79,12 +79,14 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		return false;
 	}
 
-	public void addProducts(int branchId, int productId, int amount)
+	public void addProducts(int branchId, int productId, int amount) throws Exception
 	{
+		if(amount < 0)
+			throw new Exception("Amount should be greater than 0");
+
+
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
-
-		Stock tempStock = null;
 		
 		for(int i=0; i<stocks.length(); i++)
 		{
@@ -96,14 +98,14 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		}
 
 		if(index == -1)
-			throw new Error("branch is not found...");
+			throw new Exception("branch is not found...");
 
 		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
 		stocks.get(index).getFurnitures().get(productId).setTotal(total + amount);
 
 	}
 
-	public void removeProducts(int branchId, int productId, int amount)
+	public void removeProducts(int branchId, int productId, int amount) throws Exception
 	{
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
@@ -120,12 +122,12 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		}
 
 		if(index == -1)
-			throw new Error("branch is not found...");
+			throw new Exception("branch is not found...");
 
 		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
 
 		if(amount > total)
-			throw new Error("çok fazla istedin...");
+			throw new Exception("çok fazla istedin...");
 
 		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 
