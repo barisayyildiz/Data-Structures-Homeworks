@@ -152,6 +152,11 @@ public class Main
 					
 					break;
 				case "5":
+					if(admin.removeBranchEmployee(getInteger("Employee id : ")))
+						System.out.println("Employee have fired!\n\n");
+					else
+						System.out.println("Employee id is not found...\n\n");
+
 					break;
 				case "6":
 					company.showBranchIds();

@@ -160,13 +160,13 @@ public class Admin extends CompanyMembers{
 
 	public void listEmployees()
 	{
-		String str = "Name\tSurname\tMail\tPassword\tId\n";
+		String str = "Name\tSurname\tMail\tPassword\tBranchId\tId\n";
 		
 		List<Employee> employees = this.company.getEmployees();
 
 		for(int i=0; i<employees.length(); i++)
 		{
-			str += employees.get(i).getName() + "\t" + employees.get(i).getSurname() + "\t" + employees.get(i).getMail() + "\t" + employees.get(i).getPassword() + "\t" + employees.get(i).getId() + "\n";
+			str += employees.get(i).getName() + "\t" + employees.get(i).getSurname() + "\t" + employees.get(i).getMail() + "\t" + employees.get(i).getPassword() + "\t\t" + employees.get(i).getBranchId() + "\t\t" + employees.get(i).getId() + "\n";
 		}
 
 		System.out.println(str);
