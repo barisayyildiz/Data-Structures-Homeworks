@@ -48,6 +48,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
+	@Override
 	public void productsNeedToBeSupplied()
 	{
 		List<Stock> stocks = this.company.getStocks();
@@ -69,6 +70,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
+	@Override
 	public boolean addCustomer(Customer customer)
 	{
 		try
@@ -82,6 +84,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		}
 	}
 	
+	@Override
 	public boolean removeCustomer(int customerId)
 	{
 		List<Customer> customerList = this.company.getSubs();
@@ -98,6 +101,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		return false;
 	}
 
+	@Override
 	public void addProducts(int branchId, int productId, int amount) throws Exception
 	{
 		if(amount < 0)
@@ -124,6 +128,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
+	@Override
 	public void removeProducts(int branchId, int productId, int amount) throws Exception
 	{
 		if(amount < 0)

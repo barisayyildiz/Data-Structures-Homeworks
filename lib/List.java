@@ -38,6 +38,7 @@ public class List<T> implements ListInterface<T> {
 		this.arr = (T[]) new Object[this.cap];
 	}
 
+	@Override
 	public void insert(T val)
 	{
 		if(this.size == this.cap)
@@ -58,6 +59,7 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
+	@Override
 	public void remove(int index) throws ArrayIndexOutOfBoundsException
 	{
 		if(index < 0 || index >= this.size)
@@ -78,6 +80,7 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
+	@Override
 	public T get(int index) throws ArrayIndexOutOfBoundsException
 	{
 		if(index >= this.size || index < 0)
@@ -99,6 +102,7 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
+	@Override
 	public int length(){return size;}
 
 	@Override
