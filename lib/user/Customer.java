@@ -80,9 +80,12 @@ public class Customer extends User
 		return false;
 	}
 
-	public void buyOnline(int productId, int amount)
+	public void buyOnline(int productId, int amount) throws Exception
 	{
 		int tempAmount = amount;
+
+		if(amount < 0)
+			throw new Exception("amount cannot negative...");
 
 		List<Stock> stocks = this.company.getStocks();
 
@@ -97,7 +100,7 @@ public class Customer extends User
 		}
 
 		if(tempAmount > total)
-			throw new Error("Çok fazla istedin...");
+			throw new Exception("Çok fazla istedin...");
 		
 		// mağazalardan sil
 		for(int i=0; i<stocks.length(); i++)

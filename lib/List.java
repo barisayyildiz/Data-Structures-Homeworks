@@ -1,5 +1,7 @@
 package lib;
 
+import java.lang.reflect.Array;
+
 import lib.furniture.*;
 import lib.user.*;
 
@@ -65,8 +67,10 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
-	public T get(int index)
+	public T get(int index) throws ArrayIndexOutOfBoundsException
 	{
+		if(index > this.size || index < 0)
+			throw new ArrayIndexOutOfBoundsException("Index is out of bounds");
 		return this.arr[index];
 	}
 

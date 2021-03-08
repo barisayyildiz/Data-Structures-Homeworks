@@ -8,7 +8,7 @@ public interface ListInterface<T> {
 	public void insert(T val);
 	public void remove(int index);
 	public int length();
-	public T get(int index);
+	public T get(int index) throws ArrayIndexOutOfBoundsException;
 	public void set(int index, T val);
 	
 }

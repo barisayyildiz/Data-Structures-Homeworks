@@ -135,6 +135,60 @@ public class Main
 			return;
 		}
 
+		while(flag)
+		{
+			System.out.println("1. show customer info");
+			System.out.println("2. buy online");
+			System.out.println("3. buy in shop");
+			System.out.println("4. list all products");
+			System.out.println("5. show a branch information");
+			System.out.println("6. list previous orders");
+			System.out.println("q. quit");
+
+			input = getString("command : ");
+
+			switch(input)
+			{
+				case "1":
+					System.out.println(customer);
+					break;
+				case "2":
+					try
+					{
+						customer.buyOnline(getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+					break;
+				case "3":
+						customer.buyInShop(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					break;
+				case "4":
+					System.out.println(company);
+					break;
+				case "5":
+					try
+					{
+						company.showSingleBranch(getInteger("BranchId : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+					break;
+				case "6":
+					break;
+				case "q":
+					flag = false;
+					break;
+				default:
+					System.out.println("Wrong input...");
+					break;
+			}
+
+
+		}
+
 
 	}
 
