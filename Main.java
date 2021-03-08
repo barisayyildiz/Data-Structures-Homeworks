@@ -162,7 +162,7 @@ public class Main
 					// add products
 					try
 					{
-						employee.addProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+						employee.addProducts(employee.getBranchId(), getInteger("ProductId : "), getInteger("Amount : "));
 					}catch(Exception exception)
 					{
 						System.out.println(exception.getMessage());
@@ -172,11 +172,19 @@ public class Main
 					// remove products
 					try
 					{
-						employee.removeProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
+						employee.removeProducts(employee.getBranchId(), getInteger("ProductId : "), getInteger("Amount : "));
 					}catch(Exception exception)
 					{
 						System.out.println(exception.getMessage());
 					}
+					break;
+				case "7":
+					// products needs to be supplied
+					employee.productsNeedToBeSupplied();
+					break;
+				case "8":
+					// list products in this branch
+					company.showSingleBranch(employee.getBranchId());
 					break;
 				case "q":
 					flag = false;
