@@ -78,6 +78,7 @@ public class Main
 					adminMenu(company);
 					break;
 				case "2":
+					employeeMenu(company);
 					break;
 				case "3":
 					break;
@@ -95,6 +96,75 @@ public class Main
 					break;
 			}
 		}
+
+	}
+
+	public static void employeeMenu(Company company)
+	{
+		String mail, password;
+		boolean flag = true;
+		String input;
+
+		mail = getString("Mail : ");
+		password = getString("Password : ");
+
+		Employee employee = company.login(new Employee(mail, password, company));
+
+		if(employee == null)
+		{
+			System.out.println("user not found");
+			return;
+		}
+
+		while(flag)
+		{
+			System.out.println("1. show employee info");
+			System.out.println("2. make a sell");
+			System.out.println("3. add customer");
+			System.out.println("4. remove customer");
+			System.out.println("5. add products");
+			System.out.println("6. remove products");
+			System.out.println("7. list products that needs to be supplied");
+			System.out.println("8. list products in this branch");
+			System.out.println("q. quit");
+
+			// System.out.print("command : ");
+			// input = (new Scanner(System.in)).nextLine();
+			input = getString("command : ");
+
+			switch(input)
+			{
+				case "1":
+					System.out.println(employee);
+					break;
+				case "2":
+					try
+					{
+						employee.sell(getInteger("CustomerId : "), getInteger("ProductId : "), getInteger("Amount : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
+					break;
+				case "3":
+					break;
+				case "4":
+					break;
+				case "5":
+					break;
+				case "6":
+					break;
+				case "q":
+					flag = false;
+					break;
+				default:
+					System.out.println("Wrong input...");
+					break;
+			}
+		}
+
+		// System.out.println("loggin in...");
+
 
 	}
 
@@ -123,8 +193,17 @@ public class Main
 			System.out.println("3. remove branch");
 			System.out.println("4. add branch employee");
 			System.out.println("5. remove branch employee");
-			System.out.println("6. show branch id's");
-			System.out.println("7. list employees");
+			System.out.println("6. add customer");
+			System.out.println("7. remove customer");
+			System.out.println("8. add products");
+			System.out.println("9. remove products");
+			System.out.println("10. show branch id's");
+			System.out.println("11. list all employees");
+			System.out.println("12. list products that needs to be supplied");
+			System.out.println("13. list all products");
+			System.out.println("14. list all customers");
+			System.out.println("15. show company info");
+
 			System.out.println("q. quit");
 
 			input = getString("command : ");
@@ -158,12 +237,32 @@ public class Main
 						System.out.println("Employee id is not found...\n\n");
 
 					break;
+				
 				case "6":
-					company.showBranchIds();
+					if(admin.addCustomer(new Customer(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : "), company)))
+						System.out.println("Customer added...");
+					else
+						System.out.println("Customer removed...");
+
 					break;
 				case "7":
+					break;
+
+				case "10":
+					company.showBranchIds();
+					break;
+				case "11":
 					admin.listEmployees();
 					break;
+				case "12":
+					break;
+				case "13":
+					break;
+				case "14":
+					admin.listSubscribers();
+					break;
+				case "15":
+					System.out.println(company);
 				case "q":
 					flag = false;
 					break;

@@ -13,8 +13,8 @@ public interface CompanyMembersInterface {
 
 	void productsNeedToBeSupplied();
 
-	void addCustomer(Customer customer);
-	void removeCustomer(int customerId);
+	boolean addCustomer(Customer customer);
+	boolean removeCustomer(int customerId);
 
 	void addProducts(int branchId, int productId, int amount);
 	void removeProducts(int branchId, int productId, int amount);

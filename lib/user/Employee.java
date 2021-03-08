@@ -13,6 +13,11 @@ public class Employee extends CompanyMembers
 		this.branchId = branchId;
 	}
 
+	public Employee(String mail, String password, Company company)
+	{
+		super(mail, password, company);
+	}
+
 	public Employee(String name, String surname, String mail, String password, int branchId, Company company)
 	{
 		super(name, surname, mail, password, company);
@@ -71,7 +76,7 @@ public class Employee extends CompanyMembers
 
 	// }
 
-	public void sell(int customerId, int productId, int amount)
+	public void sell(int customerId, int productId, int amount) throws Exception
 	{
 		List<Customer> subs = this.company.getSubs();
 		List<Stock> stocks = this.company.getStocks();
@@ -89,7 +94,7 @@ public class Employee extends CompanyMembers
 		}
 
 		if(index == -1)
-			throw new Error("user not found...");
+			throw new Exception("user not found...");
 
 		for(int i=0; i<stocks.length(); i++)
 		{
@@ -103,7 +108,7 @@ public class Employee extends CompanyMembers
 		int total = stocks.get(stockIndex).getFurnitures().get(productId).getTotal();
 
 		if(amount > total)
-			throw new Error("çok fazla istedin...");
+			throw new Exception("çok fazla istedin...");
 
 		stocks.get(stockIndex).getFurnitures().get(productId).setTotal(total - amount);
 

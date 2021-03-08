@@ -173,6 +173,22 @@ public class Admin extends CompanyMembers{
 
 	}
 
+	public void listSubscribers()
+	{
+		String str = "Name\tSurname\tMail\tPassword\tId\n";
+
+		List<Customer> customers = this.company.getSubs();
+
+		for(int i=0; i<customers.length(); i++)
+		{
+			str += customers.get(i).getName() + "\t" + customers.get(i).getSurname() + "\t" + customers.get(i).getMail() + "\t" + customers.get(i).getPassword() + "\t" + customers.get(i).getId() + "\n";
+
+		}
+
+		System.out.println(str);
+
+	}
+
 	// public void productsNeedToBeSupplied()
 	// {
 	// 	List<Stock> stocks = this.company.getStocks();

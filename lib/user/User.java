@@ -40,6 +40,13 @@ public class User {
 		this.company = company;
 	}
 
+	public User(String mail, String password, Company company)
+	{
+		this.mail = mail;
+		this.password = password;
+		this.company = company;
+	}
+
 	// getters
 	public int getId(){return this.id;}
 	public String getName(){return this.name;}

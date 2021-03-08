@@ -52,6 +52,24 @@ public class Company {
 		// this.branches.insert(new Branch(1));
 	}
 
+	// login x 2
+	public Employee login(Employee employee)
+	{
+		for(int i=0; i<this.employees.length(); i++)
+		{
+			if(this.employees.get(i).getMail().equals(employee.getMail()) && this.employees.get(i).getPassword().equals(employee.getPassword()))
+				return this.employees.get(i);
+		}
+
+		return null;
+	}
+
+
+
+
+
+
+
 	public void showBranchIds()
 	{
 		String str = "";

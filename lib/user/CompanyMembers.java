@@ -17,6 +17,12 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
+	public CompanyMembers(String mail, String password, Company company)
+	{
+		super(mail, password, company);
+
+	}
+
 	public CompanyMembers(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password, company);
@@ -44,12 +50,20 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
-	public void addCustomer(Customer customer)
+	public boolean addCustomer(Customer customer)
 	{
-		customer.subscribe();
+		try
+		{
+			customer.subscribe();
+			return true;
+		}catch(Exception exc)
+		{
+			System.out.println(exc.getMessage());
+			return false;
+		}
 	}
 	
-	public void removeCustomer(int customerId)
+	public boolean removeCustomer(int customerId)
 	{
 		List<Customer> customerList = this.company.getSubs();
 
@@ -58,12 +72,11 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 			if(customerList.get(i).getId() == customerId)
 			{
 				customerList.remove(customerId);
-				return;
+				return true;
 			}
 		}
 
-
-
+		return false;
 	}
 
 	public void addProducts(int branchId, int productId, int amount)

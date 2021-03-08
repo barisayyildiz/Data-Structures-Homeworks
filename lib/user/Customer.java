@@ -30,7 +30,7 @@ public class Customer extends User
 
 	}
 
-	public void subscribe()
+	public void subscribe() throws Exception
 	{
 			
 		List<Branch> branches = this.company.getBranches();
@@ -41,7 +41,7 @@ public class Customer extends User
 		{
 			if(subs.get(i).getMail() == this.mail)
 			{
-				throw new Error("This email is already registered...");
+				throw new Exception("This email is already registered...");
 			}
 		}
 
