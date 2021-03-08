@@ -124,6 +124,7 @@ public class Main
 			System.out.println("4. add branch employee");
 			System.out.println("5. remove branch employee");
 			System.out.println("6. show branch id's");
+			System.out.println("7. list employees");
 			System.out.println("q. quit");
 
 			input = getString("command : ");
@@ -144,11 +145,19 @@ public class Main
 						System.out.print("Branch id not found\n\n");
 					break;
 				case "4":
+					if(admin.addBranchEmployee(new Employee(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : "), getInteger("Branch Id : "), company)))
+						System.out.print("Employee hired!\n\n");
+					else
+						System.out.print("This email is already registered with another employee...\n\n");
+					
 					break;
 				case "5":
 					break;
 				case "6":
 					company.showBranchIds();
+					break;
+				case "7":
+					admin.listEmployees();
 					break;
 				case "q":
 					flag = false;

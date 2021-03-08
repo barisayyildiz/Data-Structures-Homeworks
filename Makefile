@@ -6,3 +6,7 @@ run:
 	rm ./lib/user/*.class
 	rm ./lib/furniture/*.class
 	
+deneme:
+	javac Test.java
+	java Test
+	rm *.class

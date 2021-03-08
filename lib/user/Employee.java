@@ -182,5 +182,7 @@ public class Employee extends CompanyMembers
 
 	}
 
+	public int getBranchId(){return this.branchId;}
+
 	
 }

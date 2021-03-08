@@ -126,6 +126,17 @@ public class Admin extends CompanyMembers{
 
 	public boolean addBranchEmployee(Employee person)
 	{
+		List<Employee> employees = this.company.getEmployees();
+
+		for(int i=0; i<employees.length(); i++)
+		{
+			// System.out.println("mail1 : " + employees.get(i).getMail());
+			// System.out.println("mail2 : " + person.getMail());
+
+			if(employees.get(i).getMail().equals(person.getMail()))
+				return false;
+		}
+
 		person.setId(this.company.getEmployeeCounter());
 		this.company.getEmployees().insert(person);
 
@@ -145,6 +156,21 @@ public class Admin extends CompanyMembers{
 			}
 		}
 		return false;
+	}
+
+	public void listEmployees()
+	{
+		String str = "Name\tSurname\tMail\tPassword\tId\n";
+		
+		List<Employee> employees = this.company.getEmployees();
+
+		for(int i=0; i<employees.length(); i++)
+		{
+			str += employees.get(i).getName() + "\t" + employees.get(i).getSurname() + "\t" + employees.get(i).getMail() + "\t" + employees.get(i).getPassword() + "\t" + employees.get(i).getId() + "\n";
+		}
+
+		System.out.println(str);
+
 	}
 
 	// public void productsNeedToBeSupplied()
