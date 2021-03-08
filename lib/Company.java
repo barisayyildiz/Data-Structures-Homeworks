@@ -17,6 +17,20 @@ public class Company {
 
 	private List<Stock> stocks;
 
+	public Company(Admin admin)
+	{
+		admin.setCompany(this);
+		this.companyAdmin = admin;
+		this.branchCounter = 0;
+		this.customerCounter = 0;
+		this.employeeCounter = 0;
+
+		this.employees = new List<Employee>();
+		this.stocks = new List<Stock>();
+		this.branches = new List<Branch>();
+		this.subs = new List<Customer>();
+	}
+
 
 	public Company()
 	{
@@ -36,6 +50,17 @@ public class Company {
 
 		// this.branches.insert(new Branch(0));
 		// this.branches.insert(new Branch(1));
+	}
+
+	public void showBranchIds()
+	{
+		String str = "";
+		for(int i=0; i<this.branches.length(); i++)
+		{
+			str += this.branches.get(i).getBranchId() + " ";
+		}
+		str +="\n";
+		System.out.println(str);
 	}
 
 

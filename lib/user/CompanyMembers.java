@@ -11,6 +11,12 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 	}
 
+	public CompanyMembers(int id, String name, String surname, String mail, String password)
+	{
+		super(id, name, surname, mail, password);
+
+	}
+
 	public CompanyMembers(String name, String surname, String mail, String password, Company company)
 	{
 		super(name, surname, mail, password, company);

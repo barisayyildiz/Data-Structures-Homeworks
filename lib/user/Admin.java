@@ -10,6 +10,10 @@ public class Admin extends CompanyMembers{
 	{
 		super(id, name, surname, mail, password, company);
 	}
+	public Admin(int id, String name, String surname, String mail, String password)
+	{
+		super(id, name, surname, mail, password);
+	}
 
 	public boolean addBranch()
 	{
