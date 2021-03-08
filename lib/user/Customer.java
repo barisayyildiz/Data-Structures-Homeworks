@@ -175,6 +175,18 @@ public class Customer extends User
 
 	}
 
+	public void showOrderHistory()
+	{
+		// private List<Stock> orderHistory;
+		String str = "Id\tModel\tType\t\tColor\tAmount\n";
+
+		for(int i=0; i<this.orderHistory.length(); i++)
+		{
+			str += this.orderHistory.get(i).getFurnitures().get(0).toString() + "\t" + String.valueOf(orderHistory.get(i).getFurnitures().get(0).getTotal()) +"\n";
+		}
+		System.out.println(str);
+	}
+
 	public void addNewOrder(Stock newOrder)
 	{
 		this.orderHistory.insert(newOrder);

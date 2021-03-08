@@ -47,7 +47,7 @@ public class List<T> implements ListInterface<T> {
 
 	}
 
-	public void remove(int index)
+	public void remove(int index) throws ArrayIndexOutOfBoundsException
 	{
 		if(index < 0 || index >= this.size)
 			throw new ArrayIndexOutOfBoundsException();
@@ -69,13 +69,16 @@ public class List<T> implements ListInterface<T> {
 
 	public T get(int index) throws ArrayIndexOutOfBoundsException
 	{
-		if(index > this.size || index < 0)
+		if(index >= this.size || index < 0)
 			throw new ArrayIndexOutOfBoundsException("Index is out of bounds");
 		return this.arr[index];
 	}
 
 	public void set(int index, T val)
 	{
+		if(index >= this.size || index < 0)
+			throw new ArrayIndexOutOfBoundsException("Index is out of bounds");
+		
 		this.arr[index] = val;
 
 		if(val == null)

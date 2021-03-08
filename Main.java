@@ -82,8 +82,6 @@ public class Main
 			System.out.println("6. show a branch information");
 			System.out.println("q. quit");
 
-			// System.out.print("command : ");
-			// input = (new Scanner(System.in)).nextLine();
 			input = getString("command : ");
 
 			switch(input)
@@ -177,6 +175,7 @@ public class Main
 					}
 					break;
 				case "6":
+					customer.showOrderHistory();
 					break;
 				case "q":
 					flag = false;
@@ -185,23 +184,15 @@ public class Main
 					System.out.println("Wrong input...");
 					break;
 			}
-
-
 		}
-
-
 	}
 
 	public static void employeeMenu(Company company)
 	{
-		String mail, password;
 		boolean flag = true;
 		String input;
 
-		mail = getString("Mail : ");
-		password = getString("Password : ");
-
-		Employee employee = company.login(new Employee(mail, password, company));
+		Employee employee = company.login(new Employee(getString("Mail : "), getString("Password : "), company));
 
 		if(employee == null)
 		{
@@ -294,9 +285,6 @@ public class Main
 			}
 		}
 
-		// System.out.println("loggin in...");
-
-
 	}
 
 	public static void adminMenu(Company company)
@@ -384,7 +372,6 @@ public class Main
 					break;
 				
 				case "8":
-					// add products
 					try
 					{
 						admin.addProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
@@ -394,7 +381,6 @@ public class Main
 					}
 					break;
 				case "9":
-					// remove products
 					try
 					{
 						admin.removeProducts(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
@@ -429,16 +415,9 @@ public class Main
 					System.out.println("Wrong input...");
 					break;
 			}
-			
-
 
 		}
-
 		
-
-
-
-
 	}
 
 	public static void main(String args[])
