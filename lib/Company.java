@@ -87,9 +87,7 @@ public class Company {
 		System.out.println(str);
 	}
 
-
-	@Override
-	public String toString()
+	public void showAllProducts()
 	{
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
 
@@ -106,13 +104,37 @@ public class Company {
 
 		}
 
-		return str;
+		System.out.println(str);
+		
 	}
+
+
+	// @Override
+	// public String toString()
+	// {
+	// 	String str = "ID\tModelId\tType\tColor\t\tAmount\n";
+
+	// 	for(int i=0; i<this.stocks.get(0).getFurnitures().length(); i++)
+	// 	{
+	// 		int total = 0;
+	// 		int j;
+
+	// 		for(j=0; j<this.stocks.length(); j++)
+	// 		{
+	// 			total += this.stocks.get(j).getFurnitures().get(i).getTotal();
+	// 		}
+	// 		str +=  this.stocks.get(0).getFurnitures().get(i).toString() + "\t\t" + total + "\n";
+
+	// 	}
+
+	// 	return str;
+	// }
 
 
 	public void showSingleBranch(int branchId) throws Exception
 	{
 		Stock tempStock = null;
+		String str = "";
 
 		for(int i=0; i<this.stocks.length(); i++)
 		{
@@ -124,8 +146,7 @@ public class Company {
 		if(tempStock == null)
 			throw new Exception("cannot find that branch...");
 
-		// String str = tempStock.toString();
-		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
+		str += "ID\tModelId\tType\tColor\t\tAmount\n";
 
 		for(int i=0; i<tempStock.getFurnitures().length() ; i++)
 		{
@@ -135,6 +156,19 @@ public class Company {
 		System.out.println(str);
 
 
+	}
+
+	@Override
+	public String toString()
+	{
+		String str = "";
+
+		str += "\n~Company Info~\n";
+		str += "Admin name : " + this.companyAdmin.getName() + " " + this.companyAdmin.getSurname() + "\n";
+		str += "Number of employees : " + this.employees.length() + "\n";
+		str += "Number of subscribers : " + this.subs.length() + "\n\n";
+
+		return str;
 	}
 
 

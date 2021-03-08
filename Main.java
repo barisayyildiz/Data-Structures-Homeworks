@@ -86,6 +86,7 @@ public class Main
 					registerCustomer(company);
 					break;
 				case "5":
+					System.out.println(company);
 					break;
 				case "6":
 					try
@@ -150,7 +151,8 @@ public class Main
 						customer.buyInShop(getInteger("BranchId : "), getInteger("ProductId : "), getInteger("Amount : "));
 					break;
 				case "4":
-					System.out.println(company);
+					// System.out.println(company);
+					company.showAllProducts();
 					break;
 				case "5":
 					try
@@ -388,12 +390,13 @@ public class Main
 					admin.productsNeedToBeSupplied();
 					break;
 				case "13":
-					System.out.println(company);
+					company.showAllProducts();
 					break;
 				case "14":
 					admin.listSubscribers();
 					break;
 				case "15":
+					System.out.println(company);
 					break;
 				case "q":
 					flag = false;
