@@ -104,7 +104,7 @@ public class Company {
 	}
 
 
-	public void showSingleBranch(int branchId)
+	public void showSingleBranch(int branchId) throws Exception
 	{
 		Stock tempStock = null;
 
@@ -116,7 +116,7 @@ public class Company {
 
 
 		if(tempStock == null)
-			throw new Error("cannot find that branch...");
+			throw new Exception("cannot find that branch...");
 
 		// String str = tempStock.toString();
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";

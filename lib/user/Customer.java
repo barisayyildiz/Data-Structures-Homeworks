@@ -39,7 +39,7 @@ public class Customer extends User
 
 		for(int i=0; i<subs.length(); i++)
 		{
-			if(subs.get(i).getMail() == this.mail)
+			if(subs.get(i).getMail().equals(this.mail))
 			{
 				throw new Exception("This email is already registered...");
 			}

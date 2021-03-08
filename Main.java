@@ -51,6 +51,20 @@ public class Main
 		return (new Scanner(System.in)).nextInt();
 	}
 
+	public static void registerCustomer(Company company)
+	{
+		Customer customer = new Customer(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : "), company);
+
+		try
+		{
+			customer.subscribe();
+		}catch(Exception exceptiopn)
+		{
+			System.out.println(exceptiopn.getMessage() + "\n");
+		}
+
+	}
+
 	public static void mainMenu()
 	{
 		Company company = initCompany();
@@ -83,10 +97,18 @@ public class Main
 				case "3":
 					break;
 				case "4":
+					registerCustomer(company);
 					break;
 				case "5":
 					break;
 				case "6":
+					try
+					{
+						company.showSingleBranch(getInteger("BranchId : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "q":
 					flag = false;
@@ -184,7 +206,13 @@ public class Main
 					break;
 				case "8":
 					// list products in this branch
-					company.showSingleBranch(employee.getBranchId());
+					try
+					{
+						company.showSingleBranch(employee.getBranchId());
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "q":
 					flag = false;
