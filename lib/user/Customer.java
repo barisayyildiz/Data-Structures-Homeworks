@@ -19,6 +19,15 @@ public class Customer extends User
 
 	}
 
+	public Customer(String mail, String password, Company company)
+	{
+		super(mail, password, company);
+		
+		this.orderHistory = new List<Stock>();
+		this.isSubscribed = false;
+		this.counter = 0;
+	}
+
 
 	public Customer(String name, String surname, String mail, String password, Company company)
 	{

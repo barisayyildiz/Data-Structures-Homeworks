@@ -64,6 +64,17 @@ public class Company {
 		return null;
 	}
 
+	public Customer login(Customer customer)
+	{
+		for(int i=0; i<this.subs.length(); i++)
+		{
+			if(this.subs.get(i).getMail().equals(customer.getMail()) && this.subs.get(i).getPassword().equals(customer.getPassword()))
+				return this.subs.get(i);
+		}
+
+		return null;
+	}
+
 
 
 

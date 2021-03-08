@@ -95,6 +95,7 @@ public class Main
 					employeeMenu(company);
 					break;
 				case "3":
+					customerMenu(company);
 					break;
 				case "4":
 					registerCustomer(company);
@@ -118,6 +119,22 @@ public class Main
 					break;
 			}
 		}
+
+	}
+
+	public static void customerMenu(Company company)
+	{
+		String mail, password;
+		boolean flag = true;
+		String input;
+
+		Customer customer = company.login(new Customer(getString("Mail : "), getString("Password : "), company));
+		if(customer == null)
+		{
+			System.out.println("customer not found");
+			return;
+		}
+
 
 	}
 
