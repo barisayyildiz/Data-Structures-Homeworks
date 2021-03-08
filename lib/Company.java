@@ -109,28 +109,6 @@ public class Company {
 	}
 
 
-	// @Override
-	// public String toString()
-	// {
-	// 	String str = "ID\tModelId\tType\tColor\t\tAmount\n";
-
-	// 	for(int i=0; i<this.stocks.get(0).getFurnitures().length(); i++)
-	// 	{
-	// 		int total = 0;
-	// 		int j;
-
-	// 		for(j=0; j<this.stocks.length(); j++)
-	// 		{
-	// 			total += this.stocks.get(j).getFurnitures().get(i).getTotal();
-	// 		}
-	// 		str +=  this.stocks.get(0).getFurnitures().get(i).toString() + "\t\t" + total + "\n";
-
-	// 	}
-
-	// 	return str;
-	// }
-
-
 	public void showSingleBranch(int branchId) throws Exception
 	{
 		Stock tempStock = null;

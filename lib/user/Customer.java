@@ -3,6 +3,8 @@ package lib.user;
 import lib.*;
 import lib.furniture.*;
 
+import java.util.Scanner;
+
 public class Customer extends User
 {
 	private List<Stock> orderHistory;
@@ -98,6 +100,11 @@ public class Customer extends User
 		{
 			total += stocks.get(i).getFurnitures().get(productId).getTotal();
 		}
+
+		System.out.print("Home address : ");
+		(new Scanner(System.in)).nextLine();
+		System.out.print("Phone number : ");
+		(new Scanner(System.in)).nextLine();
 
 		if(tempAmount > total)
 			throw new Exception("Çok fazla istedin...");
