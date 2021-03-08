@@ -12,27 +12,15 @@ public class Main
 		String name, surname, mail, password;
 		int id;
 
-		// System.out.print("Name : ");
-		// name = myObj.nextLine();
 		name = getString("Name : ");
 
-		// System.out.print("Surname : ");
-		// surname = myObj.nextLine();
 		surname = getString("Surname : ");
 
-		// System.out.print("Mail : ");
-		// mail = myObj.nextLine();
 		mail = getString("Mail : ");
 
-		// System.out.print("Password : ");
-		// password = myObj.nextLine();
 		password = getString("Password : ");
 
 		id = getInteger("Id : ");
-
-		// myObj.nextInt();
-
-		// myObj.close();
 
 		// return new Company(new Admin(0,name,surname,mail,password));
 		return new Company(new Admin(id, name, surname, mail, password)  );

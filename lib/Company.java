@@ -40,16 +40,11 @@ public class Company {
 		this.customerCounter = 0;
 		this.employeeCounter = 0;
 
-		// init 2d array
-		// this.stocks = new List < List <Furniture> >();
-
 		this.employees = new List<Employee>();
 		this.stocks = new List<Stock>();
 		this.branches = new List<Branch>();
 		this.subs = new List<Customer>();
 
-		// this.branches.insert(new Branch(0));
-		// this.branches.insert(new Branch(1));
 	}
 
 	// login x 2

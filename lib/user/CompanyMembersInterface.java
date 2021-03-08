@@ -4,13 +4,7 @@ import lib.furniture.*;
 import lib.*;
 
 public interface CompanyMembersInterface {
-
-	// boolean addBranch();
-	// boolean removeBranch(int branchId);
-
-	// boolean addBranchEmployee(Employee person);
-	// boolean removeBranchEmployee(int id);
-
+	
 	void productsNeedToBeSupplied();
 
 	boolean addCustomer(Customer customer);

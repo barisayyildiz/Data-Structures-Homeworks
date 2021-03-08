@@ -24,7 +24,6 @@ public class Furniture {
 	@Override
 	public String toString()
 	{
-		// return this.id + "\t" + this.modelId + "\t" + this.type + "\t" + this.color + "\t\t" + this.amount + "\n";
 		return this.id + "\t" + this.modelId + "\t" + this.type + "\t" + this.color;
 	}
 
