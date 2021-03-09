@@ -6,11 +6,15 @@ import java.util.Scanner;
 public class Main
 {
 	public static Company initCompany()
-	{
-		String name, surname, mail, password;
+	{		
+	
+		Company company = new Company(new Admin(getString("Name : "), getString("Surname : "), getString("Mail : "), getString("Password : ")));
+		Admin admin = company.getAdmin();
 
-		return new Company(new Admin("Barış", "Ayyıldız", "admin", "123"));
+		// add 4 branches
+		for(int i=0; i<4; i++) admin.addBranch();
 
+		return company;
 	}
 
 	public static String getString(String str)

@@ -80,7 +80,7 @@ public class Employee extends CompanyMembers
 		int total = stocks.get(stockIndex).getFurnitures().get(productId).getTotal();
 
 		if(amount > total)
-			throw new Exception("çok fazla istedin...");
+			throw new Exception("there is not enough products...");
 
 		stocks.get(stockIndex).getFurnitures().get(productId).setTotal(total - amount);
 

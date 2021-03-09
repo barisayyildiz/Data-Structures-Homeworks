@@ -72,7 +72,7 @@ public class Customer extends User
 		subs.insert(this);
 		this.isSubscribed = true;
 
-		System.out.println("user id is : " + 0);
+		System.out.println("user id is : " + this.id);
 
 	}
 
@@ -150,8 +150,6 @@ public class Customer extends User
 
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
-
-		Stock tempStock = null;
 		
 		for(int i=0; i<stocks.length(); i++)
 		{
@@ -165,13 +163,10 @@ public class Customer extends User
 		if(index == -1)
 			throw new Exception("branch is not found...");
 
-		// int total = tempStock.getFurnitures().get(productId).getTotal();
 		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
-		
-		// System.out.println("total : " + total + ", amount : " + amount);
 
 		if(amount > total)
-			throw new Exception("çok fazla istedin...");
+			throw new Exception("there is not enough products...");
 
 		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 
@@ -182,8 +177,6 @@ public class Customer extends User
 		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
-		// previous order a ekle
-		// this.orderHistory.insert(new Stock(this.counter++, newPurchase));
 		this.addNewOrder(new Stock(this.counter++, newPurchase));
 
 
