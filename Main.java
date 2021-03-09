@@ -304,6 +304,7 @@ public class Main
 			System.out.println("13. list all products");
 			System.out.println("14. list all customers");
 			System.out.println("15. show company info");
+			System.out.println("16. show a branch information");
 
 			System.out.println("q. quit");
 
@@ -390,6 +391,15 @@ public class Main
 					break;
 				case "15":
 					System.out.println(company);
+					break;
+				case "16":
+					try
+					{
+						company.showSingleBranch(getInteger("BranchId : "));
+					}catch(Exception exception)
+					{
+						System.out.println(exception.getMessage());
+					}
 					break;
 				case "q":
 					flag = false;

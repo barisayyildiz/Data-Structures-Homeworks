@@ -130,8 +130,8 @@ public class Customer extends User
 		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
-		// previous order a ekle
-		this.orderHistory.insert(new Stock(this.counter++, newPurchase));
+		// this.orderHistory.insert(new Stock(this.counter++, newPurchase));
+		this.addNewOrder(new Stock(this.counter++, newPurchase));
 
 
 	}
@@ -183,7 +183,8 @@ public class Customer extends User
 		newPurchase.get(0).setTotal(amount);
 
 		// previous order a ekle
-		this.orderHistory.insert(new Stock(this.counter++, newPurchase));
+		// this.orderHistory.insert(new Stock(this.counter++, newPurchase));
+		this.addNewOrder(new Stock(this.counter++, newPurchase));
 
 
 	}
