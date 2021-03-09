@@ -17,22 +17,39 @@ public class Furniture {
 	private int amount;
 
 	/**
-	 * Furniture class constructor
-	 * @param id
-	 * @param modelId
-	 * @param type
-	 * @param color
-	 * @param branch
-	 * @param amount
+	 * Furniture constructor
+	 * @param id id of the furniture
+	 * @param modelId model if of the furniture
+	 * @param type type of the furniture
+	 * @param color color of the furniture
+	 * @param branch branch of the furniture
+	 * @param amount amount of the furniture
 	 */
-
 	public Furniture(int id, int modelId, Type type, Color color, Branch branch, int amount)
 	{
+		/**
+		 * id of the furniture
+		 */
 		this.id = id;
+		/**
+		 * model id of the furniture
+		 */
 		this.modelId = modelId;
+		/**
+		 * type of the furniture
+		 */
 		this.type = type;
+		/**
+		 * color of the furniture
+		 */
 		this.color = color;
+		/**
+		 * branch of the furniture that it belongs to
+		 */
 		this.branch = branch;
+		/**
+		 * amount of this furniture in the branch
+		 */
 		this.amount = amount;
 	}
 

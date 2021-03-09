@@ -8,11 +8,29 @@ import lib.*;
  */
 public class User {
 
+	/**
+	 * id of the user
+	 */
 	protected int id;
+	/**
+	 * name of the user
+	 */
 	protected String name;
+	/**
+	 * surname of the user
+	 */
 	protected String surname;
+	/**
+	 * mail of the user
+	 */
 	protected String mail;
+	/**
+	 * password of the user
+	 */
 	protected String password;
+	/**
+	 * company of the user
+	 */
 	protected Company company;
 	
 	/**

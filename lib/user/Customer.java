@@ -12,9 +12,18 @@ import java.util.Scanner;
 
 public class Customer extends User
 {
+	/**
+	 * Holds previous orders
+	 */
 	private List<Stock> orderHistory;
+	/**
+	 * True when the customer is subscribed
+	 */
 	private boolean isSubscribed;
-	private int counter; // to generate unique stock id
+	/**
+	 * It helps to generate unique stock id
+	 */
+	private int counter;
 
 	/**
 	 * Customer constructor

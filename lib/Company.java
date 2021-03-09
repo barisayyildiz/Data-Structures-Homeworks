@@ -10,12 +10,33 @@ import lib.user.*;
 
 public class Company {
 	
+	/**
+	 * company admin
+	 */
 	private Admin companyAdmin;
+	/**
+	 * branch counter, it is used to generate a unique branch id
+	 */
 	private int branchCounter;
+	/**
+	 * customer counter, it is used to generate a unique customer id
+	 */
 	private int customerCounter;
+	/**
+	 * employee counter, it is used to generate a unique employee id
+	 */
 	private int employeeCounter;
+	/**
+	 * List of branches
+	 */
 	private List<Branch> branches;
+	/**
+	 * List of employees
+	 */
 	private List<Employee> employees;
+	/**
+	 * List of subs(registered customers)
+	 */
 	private List<Customer> subs;
 
 	private List<Stock> stocks;

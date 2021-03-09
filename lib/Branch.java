@@ -10,7 +10,13 @@ import lib.user.*;
 
 public class Branch 
 {
+	/**
+	 * Holds the branch id
+	 */
 	private int branchId;
+	/**
+	 * Holds the stock id, used inside Company class
+	 */
 	private int stockIndex;
 
 	/**

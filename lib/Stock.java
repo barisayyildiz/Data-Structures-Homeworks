@@ -10,7 +10,13 @@ import lib.user.*;
 
 public class Stock {
 
+	/**
+	 * stock id
+	 */
 	private int id;
+	/**
+	 * List of furniture
+	 */
 	private List<Furniture> furnArr;
 
 	/**

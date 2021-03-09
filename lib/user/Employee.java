@@ -10,6 +10,9 @@ import lib.*;
 
 public class Employee extends CompanyMembers
 {
+	/**
+	 * Holds the employee's branch id
+	 */
 	private int branchId;
 
 	/**

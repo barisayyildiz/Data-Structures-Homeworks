@@ -12,8 +12,17 @@ import lib.user.*;
 
 public class List<T> implements ListInterface<T> {
 
+	/**
+	 * size of the array
+	 */
 	private int size;
+	/**
+	 * capacity of the array
+	 */
 	private int cap;
+	/**
+	 * actual array that we use as I data structure
+	 */
 	private T[] arr;
 
 	/**
