@@ -152,7 +152,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		int total = stocks.get(index).getFurnitures().get(productId).getTotal();
 
 		if(amount > total)
-			throw new Exception("çok fazla istedin...");
+			throw new Exception("Not enough products...");
 
 		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 

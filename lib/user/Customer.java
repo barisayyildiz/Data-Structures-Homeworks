@@ -104,7 +104,7 @@ public class Customer extends User
 		(new Scanner(System.in)).nextLine();
 
 		if(tempAmount > total)
-			throw new Exception("Çok fazla istedin...");
+			throw new Exception("Not enough products...");
 		
 		// mağazalardan sil
 		for(int i=0; i<stocks.length(); i++)
