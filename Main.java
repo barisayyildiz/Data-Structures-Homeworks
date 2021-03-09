@@ -9,15 +9,7 @@ public class Main
 	{
 		String name, surname, mail, password;
 
-		name = getString("Name : ");
-
-		surname = getString("Surname : ");
-
-		mail = getString("Mail : ");
-
-		password = getString("Password : ");
-
-		return new Company(new Admin(name, surname, mail, password)  );
+		return new Company(new Admin("Barış", "Ayyıldız", "admin", "123"));
 
 	}
 
