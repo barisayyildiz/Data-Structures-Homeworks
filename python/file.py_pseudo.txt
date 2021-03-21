@@ -1,0 +1,100 @@
+
+
+DEFINE FUNCTION findMin(arr):
+
+	SET minVal TO arr[0]
+
+	FOR i IN range(1,len(arr)):
+
+		IF arr[i] < minVal:
+			SET minVal TO arr[i]
+
+	RETURN minVal
+
+
+
+DEFINE FUNCTION bubbleSort(arr): 
+
+	SET n TO len(arr) 
+
+	FOR i IN range(n): 
+		FOR j IN range(0, n-i-1): 
+
+			IF arr[j] > arr[j+1] :
+				SET temp TO arr[j] 
+				SET arr[j] TO arr[j+1]
+				SET arr[j+1] TO temp
+
+	RETURN arr
+
+
+
+DEFINE FUNCTION median(arr):
+
+	SET arr TO bubbleSort(arr)
+
+	SET length TO len(arr)
+
+	IF length % 2 EQUALS 0:
+		RETURN ( arr[int(length/2)] + arr[int(length/2) - 1] ) / 2
+	ELSE:
+		RETURN ( arr[int(length/2)])
+	ENDIF
+
+
+DEFINE FUNCTION twoSums(arr, val):
+
+	SET arr TO bubbleSort(arr)
+
+	i=0
+	j=len(arr)-1
+
+	WHILE i<j:
+
+		IF arr[i] + arr[j] EQUALS val:
+			OUTPUT(arr[i], arr[j])
+			RETURN 1
+
+		ELSEIF arr[i] + arr[j] < val:
+			i+=1
+
+		ELSEIF arr[i] + arr[j] > val:
+			j-=1
+		
+		ENDIF
+
+	RETURN 0
+
+
+DEFINE FUNCTION mergeList(arr, arr2):
+
+	SET length TO len(arr)
+	SET length2 TO len(arr2)
+	SET counter TO 0
+	SET counter2 TO 0
+	SET temp TO []
+
+	WHILE (counter != length and counter2 != length2):
+
+		IF arr[counter] <= arr2[counter2]:
+			temp.append(arr[counter])
+			counter += 1
+
+		ELSE IF arr[counter] > arr2[counter2]:
+			temp.append(arr2[counter2])
+			counter2 += 1
+		
+		ENDIF
+
+	WHILE counter != length:
+		temp.append(arr[counter])
+		counter += 1
+
+	WHILE counter2 != length2:
+		temp.append(arr2[counter2])
+		counter2 += 1
+
+	RETURN temp
+
+
+
