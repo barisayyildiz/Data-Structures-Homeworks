@@ -67,7 +67,7 @@ public class Company {
 	 */
 	public Employee login(Employee employee)
 	{
-		for(int i=0; i<this.employees.length(); i++)
+		for(int i=0; i<this.employees.size(); i++)
 		{
 			if(this.employees.get(i).getMail().equals(employee.getMail()) && this.employees.get(i).getPassword().equals(employee.getPassword()))
 				return this.employees.get(i);
@@ -83,7 +83,7 @@ public class Company {
 	 */
 	public Customer login(Customer customer)
 	{
-		for(int i=0; i<this.subs.length(); i++)
+		for(int i=0; i<this.subs.size(); i++)
 		{
 			if(this.subs.get(i).getMail().equals(customer.getMail()) && this.subs.get(i).getPassword().equals(customer.getPassword()))
 				return this.subs.get(i);
@@ -98,7 +98,7 @@ public class Company {
 	public void showBranchIds()
 	{
 		String str = "\n";
-		for(int i=0; i<this.branches.length(); i++)
+		for(int i=0; i<this.branches.size(); i++)
 		{
 			// str += this.branches.get(i).getBranchId() + " ";
 			str += "BranchId : " + this.branches.get(i).getBranchId() + "\n";
@@ -114,12 +114,12 @@ public class Company {
 	{
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
 
-		for(int i=0; i<this.stocks.get(0).getFurnitures().length(); i++)
+		for(int i=0; i<this.stocks.get(0).getFurnitures().size(); i++)
 		{
 			int total = 0;
 			int j;
 
-			for(j=0; j<this.stocks.length(); j++)
+			for(j=0; j<this.stocks.size(); j++)
 			{
 				total += this.stocks.get(j).getFurnitures().get(i).getTotal();
 			}
@@ -141,7 +141,7 @@ public class Company {
 		Stock tempStock = null;
 		String str = "";
 
-		for(int i=0; i<this.stocks.length(); i++)
+		for(int i=0; i<this.stocks.size(); i++)
 		{
 			if(this.stocks.get(i).getId() == branchId)
 				tempStock = this.stocks.get(i);
@@ -153,7 +153,7 @@ public class Company {
 
 		str += "ID\tModelId\tType\tColor\t\tAmount\n";
 
-		for(int i=0; i<tempStock.getFurnitures().length() ; i++)
+		for(int i=0; i<tempStock.getFurnitures().size() ; i++)
 		{
 			str += tempStock.getFurnitures().get(i).toString() + "\t\t" + tempStock.getFurnitures().get(i).getTotal() +  "\n";
 		}
@@ -170,8 +170,8 @@ public class Company {
 
 		str += "\n~Company Info~\n";
 		str += "Admin name : " + this.companyAdmin.getName() + " " + this.companyAdmin.getSurname() + "\n";
-		str += "Number of employees : " + this.employees.length() + "\n";
-		str += "Number of subscribers : " + this.subs.length() + "\n\n";
+		str += "Number of employees : " + this.employees.size() + "\n";
+		str += "Number of subscribers : " + this.subs.size() + "\n\n";
 
 		return str;
 	}

@@ -55,9 +55,9 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 
 		String str = "ID\tModelId\tType\tColor\t\tBranchId\t\tAmount\n";
 
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
-			for(int j=0; j<stocks.get(i).getFurnitures().length(); j++)
+			for(int j=0; j<stocks.get(i).getFurnitures().size(); j++)
 			{
 				int total = stocks.get(i).getFurnitures().get(j).getTotal();
 				if(total == 0)
@@ -89,7 +89,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 	{
 		List<Customer> customerList = this.company.getSubs();
 
-		for(int i=0; i<customerList.length(); i++)
+		for(int i=0; i<customerList.size(); i++)
 		{
 			if(customerList.get(i).getId() == customerId)
 			{
@@ -111,7 +111,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			if(stocks.get(i).getId() == branchId)
 			{
@@ -137,7 +137,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			if(stocks.get(i).getId() == branchId)
 			{

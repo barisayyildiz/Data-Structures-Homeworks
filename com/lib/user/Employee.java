@@ -59,7 +59,7 @@ public class Employee extends CompanyMembers
 		int index = -1;
 		int stockIndex = -1;
 
-		for(int i=0; i<subs.length(); i++)
+		for(int i=0; i<subs.size(); i++)
 		{
 			if(subs.get(i).getId() == customerId)
 			{
@@ -71,7 +71,7 @@ public class Employee extends CompanyMembers
 		if(index == -1)
 			throw new Exception("user not found...");
 
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			if(stocks.get(i).getId() == this.branchId)
 			{

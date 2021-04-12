@@ -69,7 +69,7 @@ public class Customer extends User
 		List<Employee> employees = this.company.getEmployees();
 		List<Customer> subs = this.company.getSubs();
 
-		for(int i=0; i<subs.length(); i++)
+		for(int i=0; i<subs.size(); i++)
 		{
 			if(subs.get(i).getMail().equals(this.mail))
 			{
@@ -102,7 +102,7 @@ public class Customer extends User
 
 		int total = 0;
 
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			total += stocks.get(i).getFurnitures().get(productId).getTotal();
 		}
@@ -116,7 +116,7 @@ public class Customer extends User
 			throw new Exception("Not enough products...");
 		
 		// mağazalardan sil
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			int current = stocks.get(i).getFurnitures().get(productId).getTotal();
 
@@ -160,7 +160,7 @@ public class Customer extends User
 		List<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
-		for(int i=0; i<stocks.length(); i++)
+		for(int i=0; i<stocks.size(); i++)
 		{
 			if(stocks.get(i).getId() == branchId)
 			{
@@ -199,7 +199,7 @@ public class Customer extends User
 		// private List<Stock> orderHistory;
 		String str = "Id\tModel\tType\t\tColor\tAmount\n";
 
-		for(int i=0; i<this.orderHistory.length(); i++)
+		for(int i=0; i<this.orderHistory.size(); i++)
 		{
 			str += this.orderHistory.get(i).getFurnitures().get(0).toString() + "\t" + String.valueOf(orderHistory.get(i).getFurnitures().get(0).getTotal()) +"\n";
 		}

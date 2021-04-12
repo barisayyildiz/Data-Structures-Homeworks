@@ -21,12 +21,12 @@ public interface ListInterface<T> {
 	 * @param index index
 	 * @throws ArrayIndexOutOfBoundsException index out of bound
 	 */
-	public void remove(int index) throws ArrayIndexOutOfBoundsException;
+	public T remove(int index) throws ArrayIndexOutOfBoundsException;
 	/**
 	 * Returns the length
 	 * @return length
 	 */
-	public int length();
+	public int size();
 	/**
 	 * Returns the element by the index
 	 * @param index index
@@ -39,6 +39,6 @@ public interface ListInterface<T> {
 	 * @param index index
 	 * @param val val
 	 */
-	public void set(int index, T val) throws ArrayIndexOutOfBoundsException;
+	public T set(int index, T val) throws ArrayIndexOutOfBoundsException;
 	
 }

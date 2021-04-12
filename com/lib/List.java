@@ -71,12 +71,13 @@ public class List<T> implements ListInterface<T> {
 	}
 
 	@Override
-	public void remove(int index) throws ArrayIndexOutOfBoundsException
+	public T remove(int index) throws ArrayIndexOutOfBoundsException
 	{
 		if(index < 0 || index >= this.size)
 			throw new ArrayIndexOutOfBoundsException();
 
 		T[] temp = (T[]) new Object[this.cap];
+		T val = this.arr[index];
 
 		for(int i=0, k=0; i<this.size; i++)
 		{
@@ -89,6 +90,8 @@ public class List<T> implements ListInterface<T> {
 		this.arr = temp;
 		this.size--;
 
+		return val;
+
 	}
 
 	@Override
@@ -99,11 +102,12 @@ public class List<T> implements ListInterface<T> {
 		return this.arr[index];
 	}
 
-	public void set(int index, T val) throws ArrayIndexOutOfBoundsException
+	public T set(int index, T val) throws ArrayIndexOutOfBoundsException
 	{
 		if(index >= this.size || index < 0)
 			throw new ArrayIndexOutOfBoundsException("Index is out of bounds");
 		
+		T oldVal = this.arr[index];
 		this.arr[index] = val;
 
 		if(val == null)
@@ -111,10 +115,12 @@ public class List<T> implements ListInterface<T> {
 			this.size--;
 		}
 
+		return oldVal;
+
 	}
 
 	@Override
-	public int length(){return size;}
+	public int size(){return size;}
 
 	@Override
 	public String toString()

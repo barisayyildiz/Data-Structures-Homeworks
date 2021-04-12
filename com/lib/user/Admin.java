@@ -48,7 +48,7 @@ public class Admin extends CompanyMembers{
 	{
 		List<Branch> branches = this.company.getBranches();
 		List<Stock> stocks = this.company.getStocks();
-		int branchNumber = branches.length();
+		int branchNumber = branches.size();
 		int uniqueId = this.company.getBranchCounter();
 
 		branches.add(new Branch(uniqueId, uniqueId));
@@ -116,7 +116,7 @@ public class Admin extends CompanyMembers{
 		int stockIndex;
 
 		// find the branch with the id of branchId
-		for(int i=0; i<branches.length(); i++)
+		for(int i=0; i<branches.size(); i++)
 		{
 			if(branches.get(i).getBranchId() == branchId)
 			{
@@ -124,7 +124,7 @@ public class Admin extends CompanyMembers{
 				stockIndex = branches.get(i).getStockIndex();
 				
 				// remove stock
-				for(int j=0; j<stocks.length(); j++)
+				for(int j=0; j<stocks.size(); j++)
 				{
 					if(stocks.get(j).getId() == stockIndex)
 					{
@@ -155,7 +155,7 @@ public class Admin extends CompanyMembers{
 	{
 		List<Employee> employees = this.company.getEmployees();
 
-		for(int i=0; i<employees.length(); i++)
+		for(int i=0; i<employees.size(); i++)
 		{
 			if(employees.get(i).getMail().equals(person.getMail()))
 				return false;
@@ -176,7 +176,7 @@ public class Admin extends CompanyMembers{
 	{
 		List<Employee> employees = this.company.getEmployees();
 
-		for(int i=0; i<employees.length(); i++)
+		for(int i=0; i<employees.size(); i++)
 		{
 			if(employees.get(i).getId() == id)
 			{
@@ -196,7 +196,7 @@ public class Admin extends CompanyMembers{
 		
 		List<Employee> employees = this.company.getEmployees();
 
-		for(int i=0; i<employees.length(); i++)
+		for(int i=0; i<employees.size(); i++)
 		{
 			str += employees.get(i).getName() + "\t" + employees.get(i).getSurname() + "\t" + employees.get(i).getMail() + "\t" + employees.get(i).getPassword() + "\t\t" + employees.get(i).getBranchId() + "\t\t" + employees.get(i).getId() + "\n";
 		}
@@ -214,7 +214,7 @@ public class Admin extends CompanyMembers{
 
 		List<Customer> customers = this.company.getSubs();
 
-		for(int i=0; i<customers.length(); i++)
+		for(int i=0; i<customers.size(); i++)
 		{
 			str += customers.get(i).getName() + "\t" + customers.get(i).getSurname() + "\t" + customers.get(i).getMail() + "\t" + customers.get(i).getPassword() + "\t" + customers.get(i).getId() + "\n";
 
