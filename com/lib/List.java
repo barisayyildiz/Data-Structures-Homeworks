@@ -48,7 +48,7 @@ public class List<T> implements ListInterface<T> {
 	}
 
 	@Override
-	public void insert(T val)
+	public boolean add(T val)
 	{
 		if(this.size == this.cap)
 		{
@@ -65,6 +65,8 @@ public class List<T> implements ListInterface<T> {
 		}
 
 		this.arr[this.size++] = val;
+
+		return true;
 
 	}
 

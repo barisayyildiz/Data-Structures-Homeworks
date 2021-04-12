@@ -15,7 +15,7 @@ public interface ListInterface<T> {
 	 * Sets val
 	 * @param val val
 	 */
-	public void insert(T val);
+	public boolean add(T val);
 	/**
 	 * Removes element by index
 	 * @param index index

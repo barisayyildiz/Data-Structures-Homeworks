@@ -78,7 +78,7 @@ public class Customer extends User
 		}
 
 		this.setId(this.company.getCustomerCounter());
-		subs.insert(this);
+		subs.add(this);
 		this.isSubscribed = true;
 
 		System.out.println("user id is : " + this.id);
@@ -136,7 +136,7 @@ public class Customer extends User
 		List<Furniture> newPurchase = new List<Furniture>();
 		Furniture temp = stocks.get(0).getFurnitures().get(productId);
 		
-		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
+		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
 		// this.orderHistory.insert(new Stock(this.counter++, newPurchase));
@@ -183,7 +183,7 @@ public class Customer extends User
 		List<Furniture> newPurchase = new List<Furniture>();
 		Furniture temp = stocks.get(0).getFurnitures().get(productId);
 		
-		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
+		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
 		this.addNewOrder(new Stock(this.counter++, newPurchase));
@@ -212,7 +212,7 @@ public class Customer extends User
 	 */
 	public void addNewOrder(Stock newOrder)
 	{
-		this.orderHistory.insert(newOrder);
+		this.orderHistory.add(newOrder);
 	}
 
 	/**

@@ -90,7 +90,7 @@ public class Employee extends CompanyMembers
 		List<Furniture> newPurchase = new List<Furniture>();
 		Furniture temp = stocks.get(stockIndex).getFurnitures().get(productId);
 		
-		newPurchase.insert(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
+		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
 		// previous order a ekle

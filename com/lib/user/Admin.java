@@ -51,7 +51,7 @@ public class Admin extends CompanyMembers{
 		int branchNumber = branches.length();
 		int uniqueId = this.company.getBranchCounter();
 
-		branches.insert(new Branch(uniqueId, uniqueId));
+		branches.add(new Branch(uniqueId, uniqueId));
 
 		Type t[] = Type.values();
 		Color c[] = Color.values();
@@ -64,7 +64,7 @@ public class Admin extends CompanyMembers{
 		{
 			for(int j=0; j<5; j++)
 			{
-				furniture.insert(new Furniture(counter++, i, t[0], c[j], branches.get(branchNumber), 5));
+				furniture.add(new Furniture(counter++, i, t[0], c[j], branches.get(branchNumber), 5));
 			}
 		}
 
@@ -73,7 +73,7 @@ public class Admin extends CompanyMembers{
 		{
 			for(int j=0; j<4; j++)
 			{
-				furniture.insert(new Furniture(counter++, i, t[1], c[j], branches.get(branchNumber), 5));
+				furniture.add(new Furniture(counter++, i, t[1], c[j], branches.get(branchNumber), 5));
 			}
 		}
 
@@ -82,24 +82,24 @@ public class Admin extends CompanyMembers{
 		{
 			for(int j=0; j<4; j++)
 			{
-				furniture.insert(new Furniture(counter++, i, t[2], c[j], branches.get(branchNumber), 5));
+				furniture.add(new Furniture(counter++, i, t[2], c[j], branches.get(branchNumber), 5));
 			}
 		}
 
 		// insert bookcases
 		for(int i=0; i<12; i++)
 		{
-			furniture.insert(new Furniture(counter++, i, t[3], Color.NONE, branches.get(branchNumber), 5));
+			furniture.add(new Furniture(counter++, i, t[3], Color.NONE, branches.get(branchNumber), 5));
 		}
 
 		// insert cabinets
 		for(int i=0; i<12; i++)
 		{
-			furniture.insert(new Furniture(counter++, i, t[4], Color.NONE, branches.get(branchNumber), 5));
+			furniture.add(new Furniture(counter++, i, t[4], Color.NONE, branches.get(branchNumber), 5));
 		}
 
 
-		stocks.insert(new Stock(uniqueId, furniture));
+		stocks.add(new Stock(uniqueId, furniture));
 
 		return true;
 	}
@@ -162,7 +162,7 @@ public class Admin extends CompanyMembers{
 		}
 
 		person.setId(this.company.getEmployeeCounter());
-		this.company.getEmployees().insert(person);
+		this.company.getEmployees().add(person);
 
 		return true;
 	}
