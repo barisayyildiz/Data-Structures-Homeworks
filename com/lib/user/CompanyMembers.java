@@ -53,7 +53,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 	@Override
 	public void productsNeedToBeSupplied()
 	{
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 
 		String str = "ID\tModelId\tType\tColor\t\tBranchId\t\tAmount\n";
 
@@ -110,7 +110,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 			throw new Exception("Amount should be greater than 0");
 
 
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
 		for(int i=0; i<stocks.size(); i++)
@@ -136,7 +136,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 		if(amount < 0)
 			throw new Exception("Amount should be greater than 0");
 
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
 		for(int i=0; i<stocks.size(); i++)

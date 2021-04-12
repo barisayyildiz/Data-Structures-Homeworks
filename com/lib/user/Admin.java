@@ -51,7 +51,7 @@ public class Admin extends CompanyMembers{
 	public boolean addBranch()
 	{
 		KWLinkedList<Branch> branches = this.company.getBranches();
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 		int branchNumber = branches.size();
 		int uniqueId = this.company.getBranchCounter();
 
@@ -116,7 +116,7 @@ public class Admin extends CompanyMembers{
 	public boolean removeBranch(int branchId)
 	{
 		KWLinkedList<Branch> branches = this.company.getBranches();
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 		int stockIndex;
 		Branch tempBranch;
 

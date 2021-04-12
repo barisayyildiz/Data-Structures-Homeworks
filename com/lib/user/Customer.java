@@ -97,7 +97,7 @@ public class Customer extends User
 		if(amount < 0)
 			throw new Exception("amount cannot negative...");
 
-		List<Stock> stocks = this.company.getStocks();
+			KWArrayList<Stock> stocks = this.company.getStocks();
 
 		int total = 0;
 
@@ -156,7 +156,7 @@ public class Customer extends User
 		if(amount < 0)
 			throw new Exception("amount cannot negative...");
 
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 		int index = -1;
 		
 		for(int i=0; i<stocks.size(); i++)

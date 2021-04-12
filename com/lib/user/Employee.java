@@ -56,7 +56,7 @@ public class Employee extends CompanyMembers
 			throw new Exception("amount cannot negative...");
 
 		KWArrayList<Customer> subs = this.company.getSubs();
-		List<Stock> stocks = this.company.getStocks();
+		KWArrayList<Stock> stocks = this.company.getStocks();
 
 		int index = -1;
 		int stockIndex = -1;

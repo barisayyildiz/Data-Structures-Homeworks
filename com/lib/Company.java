@@ -42,7 +42,7 @@ public class Company {
 	 */
 	private KWArrayList<Customer> subs;
 
-	private List<Stock> stocks;
+	private KWArrayList<Stock> stocks;
 
 	/**
 	 * Company constructor
@@ -58,7 +58,7 @@ public class Company {
 		this.employeeCounter = 0;
 
 		this.employees = new KWArrayList<Employee>();
-		this.stocks = new List<Stock>();
+		this.stocks = new KWArrayList<Stock>();
 		this.branches = new KWLinkedList<Branch>();
 		this.subs = new KWArrayList<Customer>();
 	}
@@ -234,7 +234,7 @@ public class Company {
 	 * Returns stocks
 	 * @return stocks
 	 */
-	public List<Stock> getStocks(){return stocks;}
+	public KWArrayList<Stock> getStocks(){return stocks;}
 	/**
 	 * Returns subs
 	 * @return subs
