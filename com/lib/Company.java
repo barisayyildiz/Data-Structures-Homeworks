@@ -32,7 +32,7 @@ public class Company {
 	/**
 	 * List of branches
 	 */
-	private List<Branch> branches;
+	private KWLinkedList<Branch> branches;
 	/**
 	 * List of employees
 	 */
@@ -59,7 +59,7 @@ public class Company {
 
 		this.employees = new KWArrayList<Employee>();
 		this.stocks = new List<Stock>();
-		this.branches = new List<Branch>();
+		this.branches = new KWLinkedList<Branch>();
 		this.subs = new KWArrayList<Customer>();
 	}
 
@@ -222,7 +222,7 @@ public class Company {
 	 * Returns branches
 	 * @return branches
 	 */
-	public List<Branch> getBranches(){return branches;}
+	public KWLinkedList<Branch> getBranches(){return branches;}
 	/**
 	 * Returns employees
 	 * @return employees

@@ -66,9 +66,6 @@ public class Customer extends User
 	 */
 	public void subscribe() throws Exception
 	{
-			
-		List<Branch> branches = this.company.getBranches();
-		KWArrayList<Employee> employees = this.company.getEmployees();
 		KWArrayList<Customer> subs = this.company.getSubs();
 
 		for(int i=0; i<subs.size(); i++)

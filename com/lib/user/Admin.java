@@ -3,6 +3,8 @@ package com.lib.user;
 import com.lib.furniture.*;
 import com.lib.*;
 
+import java.util.ListIterator;
+
 import com.collections.*;
 
 /**
@@ -48,7 +50,7 @@ public class Admin extends CompanyMembers{
 	 */
 	public boolean addBranch()
 	{
-		List<Branch> branches = this.company.getBranches();
+		KWLinkedList<Branch> branches = this.company.getBranches();
 		List<Stock> stocks = this.company.getStocks();
 		int branchNumber = branches.size();
 		int uniqueId = this.company.getBranchCounter();
@@ -113,18 +115,23 @@ public class Admin extends CompanyMembers{
 	 */
 	public boolean removeBranch(int branchId)
 	{
-		List<Branch> branches = this.company.getBranches();
+		KWLinkedList<Branch> branches = this.company.getBranches();
 		List<Stock> stocks = this.company.getStocks();
 		int stockIndex;
+		Branch tempBranch;
 
 		// find the branch with the id of branchId
-		for(int i=0; i<branches.size(); i++)
+		ListIterator<Branch> listIterator = branches.listIterator();
+
+		while(listIterator.hasNext())
 		{
-			if(branches.get(i).getBranchId() == branchId)
+			tempBranch = (Branch)listIterator.next();
+
+			if(tempBranch.getBranchId() == branchId)
 			{
-				// get stockId
-				stockIndex = branches.get(i).getStockIndex();
-				
+				// get stock id
+				stockIndex = tempBranch.getStockIndex();
+	
 				// remove stock
 				for(int j=0; j<stocks.size(); j++)
 				{
@@ -136,12 +143,41 @@ public class Admin extends CompanyMembers{
 					}
 				}
 
-				// remove branch
-				branches.remove(i);
-
+				listIterator.remove();
 				return true;
+				
 			}
+
 		}
+
+
+
+
+		// // find the branch with the id of branchId
+		// for(int i=0; i<branches.size(); i++)
+		// {
+		// 	if(branches.get(i).getBranchId() == branchId)
+		// 	{
+		// 		// get stockId
+		// 		stockIndex = branches.get(i).getStockIndex();
+				
+		// 		// remove stock
+		// 		for(int j=0; j<stocks.size(); j++)
+		// 		{
+		// 			if(stocks.get(j).getId() == stockIndex)
+		// 			{
+		// 				// stocks.remove(stockIndex);
+		// 				stocks.remove(j);
+		// 				break;
+		// 			}
+		// 		}
+
+		// 		// remove branch
+		// 		branches.remove(i);
+
+		// 		return true;
+		// 	}
+		// }
 		
 		
 		return false;
