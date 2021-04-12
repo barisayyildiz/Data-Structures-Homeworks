@@ -3,6 +3,8 @@ package com.lib.user;
 import com.lib.furniture.*;
 import com.lib.*;
 
+import com.collections.*;
+
 /**
  * Employee class
  * @author Barış Ayyıldız
@@ -53,7 +55,7 @@ public class Employee extends CompanyMembers
 		if(amount < 0)
 			throw new Exception("amount cannot negative...");
 
-		List<Customer> subs = this.company.getSubs();
+		KWArrayList<Customer> subs = this.company.getSubs();
 		List<Stock> stocks = this.company.getStocks();
 
 		int index = -1;

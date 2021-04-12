@@ -3,6 +3,8 @@ package com.lib.user;
 import com.lib.*;
 import com.lib.furniture.*;
 
+import com.collections.*;
+
 /**
  * CompanyMembers class, superclass for Admin and Employee. Implements CompanyMembersInterface
  * @author Barış Ayyıldız
@@ -87,7 +89,7 @@ public class CompanyMembers extends User implements CompanyMembersInterface{
 	@Override
 	public boolean removeCustomer(int customerId)
 	{
-		List<Customer> customerList = this.company.getSubs();
+		KWArrayList<Customer> customerList = this.company.getSubs();
 
 		for(int i=0; i<customerList.size(); i++)
 		{

@@ -3,6 +3,9 @@ package com.lib;
 import com.lib.furniture.*;
 import com.lib.user.*;
 
+// KW Collections
+import com.collections.*;
+
 /**
  * Company class
  * @author Barış Ayyıldız
@@ -33,11 +36,11 @@ public class Company {
 	/**
 	 * List of employees
 	 */
-	private List<Employee> employees;
+	private KWArrayList<Employee> employees;
 	/**
 	 * List of subs(registered customers)
 	 */
-	private List<Customer> subs;
+	private KWArrayList<Customer> subs;
 
 	private List<Stock> stocks;
 
@@ -54,10 +57,10 @@ public class Company {
 		this.customerCounter = 0;
 		this.employeeCounter = 0;
 
-		this.employees = new List<Employee>();
+		this.employees = new KWArrayList<Employee>();
 		this.stocks = new List<Stock>();
 		this.branches = new List<Branch>();
-		this.subs = new List<Customer>();
+		this.subs = new KWArrayList<Customer>();
 	}
 
 	/**
@@ -224,7 +227,7 @@ public class Company {
 	 * Returns employees
 	 * @return employees
 	 */
-	public List<Employee> getEmployees(){return employees;}
+	public KWArrayList<Employee> getEmployees(){return employees;}
 	/**
 	 * Returns stocks
 	 * @return stocks
@@ -234,7 +237,7 @@ public class Company {
 	 * Returns subs
 	 * @return subs
 	 */
-	public List<Customer> getSubs(){return subs;}
+	public KWArrayList<Customer> getSubs(){return subs;}
 
 	
 }

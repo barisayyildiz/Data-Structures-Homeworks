@@ -3,6 +3,8 @@ package com.lib.user;
 import com.lib.furniture.*;
 import com.lib.*;
 
+import com.collections.*;
+
 /**
  * Admin class, inherits from CompanyMembers
  * @author Barış Ayyıldız
@@ -153,7 +155,7 @@ public class Admin extends CompanyMembers{
 	 */
 	public boolean addBranchEmployee(Employee person)
 	{
-		List<Employee> employees = this.company.getEmployees();
+		KWArrayList<Employee> employees = this.company.getEmployees();
 
 		for(int i=0; i<employees.size(); i++)
 		{
@@ -174,7 +176,7 @@ public class Admin extends CompanyMembers{
 	 */
 	public boolean removeBranchEmployee(int id)
 	{
-		List<Employee> employees = this.company.getEmployees();
+		KWArrayList<Employee> employees = this.company.getEmployees();
 
 		for(int i=0; i<employees.size(); i++)
 		{
@@ -194,7 +196,7 @@ public class Admin extends CompanyMembers{
 	{
 		String str = "Name\tSurname\tMail\tPassword\tBranchId\tId\n";
 		
-		List<Employee> employees = this.company.getEmployees();
+		KWArrayList<Employee> employees = this.company.getEmployees();
 
 		for(int i=0; i<employees.size(); i++)
 		{
@@ -212,7 +214,7 @@ public class Admin extends CompanyMembers{
 	{
 		String str = "Name\tSurname\tMail\tPassword\tId\n";
 
-		List<Customer> customers = this.company.getSubs();
+		KWArrayList<Customer> customers = this.company.getSubs();
 
 		for(int i=0; i<customers.size(); i++)
 		{

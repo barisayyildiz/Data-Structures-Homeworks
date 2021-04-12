@@ -5,6 +5,8 @@ import com.lib.furniture.*;
 
 import java.util.Scanner;
 
+import com.collections.*;
+
 /**
  * Customer class, inherits from User class
  * @author Barış Ayyıldız
@@ -66,8 +68,8 @@ public class Customer extends User
 	{
 			
 		List<Branch> branches = this.company.getBranches();
-		List<Employee> employees = this.company.getEmployees();
-		List<Customer> subs = this.company.getSubs();
+		KWArrayList<Employee> employees = this.company.getEmployees();
+		KWArrayList<Customer> subs = this.company.getSubs();
 
 		for(int i=0; i<subs.size(); i++)
 		{
