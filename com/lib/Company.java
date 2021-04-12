@@ -117,6 +117,8 @@ public class Company {
 	{
 		String str = "ID\tModelId\tType\tColor\t\tAmount\n";
 
+		// System.out.println(this.stocks.get(0));
+
 		for(int i=0; i<this.stocks.get(0).getFurnitures().size(); i++)
 		{
 			int total = 0;

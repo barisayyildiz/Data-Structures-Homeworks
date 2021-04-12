@@ -1,5 +1,6 @@
 package com.lib;
 
+import com.collections.HybridList;
 import com.lib.furniture.*;
 import com.lib.user.*;
 
@@ -17,14 +18,14 @@ public class Stock {
 	/**
 	 * List of furniture
 	 */
-	private List<Furniture> furnArr;
+	private HybridList<Furniture> furnArr;
 
 	/**
 	 * Stock constructor
 	 * @param id id
 	 * @param furnArr furniture array
 	 */
-	public Stock(int id, List<Furniture> furnArr)
+	public Stock(int id, HybridList<Furniture> furnArr)
 	{
 		this.id = id;
 		this.furnArr = furnArr;
@@ -39,6 +40,6 @@ public class Stock {
 	 * Returns furniture list
 	 * @return furniture list
 	 */
-	public List<Furniture> getFurnitures(){return furnArr;}
+	public HybridList<Furniture> getFurnitures(){return furnArr;}
 
 }

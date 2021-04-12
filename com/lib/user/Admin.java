@@ -59,7 +59,7 @@ public class Admin extends CompanyMembers{
 
 		Type t[] = Type.values();
 		Color c[] = Color.values();
-		List<Furniture> furniture = new List<Furniture>();
+		HybridList<Furniture> furniture = new HybridList<Furniture>();
 
 		int counter = 0;
 

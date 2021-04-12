@@ -132,7 +132,7 @@ public class Customer extends User
 
 		}
 
-		List<Furniture> newPurchase = new List<Furniture>();
+		HybridList<Furniture> newPurchase = new HybridList<Furniture>();
 		Furniture temp = stocks.get(0).getFurnitures().get(productId);
 		
 		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
@@ -179,7 +179,7 @@ public class Customer extends User
 		stocks.get(index).getFurnitures().get(productId).setTotal(total - amount);
 
 
-		List<Furniture> newPurchase = new List<Furniture>();
+		HybridList<Furniture> newPurchase = new HybridList<Furniture>();
 		Furniture temp = stocks.get(0).getFurnitures().get(productId);
 		
 		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));

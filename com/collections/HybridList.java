@@ -39,6 +39,17 @@ public class HybridList<E>{
 		return this.size;
 	}
 
+	public E get(int index) throws IndexOutOfBoundsException
+	{
+		if(index > this.size || index < 0)
+			throw new IndexOutOfBoundsException("Index is out of bound...");
+
+		int row = index / MAX_NUMBER;
+		int col = index % MAX_NUMBER;
+
+		return this.linkedList.get(row).get(col);
+	}
+
 	@Override
 	public String toString()
 	{

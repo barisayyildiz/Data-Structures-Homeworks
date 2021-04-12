@@ -10,19 +10,19 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		HybridList<Integer> list = new HybridList<Integer>();
+		// HybridList<Integer> list = new HybridList<Integer>();
 
-		list.add(4);
-		list.add(7);
-		list.add(8);
-		list.add(3);
-		list.add(12);
-		list.add(8);
+		// list.add(4);
+		// list.add(7);
+		// list.add(8);
+		// list.add(3);
+		// list.add(12);
+		// list.add(8);
 
-		System.out.println(list);
+		// System.out.println(list);
 
 
-		// mainMenu();
+		mainMenu();
 
 	}
 
