@@ -150,38 +150,7 @@ public class Admin extends CompanyMembers{
 
 		}
 
-
-
-
-		// // find the branch with the id of branchId
-		// for(int i=0; i<branches.size(); i++)
-		// {
-		// 	if(branches.get(i).getBranchId() == branchId)
-		// 	{
-		// 		// get stockId
-		// 		stockIndex = branches.get(i).getStockIndex();
-				
-		// 		// remove stock
-		// 		for(int j=0; j<stocks.size(); j++)
-		// 		{
-		// 			if(stocks.get(j).getId() == stockIndex)
-		// 			{
-		// 				// stocks.remove(stockIndex);
-		// 				stocks.remove(j);
-		// 				break;
-		// 			}
-		// 		}
-
-		// 		// remove branch
-		// 		branches.remove(i);
-
-		// 		return true;
-		// 	}
-		// }
-		
-		
 		return false;
-
 	}
 
 	/**

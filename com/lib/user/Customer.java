@@ -17,7 +17,7 @@ public class Customer extends User
 	/**
 	 * Holds previous orders
 	 */
-	private List<Stock> orderHistory;
+	private KWArrayList<Stock> orderHistory;
 	/**
 	 * True when the customer is subscribed
 	 */
@@ -37,7 +37,7 @@ public class Customer extends User
 	{
 		super(mail, password, company);
 		
-		this.orderHistory = new List<Stock>();
+		this.orderHistory = new KWArrayList<Stock>();
 		this.isSubscribed = false;
 		this.counter = 0;
 	}
@@ -54,7 +54,7 @@ public class Customer extends User
 	{
 		super(name, surname, mail, password, company);
 
-		this.orderHistory = new List<Stock>();
+		this.orderHistory = new KWArrayList<Stock>();
 		this.isSubscribed = false;
 		this.counter = 0;
 
@@ -138,7 +138,6 @@ public class Customer extends User
 		newPurchase.add(new Furniture(productId, temp.getModelId(), temp.getType(), temp.getColor(), temp.getBranch(), temp.getTotal()));
 		newPurchase.get(0).setTotal(amount);
 
-		// this.orderHistory.insert(new Stock(this.counter++, newPurchase));
 		this.addNewOrder(new Stock(this.counter++, newPurchase));
 
 
