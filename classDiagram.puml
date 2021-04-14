@@ -1,0 +1,297 @@
+@startuml "Order Taking Classes"
+
+class Company
+{
+	companyAdmin : Admin
+	branchCounter : Integer
+	customerCounter : Integer
+	employeeCounter : Integer
+	branches : KWLinkedList<Branch>
+	employees : KWArrayList<Employee>
+	subs : KWArrayList<Customer>
+	stocks : KWArrayList<Stock>
+
+	Company(Admin)
+	Employee login(Employee)
+	Customer login(Customer)
+	void showBranchIds()
+	void showAllProducts()
+	void showSingleBranch(Integer)
+	Admin getAdmin()
+	Integer getBranchCounter()
+	Integer getCustomerCounter()
+	Integer getEmployeeCounter()
+	void setCounter(Integer)
+	KWLinkedList<Branch> getBranches()
+	KWArrayList<Employee> getEmployees()
+	KWArrayList<Stock> getStocks()
+	KWArrayList<Customer> getSubs()
+	String toString()
+}
+
+class Branch
+{
+	branchId : Integer 
+	stockIndex : Integer
+
+	Branch(Integer, Integer)
+	Integer getBranchId()
+	Integer getStockIndex()
+}
+
+class Stock
+{
+	id : Integer
+	furnArr : HybridList<Furniture>
+	Stock(Integer, HybridList<Furniture>)
+	Integer getId()
+	HybridList<Furniture> getFurnitures()
+}
+
+class Admin
+{
+	Admin(String, String, String, String, Company)
+	Admin(String, String, String, String)
+	boolean addBranch()
+	boolean removeBranch(Integer)
+	boolean addBranchEmployee(Employee)
+	boolean removeBranchEmployee(Integer
+	void listEmployees()
+	void listSubscribers()
+}
+
+interface CompanyMembersInterface {
+
+	void productsNeedToBeSupplied();
+
+	void addCustomer(Customer);
+	void removeCustomer(Integer);
+
+	void addProducts(Integer, Integer, Integer);
+	void removeProducts(Integer, Integer, Integer);
+	
+}
+
+class CompanyMembers
+{
+	CompanyMembers(String, String, String, String)
+	CompanyMembers(String, String, String, String, Company)
+	
+	void productsNeedToBeSupplied()
+	void addCustomer(Customer);
+	void removeCustomer(Integer);
+	void addProducts(Integer, Integer, Integer);
+	void removeProducts(Integer, Integer, Integer);
+
+}
+
+class Customer
+{
+	KWArrayList<Stock> orderHistory
+	boolean isSubscribed
+	Integer counter
+
+	Customer(String, String, Company)
+	Customer(String, String, String, String, Company)
+	void subscribe()
+	void buyOnline(Integer productId, Integer amount)
+	void buyInShop(Integer branchId, Integer productId, Integer amount)
+	void showOrderHistory()
+	void addNewOrder(Stock newOrder)
+	Integer getCounter()
+
+
+}
+
+class Employee
+{
+	Integer branchId
+
+	Employee(Integer, String, String surname, String, String, Integer, Company)
+	Employee(String name, String, String, String, Integer, Company)
+	void sell(Integer, Integer, Integer)
+}
+
+class User
+{
+	Integer id
+	String name
+	String surname
+	String mail
+	String password
+
+	User(String, String, String, String)
+	User(String, String, String, String, Company)
+	User(String, String, Company)
+	Integer getId()
+	String getName()
+	String getSurname()
+	String getMail()
+	String getPassword()
+	void setId(Integer id)
+	void setName(String name)
+	void setSurname(String surname)
+	void setMail(String mail)
+	void setPassword(String password)
+	String toString()
+}
+
+enum Color
+{
+	RED
+	GREEN
+	BLUE
+	ORANGE
+	YELLOW
+	NONE
+}
+
+enum Type {
+
+	CHAIR
+	DESK
+	TABLE
+	BOOKCASE
+	CABINET
+	
+}
+
+class Furniture
+{
+	Integer id
+	Integer modelId
+	Type type
+	Color color
+	Branch branch
+	Integer amount
+
+	Furniture(Integer, Integer, Type, Color, Branch, Integer)
+	Integer getTotal()
+	void setTotal(Integer)
+	Integer getModelId()
+	Type getType()
+	Color getColor()
+	Branch getBranch()
+	String toString()
+}
+
+class KWArrayList< E >
+{
+	static Integer INITIAL_CAPACITY = 10
+	E[] theData
+	Integer size
+	Integer cap
+
+	KWArrayList()
+	public boolean add(E anEntry)
+	public E get(int index)
+	public E set(int index, E newValue)
+	public E remove(int index)
+	private void reallocate()
+	public int size()
+}
+
+class KWLinkedList< E >
+{
+	Node<E> head
+	Node<E> tail
+	Integer size
+
+	public void addFirst(E dataItem)
+	public void addLast(E dataItem)
+	public E getFirst()
+	public E getLast()
+	public ListIterator<E> listIterator(int index)
+	public Iterator<E> iterator()
+	public void add(int index, E obj)
+	public E get(int index)
+	public int size()
+
+	private KWListIter(int i)
+	private KWListIter(KWListIter other)
+	private boolean hasNext()
+	private E next()
+	private int nextIndex()
+	private int previousIndex()
+	private E previous()
+	private void add(E obj)
+	private void remove()
+	private void set(E dataItem)
+
+}
+
+
+class HybridList < E >
+{
+	KWLinkedList< KWArrayList<E> > linkedList
+	static INTEGER MAX_NUMBER = 10
+	INTEGER size
+
+	public HybridList()
+	public boolean add(E e)
+	public int size()
+	public E get(int index)
+	public String toString()
+
+
+}
+
+
+' class List< T > 
+' {
+' 	Integer size;
+' 	Integer cap;
+' 	T[] arr;
+
+' 	List()
+' 	List(Integer cap)
+' 	void insert(T val)
+' 	void remove(Integer index)
+' 	T get(Integer index)
+' 	void set(Integer index, T val)
+' 	Integer length()
+' 	String toString()
+
+' }
+
+' interface ListInterface<T> {
+
+' 	public void insert(T val);
+' 	public void remove(Integer index);
+' 	public Integer length();
+' 	public T get(Integer index);
+' 	public void set(Integer index, T val);
+	
+' }
+
+
+
+Branch --* Company
+Employee --* Company
+Customer --* Company
+Stock --* Company
+Admin --* Company
+' Admin --|> User
+' Employee --|> User
+Admin --|> CompanyMembers
+Employee --|> CompanyMembers
+CompanyMembers ..|> CompanyMembersInterface
+CompanyMembers --|> User
+
+Customer --|> User
+' Admin ..|> CompanyMembersInterface
+' List ..|> ListInterface
+Furniture --* Stock
+Color --* Furniture
+Type --* Furniture
+HybridList --* Stock
+KWArrayList --* Customer
+KWArrayList --* Company
+KWLinkedList --* Company
+
+
+
+
+
+
+@enduml

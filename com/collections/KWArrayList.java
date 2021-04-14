@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * This class implements some of the methods of the Java
- *  ArrayList class.
+ * Class KWArrayList
  *  @author Koffman & Wolfgang
  */
-public class KWArrayList<E>
-        /*<exercise chapter="2" section="9" type="programming" number="1">*/
-        extends AbstractList<E>
-        /*</exercise>*/
+public class KWArrayList<E> extends AbstractList<E>
 {
     // Data Fields
 
@@ -124,4 +120,3 @@ public class KWArrayList<E>
         return size;
     }
 }
-/*</listing>*/
