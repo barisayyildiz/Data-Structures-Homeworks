@@ -1,6 +1,6 @@
-package com.lib.user;
+package com.lib.packageUser;
 
-import com.lib.*;
+import com.lib.company.*;
 import com.lib.furniture.*;
 
 import com.collections.*;

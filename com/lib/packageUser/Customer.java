@@ -1,6 +1,6 @@
-package com.lib.user;
+package com.lib.packageUser;
 
-import com.lib.*;
+import com.lib.company.*;
 import com.lib.furniture.*;
 
 import java.util.Scanner;
@@ -194,13 +194,16 @@ public class Customer extends User
 	 */
 	public void showOrderHistory()
 	{
-		// private List<Stock> orderHistory;
 		String str = "Id\tModel\tType\t\tColor\tAmount\n";
 
 		for(int i=0; i<this.orderHistory.size(); i++)
 		{
-			str += this.orderHistory.get(i).getFurnitures().get(0).toString() + "\t" + String.valueOf(orderHistory.get(i).getFurnitures().get(0).getTotal()) +"\n";
+			for(int j=0; j<this.orderHistory.get(i).getFurnitures().size(); j++)
+			{
+				str += this.orderHistory.get(i).getFurnitures().get(j).toString() + "\t" + String.valueOf(orderHistory.get(i).getFurnitures().get(j).getTotal()) +"\n";
+			}
 		}
+		
 		System.out.println(str);
 	}
 

@@ -1,8 +1,8 @@
-package com.lib;
+package com.lib.company;
 
 import com.collections.HybridList;
 import com.lib.furniture.*;
-import com.lib.user.*;
+import com.lib.packageUser.*;
 
 /**
  * Stock class

@@ -1,7 +1,7 @@
-package com.lib.user;
+package com.lib.packageUser;
 
 import com.lib.furniture.*;
-import com.lib.*;
+import com.lib.company.*;
 
 /**
  * Company Members Interface

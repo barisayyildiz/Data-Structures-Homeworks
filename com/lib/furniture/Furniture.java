@@ -1,6 +1,6 @@
 package com.lib.furniture;
 
-import com.lib.*;
+import com.lib.company.*;
 
 /**
  * Furniture class

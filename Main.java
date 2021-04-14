@@ -1,7 +1,7 @@
 import com.lib.furniture.*;
-import com.lib.user.*;
+import com.lib.packageUser.*;
 import com.collections.HybridList;
-import com.lib.*;
+import com.lib.company.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
