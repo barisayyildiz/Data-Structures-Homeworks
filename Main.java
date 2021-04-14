@@ -10,19 +10,124 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		// HybridList<Integer> list = new HybridList<Integer>();
+		System.out.println("========================= TEST CASES =========================");
+		testCases();
 
-		// list.add(4);
-		// list.add(7);
-		// list.add(8);
-		// list.add(3);
-		// list.add(12);
-		// list.add(8);
-
-		// System.out.println(list);
-
-
+		System.out.println("========================= USER MENU =========================");
 		mainMenu();
+	}
+
+	public static void testCases()
+	{
+		// ================ Test cases for HybridList class
+		HybridList<Integer> hybridList = new HybridList<Integer>();
+		
+		for(int i=0; i<25; i++) hybridList.add(i*10);
+		System.out.println("index 12 : " + String.valueOf(hybridList.get(12)));
+		System.out.println("size : " + String.valueOf(hybridList.size()));
+		System.out.println("HybridList : " + String.valueOf(hybridList));
+
+
+		// ================ Initializing a company
+		Company company = new Company(new Admin("john", "doe", "test@mail.com", "123456"));
+		Admin admin = company.getAdmin();
+
+		// add 4 branches
+		for(int i=0; i<4; i++) admin.addBranch();
+
+
+		// ================ Company object's functionalities
+		System.out.println("Branch Id's ");
+		company.showBranchIds();
+		
+		System.out.println("All products : ");
+		company.showAllProducts();
+		
+		System.out.println("Branch Id : 1");
+		try{
+			company.showSingleBranch(1);
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+		}
+
+		System.out.println("Branch Id : 10");
+		try{
+			company.showSingleBranch(10);
+		}catch(Exception exception){
+			System.out.println(exception.getMessage() + "\n");
+		}
+
+		System.out.println(company);
+
+		// ================ Admin object's functionalities
+		System.out.println("Adding branch...");
+		admin.addBranch();
+
+		System.out.println("Branch Id's : ");
+		company.showBranchIds();
+
+		System.out.println("Removing branc with id 0");
+		admin.removeBranch(0);
+
+		System.out.println("Branch Id's : ");
+		company.showBranchIds();
+
+		System.out.println("Adding a branch employee : ");
+		admin.addBranchEmployee(new Employee("test_firstname", "test_lastname", "test_mail", "test_password", 2, company));
+
+		System.out.println("\nAll branch employees : ");
+		admin.listEmployees();
+
+		System.out.println("Adding some customer : ");
+
+		admin.addCustomer(new Customer("test_customer", "test_customer_lastname", "customer1", "123456", company));
+		admin.addCustomer(new Customer("test_customer_2", "test_customer_lastname_2", "customer2", "123456", company));
+		admin.addCustomer(new Customer("test_customer_2", "test_customer_lastname_2", "customer2", "123456", company));
+
+		System.out.println("\nAll customers : ");
+		admin.listSubscribers();
+
+		System.out.println("Removing customer with the id 0");
+		admin.removeCustomer(0);
+
+		System.out.println("Removing customer with the id 21");
+		boolean test = admin.removeCustomer(21);
+		if(!test) System.out.println("Customer with id 21 not exists");
+
+
+		// ================ Employee object's functionalities
+
+		// logining as an employee
+		Employee employee = company.login(new Employee("test_mail", "test_password", company));
+
+		System.out.println("adding customer");
+		employee.addCustomer(new Customer("customer", "customerLastName", "customerMail", "passsworrrrrdd", company));
+
+		System.out.println("making a sell with productId 100 : ");
+		try{
+			employee.sell(2, 100, 3);
+			System.out.println("sold\n");
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+		}
+
+		System.out.println("making a sell with productId 999 : ");
+		try{
+			employee.sell(2, 999, 3);
+		}catch(Exception exception){
+			System.out.println(exception.getMessage() + "\n");
+		}
+
+		// ================ Customer object's functionalities
+
+		Customer customer = company.login(new Customer("customerMail", "passsworrrrrdd", company));
+		
+		// customer info
+		System.out.println(customer);
+
+		System.out.println("Order history of the customer : ");
+		customer.showOrderHistory();
+
 
 	}
 
