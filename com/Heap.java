@@ -1,5 +1,7 @@
 package com;
 
+import com.lib.*;
+
 public class Heap<E extends Comparable<E>> implements Comparable<E>
 {
 	private static final int INITIAL_SIZE = 8;
@@ -238,6 +240,22 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	public E get(int index){
 		return this.arr[index].getData();
+	}
+
+
+	public Pair<E,Integer> findMode(){
+		E mode = null;
+		int max = 0;
+
+		for(int i=0; i<this.size; i++){
+			if(this.arr[i].getFreq() > max){
+				max = this.arr[i].getFreq();
+				mode = this.arr[i].getData();
+			}
+		}
+
+		return new Pair<E,Integer>(mode,max);
+
 	}
 
 

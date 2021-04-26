@@ -1,5 +1,7 @@
 package com;
 
+import com.lib.*;
+
 import java.lang.Comparable;
 
 
@@ -64,6 +66,43 @@ public class BinarySearchTree<E extends Comparable<E>>
 		if(this.right != null)
 			total += this.right.find(item);
 		return total;		
+	}
+
+	public E find_mode(){
+		return this.find_mode_recur();
+	}
+
+	public E find_mode_recur(){
+
+		E mode = null;
+		int max = 0;
+
+		Pair<E,Integer> pair = new Pair<E,Integer>(mode, max);
+
+		pair = this.node.findMode();
+		if(pair.getValue() > max){
+			max = pair.getValue();
+			mode = pair.getKey();
+		}
+
+		if(this.left != null){
+			pair = this.left.node.findMode();
+			if(pair.getValue() > max){
+				max = pair.getValue();
+				mode = pair.getKey();
+			}
+		}
+
+		if(this.right != null){
+			pair = this.right.node.findMode();
+			if(pair.getValue() > max){
+				max = pair.getValue();
+				mode = pair.getKey();
+			}
+		}
+
+		return mode;
+
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 import com.*;
+import com.lib.*;
 
 public class Main
 {
@@ -28,12 +29,19 @@ public class Main
 		// h1.offer(10);
 		// h1.offer(10);
 		// h1.offer(10);
+		// h1.offer(10);
+		// h1.offer(10);
+		// h1.offer(10);
+		// h1.offer(10);
 		// System.out.println(h1);
 		// h1.poll();
 		// System.out.println(h1);
 		// h1.poll();
 		// h1.poll();
 		// System.out.println(h1);
+
+		// System.out.println(h1.findMode());
+		
 
 
 
@@ -73,10 +81,17 @@ public class Main
 		bst.remove(-11);
 		bst.remove(-99);
 		bst.add(-23);
+		bst.add(500);
+		bst.add(500);
+		bst.add(500);
+		bst.add(500);
+		bst.add(500);
+		bst.add(500);
 		
 		System.out.println(bst);
 
 		System.out.println(bst.find(-11));
+		System.out.println(bst.find_mode());
 
 
 
