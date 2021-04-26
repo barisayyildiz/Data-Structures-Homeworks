@@ -1,4 +1,4 @@
-import com.*;
+import com.structures.*;
 import com.lib.*;
 
 // import java.util.*;
@@ -7,14 +7,7 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		// Test<Integer> t1 = new Test<Integer>();
-		// t1.add(3);
-		// t1.add(7);
-		// t1.add(12);
-
-		// System.out.println(t1);
-
-
+		
 		Heap<Integer> h1 = new Heap<Integer>();
 		h1.offer(3);
 		h1.offer(7);

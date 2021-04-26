@@ -1,18 +1,30 @@
-package com;
+package com.structures;
 
 import com.lib.*;
 
 import java.lang.Comparable;
 
+/**
+ * Binary Search Tree with the generic type E, that holds Heap<E> data structure
+ * @param <E> Generic data type
+ */
 
 public class BinarySearchTree<E extends Comparable<E>>
 {
+	/** A single node */
 	private Heap<E> node;
+	/** Number of unique elements on the heap */
 	private int size;
+	/** Maximum number of unique elements that a heap can have */
 	private static final int MAX_ELEMENTS = 7;
+	/** Left pointer of the node */
 	private BinarySearchTree<E> left;
+	/** Right pointer of the node */
 	private BinarySearchTree<E> right;
 
+	/**
+	 * No param constructor
+	 */
 	public BinarySearchTree(){
 		this.node = new Heap<E>();
 		this.size = 0;
@@ -20,6 +32,11 @@ public class BinarySearchTree<E extends Comparable<E>>
 		this.right = null;
 	}
 
+	/**
+	 * Adds a new value to the BST
+	 * @param e param given by the user
+	 * @return number of occurences after insertion
+	 */
 	public int add(E e){
 
 		int val;
@@ -42,6 +59,11 @@ public class BinarySearchTree<E extends Comparable<E>>
 		
 	}
 
+	/**
+	 * Removes the item given by the user
+	 * @param item param given by the user
+	 * @return number of occurences after removal
+	 */
 	public int remove(E item){
 
 		int val = this.node.removeByValue(item);
@@ -61,6 +83,11 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 	}
 
+	/**
+	 * Returns number of occurences
+	 * @param item param given by the user
+	 * @return number of occurences
+	 */
 	public int find(E item){
 		
 		int total = 0;
@@ -72,11 +99,19 @@ public class BinarySearchTree<E extends Comparable<E>>
 		return total;		
 	}
 
+	/**
+	 * calls the private find_mode_recur method
+	 * @return return of the find_mode_recur
+	 */
 	public E find_mode(){
 		return this.find_mode_recur();
 	}
 
-	public E find_mode_recur(){
+	/**
+	 * Returns the mode value
+	 * @return mode value
+	 */
+	private E find_mode_recur(){
 
 		E mode = null;
 		int max = 0;
@@ -109,6 +144,9 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 	}
 
+	/**
+	 * Returns the string representation of the BST
+	 */
 	@Override
 	public String toString(){
 

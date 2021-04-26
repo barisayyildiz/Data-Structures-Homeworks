@@ -1,21 +1,31 @@
-package com;
+package com.structures;
 
 import java.util.Iterator;
-import java.util.PriorityQueue;
 
 import java.util.NoSuchElementException;
 
 import com.lib.*;
 
+/**
+ * Max-Heap class with a generic type
+ * @param <E> Generic data type
+ */
+
 public class Heap<E extends Comparable<E>> implements Comparable<E>
 {
+	/** Initial capacity of the heap */
 	private static final int INITIAL_SIZE = 8;
-
-	private int counter;
+	
+	/** Holds the current size of the heap*/
 	private int size;
+	/**	Holds the current capacity of the heap */
 	private int cap;
+	/** Used to imitate heap data structure */
 	private Node<E> arr[];
 
+	/**
+	 * No parameter constructor
+	 */
 	@SuppressWarnings("unchecked")
 	public Heap()
 	{
@@ -24,6 +34,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		this.arr = new Node[this.cap];
 	}
 
+	/**
+	 * Adds a new item to the heap
+	 * @param e items that is going to be added
+	 * @return number of occurences after insertion
+	 */
 	public int offer(E e)
 	{
 		if(this.size == this.cap) this.reallocate();
@@ -55,6 +70,10 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return 1;
 	}
 
+	/**
+	 * Removes the root of the heap
+	 * @return number of occurences after removal
+	 */
 	public int poll()
 	{
 		if(this.size == 0)
@@ -97,16 +116,29 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return 0;
 	}
 
+	/**
+	 * Retrieves but does not remove the root of the heap
+	 * @return root of the heap
+	 */
 	public E peek()
 	{
 		if(this.size() == 0)	return null;
 		return this.arr[0].getData();
 	}
 
+	/**
+	 * Returns number of unique elements in the heap
+	 * @return number of unique elements
+	 */
 	public int size(){
 		return this.size;
 	}
 
+	/**
+	 * Check if the given element is in the heap
+	 * @param e Generic data type
+	 * @return true, if the given element is in the heap
+	 */
 	public boolean contains(E e)
 	{
 		for(int i=0; i<this.size; i++)
@@ -115,6 +147,10 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return false;
 	}
 
+	/**
+	 * Merges two heaps together
+	 * @param h1 Heap, that is going to be merged with 'this'
+	 */
 	public void merge(Heap<E> h1)
 	{
 		for(int i=0; i<h1.size(); i++){
@@ -122,6 +158,12 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		}
 	}
 
+	/**
+	 * Removes the kth largest element
+	 * @param k Integer given by the user
+	 * @return Number of occurences after removal
+	 * @throws Exception If k is out of bounds
+	 */
 	public int removeKthLargest(int k) throws Exception{
 
 		if(k > this.size() || k <= 0)
@@ -144,6 +186,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
+	/**
+	 * Removes the element given by user
+	 * @param val Element that is going to be deleted from the heap
+	 * @return true when successful
+	 */
 	public int removeByValue(E val){
 
 		int index = this.indexOf(val);
@@ -188,6 +235,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
+	/**
+	 * Returns the index of an element
+	 * @param e Generic type
+	 * @return the index of the element
+	 */
 	public int indexOf(E e){
 
 		for(int i=0; i<this.size(); i++){
@@ -197,6 +249,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return -1;
 	}
 
+	/**
+	 * Number of occurences of a the given value
+	 * @param e Given value
+	 * @return number of occurences
+	 */
 	public int numberOfOccurrences(E e){
 		int total = 0;
 		for(int i=0; i<this.size; i++){
@@ -206,7 +263,9 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return total;
 	}
 
-
+	/**
+	 * Reallocates the array when needed
+	 */
 	@SuppressWarnings("unchecked")
 	private void reallocate()
 	{
@@ -217,12 +276,20 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 			temp[i] = this.arr[i];
 	}
 
+	/**
+	 * Swaps two indexes on the array
+	 * @param i1 index-1
+	 * @param i2 index-2
+	 */
 	private void swap(int i1, int i2){
 		Node<E> temp = this.arr[i1];
 		this.arr[i1] = this.arr[i2];
 		this.arr[i2] = temp;
 	}
 
+	/**
+	 * Returns string representation of the heap data structure
+	 */
 	@Override
 	public String toString()
 	{
@@ -234,16 +301,29 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return str;
 	}
 
+	/**
+	 * Overriden compare method
+	 */
+	@Override
 	public int compareTo(E e){
 		return this.arr[0].compareTo(e);
 	}
 
+	/**
+	 * Returns the element in the given index
+	 * @param index index given by the user
+	 * @return the value in the given index
+	 * @throws Exception When index is out of bounds
+	 */
 	public E get(int index) throws Exception{
 		if(index < 0 || index >= this.size()) throw new Exception("Index is out of bounds...");
 		return this.arr[index].getData();
 	}
 
-
+	/**
+	 * Finds the mode
+	 * @return returns a pair object, that holds both mode and the number of occurences of that node
+	 */
 	public Pair<E,Integer> findMode(){
 		E mode = null;
 		int max = 0;
@@ -259,16 +339,27 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
+	/**
+	 * Returns an iterator
+	 * @return iterator
+	 */
 	public Iterator<E> iterator(){
 		return new myIter();
 	}
 
-
+	/**
+	 * Inner Heap Iterator class 
+	 */
 	private class myIter implements Iterator<E>
 	{
+		/** Cursor of the iterator */
 		protected int cursor;
+		/** flag, that is used for checking removeability */
 		protected boolean flag;
 
+		/**
+		 * No parameter iterator constructor
+		 */
 		public myIter(){
 			this.cursor = 0;
 			this.flag = false;
@@ -297,32 +388,61 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		
 	}
 
+	/**
+	 * Inner Node class, used for representing every node on the heap
+	 * @param <E> Generic data type
+	 */
 	class Node<E extends Comparable<E>> implements Comparable<E>
 	{
+		/** Data inside the node */
 		E data;
+		/** Frequency of this node */
 		int freq;
 
+		/**
+		 * Single value constructor
+		 */
 		public Node(E data){
 			this.data = data;
 			this.freq = 1;
 		}
 
+		/**
+		 * Returns the data
+		 * @return data
+		 */
 		public E getData(){
 			return this.data;
 		}
 
+		/**
+		 * Returns the frequency
+		 * @return frequency
+		 */
 		public int getFreq(){
 			return this.freq;
 		}
 
+		/**
+		 * Sets the frequency
+		 * @param freq frequency given by the user
+		 */
 		public void setFreq(int freq){
 			this.freq = freq;
 		}
 
+		/**
+		 * Sets the data
+		 * @param data data given by the user
+		 */
 		public void setData(E data){
 			this.data = data;
 		}
 
+		/**
+		 * Overriden compareTo method
+		 */
+		@Override
 		public int compareTo(E e){
 			return this.data.compareTo(e);
 		}
