@@ -20,40 +20,44 @@ public class BinarySearchTree<E extends Comparable<E>>
 		this.right = null;
 	}
 
-	public boolean add(E e){
+	public int add(E e){
+
+		int val;
 
 		if( (this.node.size() >= MAX_ELEMENTS && this.node.contains(e)) || (this.node.size() < MAX_ELEMENTS) ){
-			this.node.offer(e);
+			val = this.node.offer(e);
 		}else{
 
 			if(this.node.compareTo(e) < 0){
 				if(this.right == null) this.right = new BinarySearchTree<E>();
-				this.right.add(e);
+				val = this.right.add(e);
 			}else{
 				if(this.left == null) this.left = new BinarySearchTree<E>();
-				this.left.add(e);
+				val = this.left.add(e);
 			}
 
 		}
 
-		return true;	
+		return val;	
 		
 	}
 
-	public void remove(E item){
+	public int remove(E item){
 
-		boolean val = this.node.remove(item);
-		if(val)	return;
+		int val = this.node.remove(item);
+		if(val >= 0)	return val;
 
 		if(this.left != null){
 			val = this.left.node.remove(item);
-			if(val) return;
+			if(val >= 0) return val;
 		}
 
 		if(this.right != null){
 			val = this.right.node.remove(item);
-			if(val) return;
+			if(val >= 0) return val;
 		}
+
+		return val;
 
 	}
 

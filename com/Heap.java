@@ -19,14 +19,14 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		this.arr = new Node[this.cap];
 	}
 
-	public boolean offer(E e)
+	public int offer(E e)
 	{
 		if(this.size == this.cap) this.reallocate();
 
 		if(this.contains(e)){
 			int index = this.indexOf(e);
 			this.arr[index].setFreq(this.arr[index].getFreq()+1);
-			return true;
+			return this.arr[index].getFreq();
 		}
 
 		this.arr[this.size] = new Node<E>(e);
@@ -47,17 +47,17 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		}
 
 		this.size++;
-		return true;
+		return 1;
 	}
 
-	public E poll() //throws Exception
+	public int poll() //throws Exception
 	{
 		// if(this.size == 0)
 		// 	throw new Exception("Size is 0...");
 
 		if(this.arr[0].getFreq() > 1){
 			this.arr[0].setFreq(this.arr[0].getFreq() - 1);
-			return this.arr[0].getData();
+			return this.arr[0].getFreq();
 		}
 
 		Node<E> val = this.arr[0];
@@ -89,7 +89,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		}
 
 
-		return val.getData();
+		return 0;
 	}
 
 	public E peek()
@@ -118,10 +118,10 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
-	public E removeKthLargest(int k){
+	public int removeKthLargest(int k){
 
 		if(k > this.size() || k <= 0)
-			return null;
+			return -1;
 
 		k = this.size() - k + 1;
 
@@ -140,17 +140,17 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
-	public boolean remove(E val){
+	public int remove(E val){
 
 		int index = this.indexOf(val);
 
 		System.out.println("index : " + String.valueOf(index));
 
-		if(index < 0)	return false;
+		if(index < 0)	return -1;
 
 		if(this.arr[index].getFreq() > 1){
 			this.arr[index].setFreq(this.arr[index].getFreq() - 1);
-			return true;
+			return this.arr[index].getFreq();
 		}
 
 		this.arr[index] = this.arr[--this.size];
@@ -182,7 +182,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 		}
 
-		return true;
+		return 0;
 
 	}
 
