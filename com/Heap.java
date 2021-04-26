@@ -21,6 +21,12 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	{
 		if(this.size == this.cap) this.reallocate();
 
+		if(this.contains(e)){
+			int index = this.indexOf(e);
+			this.arr[index].setFreq(this.arr[index].getFreq()+1);
+			return true;
+		}
+
 		this.arr[this.size] = new Node<E>(e);
 
 		int child = this.size;
@@ -46,6 +52,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	{
 		// if(this.size == 0)
 		// 	throw new Exception("Size is 0...");
+
+		if(this.arr[0].getFreq() > 1){
+			this.arr[0].setFreq(this.arr[0].getFreq() - 1);
+			return this.arr[0].getData();
+		}
 
 		Node<E> val = this.arr[0];
 		this.arr[0] = this.arr[--this.size];
@@ -91,7 +102,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	public boolean contains(E e)
 	{
 		for(int i=0; i<this.size; i++)
-			if(this.arr[i].equals(e))
+			if(this.arr[i].compareTo(e) == 0)
 				return true;
 		return false;
 	}
@@ -133,6 +144,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 		System.out.println("index : " + String.valueOf(index));
 
+		if(this.arr[index].getFreq() > 1){
+			this.arr[index].setFreq(this.arr[index].getFreq() - 1);
+			return;
+		}
+
 		this.arr[index] = this.arr[--this.size];
 
 
@@ -166,7 +182,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	public int indexOf(E e){
 
-		System.out.println("value : " + String.valueOf(e));
+		// System.out.println("value : " + String.valueOf(e));
 
 		for(int i=0; i<this.size(); i++){
 			if(this.arr[i].compareTo(e) == 0)
@@ -197,7 +213,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		String str = "";
 		for(int i=0; i<this.size; i++)
 		{
-			str += String.valueOf(this.arr[i].getData()) + " ";
+			str += String.valueOf(this.arr[i].getData() + "," + this.arr[i].getFreq() + " | ") ;
 		}
 		return str;
 	}
