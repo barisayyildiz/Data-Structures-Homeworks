@@ -44,17 +44,10 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 			// if the value is smaller
 			if(this.node.get(0).compareTo(e) > 0){
-				if(this.right == null)
-				{
-					System.out.println("testing_right...");
-					this.right = new BinarySearchTree<E>();
-				}
+				if(this.right == null) this.right = new BinarySearchTree<E>();
 				this.right.offer(e);
 			}else{
-				if(this.left == null){
-					System.out.println("testing_left...");
-					this.left = new BinarySearchTree<E>();
-				}
+				if(this.left == null) this.left = new BinarySearchTree<E>();
 				this.left.offer(e);
 			}
 
@@ -75,13 +68,13 @@ public class BinarySearchTree<E extends Comparable<E>>
 		}
 	}
 
-	// public E poll(){
+	public E poll(){
 
-	// 	E val = this.node.get(0);
-	// 	int index = this.node
+		
 
 
-	// }
+
+	}
 
 
 	// FOR KEYS
