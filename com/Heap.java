@@ -1,7 +1,7 @@
 package com;
 import java.lang.Comparable;
 
-public class Heap<E extends Comparable<E>>
+public class Heap<E extends Comparable<E>> implements Comparable<E>
 {
 	private static final int INITIAL_SIZE = 8;
 
@@ -9,14 +9,12 @@ public class Heap<E extends Comparable<E>>
 	private int size;
 	private int cap;
 	private E arr[];
-	private int freq[];
 
 	public Heap()
 	{
 		this.cap = INITIAL_SIZE;
 		this.size = 0;
 		this.arr = (E[]) new Comparable[this.cap];
-		this.freq = new int[this.cap];
 
 
 	}
@@ -26,7 +24,6 @@ public class Heap<E extends Comparable<E>>
 		if(this.size == this.cap) this.reallocate();
 
 		this.arr[this.size] = e;
-		this.freq[this.size] = 1;
 
 		int child = this.size;
 		int parent = (child-1)/2;
@@ -53,8 +50,7 @@ public class Heap<E extends Comparable<E>>
 		// 	throw new Exception("Size is 0...");
 
 		E val = this.arr[0];
-		this.arr[0] = this.arr[this.size-1];
-		this.freq[0] = this.freq[--this.size];
+		this.arr[0] = this.arr[--this.size];
 		int parent = 0;
 		int left, right;
 
@@ -118,8 +114,6 @@ public class Heap<E extends Comparable<E>>
 
 		k = this.size() - k + 1;
 
-		System.out.println("k : " + String.valueOf(k));
-
 		Heap<E> temp = new Heap<E>();
 
 		for(int i=0; i<this.size(); i++){
@@ -141,8 +135,7 @@ public class Heap<E extends Comparable<E>>
 
 		System.out.println("index : " + String.valueOf(index));
 
-		this.arr[index] = this.arr[this.size-1];
-		this.freq[index] = this.freq[--this.size];
+		this.arr[index] = this.arr[--this.size];
 
 
 		int parent = index;
@@ -192,23 +185,12 @@ public class Heap<E extends Comparable<E>>
 
 		for(int i=0; i<this.size; i++)
 			temp[i] = this.arr[i];
-
-		int[] temp2 = new int[this.cap];
-		for(int i=0; i<this.size; i++)
-			temp2[i] = this.freq[i];
-
-		this.arr = temp;
-		this.freq = temp2;
 	}
 
 	private void swap(int i1, int i2){
 		E temp = this.arr[i1];
 		this.arr[i1] = this.arr[i2];
 		this.arr[i2] = temp;
-
-		int temp2 = this.freq[i1];
-		this.freq[i1] = this.freq[i2];
-		this.freq[i2] = temp2; 
 	}
 
 	@Override
@@ -222,10 +204,12 @@ public class Heap<E extends Comparable<E>>
 		return str;
 	}
 
-	public void printFreq(){
-		for(int i=0; i<this.size; i++){
-			System.out.println(String.valueOf(this.freq[i]) + " ");
-		}
+	public int compareTo(E e){
+		return this.arr[0].compareTo(e);
+	}
+
+	public E get(int index){
+		return this.arr[index];
 	}
 
 
