@@ -195,6 +195,16 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return -1;
 	}
 
+	public int numberOfOccurrences(E e){
+		int total = 0;
+		for(int i=0; i<this.size; i++){
+			if(this.arr[i].compareTo(e) == 0)
+				total += this.arr[i].getFreq();
+		}
+		return total;
+	}
+
+
 	@SuppressWarnings("unchecked")
 	private void reallocate()
 	{

@@ -76,6 +76,8 @@ public class Main
 		
 		System.out.println(bst);
 
+		System.out.println(bst.find(-11));
+
 
 
 

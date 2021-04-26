@@ -55,6 +55,17 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 	}
 
+	public int find(E item){
+		
+		int total = 0;
+		total += this.node.numberOfOccurrences(item);
+		if(this.left != null)
+			total += this.left.find(item);
+		if(this.right != null)
+			total += this.right.find(item);
+		return total;		
+	}
+
 	@Override
 	public String toString(){
 
