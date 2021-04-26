@@ -39,32 +39,40 @@ public class Main
 
 		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 		
-		bst.offer(3);
-		bst.offer(4);
-		bst.offer(5);
-		bst.offer(6);
-		bst.offer(7);
-		bst.offer(8);
-		bst.offer(9);
+		bst.add(3);
+		bst.add(4);
+		bst.add(5);
+		bst.add(6);
+		bst.add(7);
+		bst.add(8);
+		bst.add(9);
 
 		
-		bst.offer(10);
-		bst.offer(11);
-		bst.offer(1);
-		bst.offer(1);
+		bst.add(10);
+		bst.add(11);
+		bst.add(1);
+		bst.add(1);
 		
-		bst.offer(-10);
-		bst.offer(-11);
-		bst.offer(-8);
-		bst.offer(-9);
+		bst.add(-10);
+		bst.add(-11);
+		bst.add(-11);
+		bst.add(-11);
+		bst.add(-8);
+		bst.add(-9);
 		
-		bst.offer(-10);
-		bst.offer(-11);
-		bst.offer(-8);
-		bst.offer(-9);
+		bst.add(-10);
+		bst.add(-11);
+		bst.add(-8);
+		bst.add(-9);
 		
-		bst.offer(-10);
-		bst.offer(-99);
+		bst.add(-10);
+		bst.add(-99);
+
+		System.out.println(bst);
+
+		bst.remove(-11);
+		bst.remove(-99);
+		bst.add(-23);
 		
 		System.out.println(bst);
 

@@ -138,15 +138,17 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
-	public void remove(E val){
+	public boolean remove(E val){
 
 		int index = this.indexOf(val);
 
 		System.out.println("index : " + String.valueOf(index));
 
+		if(index < 0)	return false;
+
 		if(this.arr[index].getFreq() > 1){
 			this.arr[index].setFreq(this.arr[index].getFreq() - 1);
-			return;
+			return true;
 		}
 
 		this.arr[index] = this.arr[--this.size];
@@ -177,6 +179,8 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 			}
 
 		}
+
+		return true;
 
 	}
 
