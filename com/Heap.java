@@ -1,5 +1,8 @@
 package com;
 
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
 import com.lib.*;
 
 public class Heap<E extends Comparable<E>> implements Comparable<E>
@@ -134,13 +137,13 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 			}
 		}
 
-		this.remove(temp.peek());
+		this.removeByValue(temp.peek());
 
 		return temp.poll();
 
 	}
 
-	public int remove(E val){
+	public int removeByValue(E val){
 
 		int index = this.indexOf(val);
 
@@ -258,38 +261,76 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	}
 
+	public Iterator<E> iterator(){
+		return new myIter();
+	}
+
+
+	private class myIter implements Iterator<E>
+	{
+		protected int cursor;
+		protected boolean flag;
+
+		public myIter(){
+			this.cursor = 0;
+			this.flag = false;
+		}
+
+		public boolean hasNext(){
+			return this.cursor != size();
+		}
+
+		public E next(){
+			this.flag = true;
+			return arr[this.cursor++].getData();
+		}
+
+		public void remove(){
+			if(this.flag) removeByValue(arr[this.cursor-1].getData());
+			this.flag = false;
+		}
+		
+	}
+
+	class Node<E extends Comparable<E>> implements Comparable<E>
+	{
+		E data;
+		int freq;
+
+		public Node(E data){
+			this.data = data;
+			this.freq = 1;
+		}
+
+		public E getData(){
+			return this.data;
+		}
+
+		public int getFreq(){
+			return this.freq;
+		}
+
+		public void setFreq(int freq){
+			this.freq = freq;
+		}
+
+		public void setData(E data){
+			this.data = data;
+		}
+
+		public int compareTo(E e){
+			return this.data.compareTo(e);
+		}
+
+	}
+
+
+
+
 
 
 
 	
 }
 
-
-class Node<E extends Comparable<E>> implements Comparable<E>
-{
-	E data;
-	int freq;
-
-	public Node(E data){
-		this.data = data;
-		this.freq = 1;
-	}
-
-	public E getData(){
-		return this.data;
-	}
-
-	public int getFreq(){
-		return this.freq;
-	}
-
-	public void setFreq(int freq){
-		this.freq = freq;
-	}
-
-	public int compareTo(E e){
-		return this.data.compareTo(e);
-	}
-
-}
 

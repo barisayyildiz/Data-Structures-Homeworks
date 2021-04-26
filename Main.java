@@ -1,6 +1,8 @@
 import com.*;
 import com.lib.*;
 
+// import java.util.*;
+
 public class Main
 {
 	public static void main(String args[])
@@ -13,34 +15,34 @@ public class Main
 		// System.out.println(t1);
 
 
-		// Heap<Integer> h1 = new Heap<Integer>();
-		// h1.offer(3);
-		// h1.offer(7);
-		// h1.offer(2);
-		// h1.offer(4);
-		// h1.offer(1);
-		// h1.offer(4);
-		// h1.offer(1);
-		// h1.offer(1);
+		Heap<Integer> h1 = new Heap<Integer>();
+		h1.offer(3);
+		h1.offer(7);
+		h1.offer(2);
+		h1.offer(4);
+		h1.offer(1);
+		h1.offer(4);
+		h1.offer(1);
+		h1.offer(1);
 
-		// // System.out.println(h1);
-		// // System.out.println(h1.removeKthLargest(1));
+		// System.out.println(h1);
+		// System.out.println(h1.removeKthLargest(1));
 
-		// h1.offer(10);
-		// h1.offer(10);
-		// h1.offer(10);
-		// h1.offer(10);
-		// h1.offer(10);
-		// h1.offer(10);
-		// h1.offer(10);
-		// System.out.println(h1);
-		// h1.poll();
-		// System.out.println(h1);
-		// h1.poll();
-		// h1.poll();
-		// System.out.println(h1);
+		h1.offer(10);
+		h1.offer(10);
+		h1.offer(10);
+		h1.offer(10);
+		h1.offer(10);
+		h1.offer(10);
+		h1.offer(10);
+		System.out.println(h1);
+		h1.poll();
+		System.out.println(h1);
+		h1.poll();
+		h1.poll();
+		System.out.println(h1);
 
-		// System.out.println(h1.findMode());
+		System.out.println(h1.findMode());
 		
 
 

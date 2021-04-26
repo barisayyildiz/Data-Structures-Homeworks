@@ -44,16 +44,16 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 	public int remove(E item){
 
-		int val = this.node.remove(item);
+		int val = this.node.removeByValue(item);
 		if(val >= 0)	return val;
 
 		if(this.left != null){
-			val = this.left.node.remove(item);
+			val = this.left.node.removeByValue(item);
 			if(val >= 0) return val;
 		}
 
 		if(this.right != null){
-			val = this.right.node.remove(item);
+			val = this.right.node.removeByValue(item);
 			if(val >= 0) return val;
 		}
 
