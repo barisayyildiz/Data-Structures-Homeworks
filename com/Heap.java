@@ -3,6 +3,8 @@ package com;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
+import java.util.NoSuchElementException;
+
 import com.lib.*;
 
 public class Heap<E extends Comparable<E>> implements Comparable<E>
@@ -53,10 +55,10 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return 1;
 	}
 
-	public int poll() //throws Exception
+	public int poll()
 	{
-		// if(this.size == 0)
-		// 	throw new Exception("Size is 0...");
+		if(this.size == 0)
+			return -1;
 
 		if(this.arr[0].getFreq() > 1){
 			this.arr[0].setFreq(this.arr[0].getFreq() - 1);
@@ -97,6 +99,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 	public E peek()
 	{
+		if(this.size() == 0)	return null;
 		return this.arr[0].getData();
 	}
 
@@ -117,14 +120,12 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		for(int i=0; i<h1.size(); i++){
 			this.offer(h1.arr[i].getData());
 		}
-
-
 	}
 
-	public int removeKthLargest(int k){
+	public int removeKthLargest(int k) throws Exception{
 
 		if(k > this.size() || k <= 0)
-			return -1;
+			throw new Exception("Index is out of bound...");
 
 		k = this.size() - k + 1;
 
@@ -146,8 +147,6 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	public int removeByValue(E val){
 
 		int index = this.indexOf(val);
-
-		System.out.println("index : " + String.valueOf(index));
 
 		if(index < 0)	return -1;
 
@@ -190,8 +189,6 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	}
 
 	public int indexOf(E e){
-
-		// System.out.println("value : " + String.valueOf(e));
 
 		for(int i=0; i<this.size(); i++){
 			if(this.arr[i].compareTo(e) == 0)
@@ -241,7 +238,8 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		return this.arr[0].compareTo(e);
 	}
 
-	public E get(int index){
+	public E get(int index) throws Exception{
+		if(index < 0 || index >= this.size()) throw new Exception("Index is out of bounds...");
 		return this.arr[index].getData();
 	}
 
@@ -281,12 +279,19 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		}
 
 		public E next(){
+
+			if(this.cursor == size())
+				throw new NoSuchElementException("No such element...");
+
 			this.flag = true;
 			return arr[this.cursor++].getData();
 		}
 
 		public void remove(){
-			if(this.flag) removeByValue(arr[this.cursor-1].getData());
+			if(!this.flag)
+				throw new IllegalStateException("Next method needs to be called...");
+
+			removeByValue(arr[this.cursor-1].getData());
 			this.flag = false;
 		}
 		
@@ -323,13 +328,6 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		}
 
 	}
-
-
-
-
-
-
-
 	
 }
 
