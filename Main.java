@@ -37,36 +37,37 @@ public class Main
 
 
 
-		// BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 		
-		// bst.offer(3);
-		// bst.offer(4);
-		// bst.offer(5);
-		// bst.offer(6);
-		// bst.offer(7);
-		// bst.offer(8);
-		// bst.offer(9);
+		bst.offer(3);
+		bst.offer(4);
+		bst.offer(5);
+		bst.offer(6);
+		bst.offer(7);
+		bst.offer(8);
+		bst.offer(9);
 
-		// bst.offer(10);
-		// bst.offer(11);
-		// bst.offer(1);
-		// bst.offer(1);
+		
+		bst.offer(10);
+		bst.offer(11);
+		bst.offer(1);
+		bst.offer(1);
+		
+		bst.offer(-10);
+		bst.offer(-11);
+		bst.offer(-8);
+		bst.offer(-9);
+		
+		bst.offer(-10);
+		bst.offer(-11);
+		bst.offer(-8);
+		bst.offer(-9);
+		
+		bst.offer(-10);
+		bst.offer(-99);
+		
+		System.out.println(bst);
 
-		// bst.offer(-10);
-		// bst.offer(-11);
-		// bst.offer(-8);
-		// bst.offer(-9);
-
-		// bst.offer(-10);
-		// bst.offer(-11);
-		// bst.offer(-8);
-		// bst.offer(-9);
-
-		// bst.offer(-10);
-		// bst.offer(-99);
-
-
-		// System.out.println(bst);
 
 
 
