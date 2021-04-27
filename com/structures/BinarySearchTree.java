@@ -70,12 +70,12 @@ public class BinarySearchTree<E extends Comparable<E>>
 		if(val >= 0)	return val;
 
 		if(this.left != null){
-			val = this.left.node.removeByValue(item);
+			val = this.left.remove(item);
 			if(val >= 0) return val;
 		}
 
 		if(this.right != null){
-			val = this.right.node.removeByValue(item);
+			val = this.right.remove(item);
 			if(val >= 0) return val;
 		}
 

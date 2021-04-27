@@ -1,14 +1,14 @@
 import com.structures.*;
 import com.lib.*;
 
-// import java.util.*;
+import java.util.Iterator;
 
 public class Main
 {
 	public static void main(String args[])
 	{
 		
-		Heap<Integer> h1 = new Heap<Integer>();
+		Heap<Integer> h1 = new Heap<Integer>(true);
 		h1.offer(3);
 		h1.offer(7);
 		h1.offer(2);
@@ -18,8 +18,15 @@ public class Main
 		h1.offer(1);
 		h1.offer(1);
 
-		// System.out.println(h1);
-		// System.out.println(h1.removeKthLargest(1));
+		Iterator<Integer> iter = h1.iterator();
+
+		System.out.println(h1);
+		try{
+			System.out.println(h1.removeKthLargest(3));
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		System.out.println(h1);
 
 		h1.offer(10);
 		h1.offer(10);
