@@ -26,7 +26,7 @@ public class BinarySearchTree<E extends Comparable<E>>
 	 * No param constructor
 	 */
 	public BinarySearchTree(){
-		this.node = new Heap<E>();
+		this.node = new Heap<E>(true);
 		this.size = 0;
 		this.left = null;
 		this.right = null;

@@ -23,6 +23,9 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	/** Used to imitate heap data structure */
 	private Node<E> arr[];
 
+	/** If true, user is cannot insert same value twice. It only increases number of occurences (for part2) */
+	private boolean noDuplicate;
+
 	/**
 	 * No parameter constructor
 	 */
@@ -32,7 +35,23 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		this.cap = INITIAL_SIZE;
 		this.size = 0;
 		this.arr = new Node[this.cap];
+		this.noDuplicate = false;
 	}
+
+	/**
+	 * One parameter constructor
+	 * @param noDublicate boolean param for no duplicate feature
+	 */
+	@SuppressWarnings("unchecked")
+	public Heap(boolean noDuplicate)
+	{
+		this.cap = INITIAL_SIZE;
+		this.size = 0;
+		this.arr = new Node[this.cap];
+		this.noDuplicate = noDuplicate;
+	}
+
+
 
 	/**
 	 * Adds a new item to the heap
@@ -43,10 +62,12 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	{
 		if(this.size == this.cap) this.reallocate();
 
-		if(this.contains(e)){
-			int index = this.indexOf(e);
-			this.arr[index].setFreq(this.arr[index].getFreq()+1);
-			return this.arr[index].getFreq();
+		if(this.noDuplicate){
+			if(this.contains(e)){
+				int index = this.indexOf(e);
+				this.arr[index].setFreq(this.arr[index].getFreq()+1);
+				return this.arr[index].getFreq();
+			}
 		}
 
 		this.arr[this.size] = new Node<E>(e);
@@ -79,9 +100,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 		if(this.size == 0)
 			return -1;
 
-		if(this.arr[0].getFreq() > 1){
-			this.arr[0].setFreq(this.arr[0].getFreq() - 1);
-			return this.arr[0].getFreq();
+		if(this.noDuplicate){
+			if(this.arr[0].getFreq() > 1){
+				this.arr[0].setFreq(this.arr[0].getFreq() - 1);
+				return this.arr[0].getFreq();
+			}
 		}
 
 		Node<E> val = this.arr[0];
@@ -197,9 +220,11 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 		if(index < 0)	return -1;
 
-		if(this.arr[index].getFreq() > 1){
-			this.arr[index].setFreq(this.arr[index].getFreq() - 1);
-			return this.arr[index].getFreq();
+		if(this.noDuplicate){
+			if(this.arr[index].getFreq() > 1){
+				this.arr[index].setFreq(this.arr[index].getFreq() - 1);
+				return this.arr[index].getFreq();
+			}
 		}
 
 		this.arr[index] = this.arr[--this.size];
@@ -274,6 +299,7 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 
 		for(int i=0; i<this.size; i++)
 			temp[i] = this.arr[i];
+		this.arr = temp;
 	}
 
 	/**
@@ -294,10 +320,19 @@ public class Heap<E extends Comparable<E>> implements Comparable<E>
 	public String toString()
 	{
 		String str = "";
-		for(int i=0; i<this.size; i++)
-		{
-			str += String.valueOf(this.arr[i].getData() + "," + this.arr[i].getFreq() + " | ") ;
+
+		if(!this.noDuplicate){
+			for(int i=0; i<this.size; i++)
+			{
+				str += String.valueOf(this.arr[i].getData() + " | ") ;
+			}
+		}else{
+			for(int i=0; i<this.size; i++)
+			{
+				str += String.valueOf(this.arr[i].getData() + "," + this.arr[i].getFreq() + " | ") ;
+			}
 		}
+
 		return str;
 	}
 
