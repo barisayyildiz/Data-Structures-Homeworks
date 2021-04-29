@@ -158,6 +158,8 @@ public class Main
 
 	public static void testCases2(){
 
+		System.out.println("\n// ================== TEST CASES FOR PART 2 ================== //\n");
+
 		Random r = new Random();
 
 		int low = 0;
@@ -208,7 +210,8 @@ public class Main
 
 		
 		System.out.println("Mode of BST : " + bst.find_mode());
-		System.out.println("Mode of array : " + findModeArrayList(arr));
+		System.out.println("Mode of array : " + findModeArrayList(arr) + "\n");
+		System.out.println("If there is an error finding the modes, the values should have the same frequency...\n");
 
 		
 	}
@@ -239,22 +242,9 @@ public class Main
 	public static void main(String args[])
 	{
 
-		// testCases();
+		testCases();
 
 		testCases2();
-
-		// BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
-
-		// bst.add(5);
-		// bst.add(7);
-		// bst.add(8);
-		// bst.add(6);
-		// bst.add(6);
-		// bst.add(2);
-		// bst.add(3);
-		// bst.add(4);
-
-		// System.out.println(bst.find_mode());
 		
 		
 	}
