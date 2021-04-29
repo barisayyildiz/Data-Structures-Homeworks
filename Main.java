@@ -3,6 +3,10 @@ import com.structures.*;
 import com.lib.*;
 
 import java.util.Iterator;
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Main
 {
@@ -152,10 +156,105 @@ public class Main
 
 	}
 
+	public static void testCases2(){
+
+		Random r = new Random();
+
+		int low = 0;
+		int high = 5000;
+		int result;
+
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+
+		for(int i=0; i<3000; i++){
+			result = r.nextInt(high-low) + low;
+			bst.add(result);
+			arr.add(result);
+		}
+
+		Collections.sort(arr);
+
+		for(int i=0; i<100; i++){
+			result = r.nextInt(3000);
+			System.out.println("Number of occurences of " + result + "\tin BST is " + bst.find(result) + ", in array : " + Collections.frequency(arr, result));
+		}
+
+		System.out.println("\n\n");
+
+		for(int i=0; i<10; i++){
+			System.out.println("Number of occurences of " + (6000+(i*10)) + "\tin BST is " + bst.find((6000+(i*10))) + ", in array : " + Collections.frequency(arr, (6000+(i*10))));
+		}
+
+
+		System.out.println("\n// ==================== REMOVAL ==================== //\n");
+
+		for(int i=0; i<100; i++){
+			result = r.nextInt(3000 - i);
+			arr.get(result);
+			arr.remove((Integer)result);
+			bst.remove(result);
+			System.out.println("After removal, number of occurences of " + result + "\tin BST is " + bst.find(result) + ", in array : " + Collections.frequency(arr, result));
+		}
+
+		System.out.println("\n\n");
+
+		for(int i=0; i<10; i++){
+			result = (6000+(i*10));
+			arr.remove((Integer)result);
+			bst.remove((Integer)result);
+			System.out.println("After removal, number of occurences of " + result + "\tin BST is " + bst.find(result) + ", in array : " + Collections.frequency(arr, result));
+		}
+
+		
+		System.out.println("Mode of BST : " + bst.find_mode());
+		System.out.println("Mode of array : " + findModeArrayList(arr));
+
+		
+	}
+
+	public static int findModeArrayList(ArrayList<Integer> arr){
+		
+		int mode = arr.get(0);
+		int max = 0;
+		int counter = 1;
+		int currentVal = arr.get(0);
+		
+		for(int i=1; i<arr.size(); i++){
+			if(arr.get(i) != currentVal){
+				if(counter > max){
+					mode = currentVal;
+					max = counter;
+				}
+				counter = 1;
+				currentVal = arr.get(i);
+				continue;
+			}
+			counter++;
+		}
+
+		return mode;
+	}
+
 	public static void main(String args[])
 	{
 
-		testCases();
+		// testCases();
+
+		testCases2();
+
+		// BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+
+		// bst.add(5);
+		// bst.add(7);
+		// bst.add(8);
+		// bst.add(6);
+		// bst.add(6);
+		// bst.add(2);
+		// bst.add(3);
+		// bst.add(4);
+
+		// System.out.println(bst.find_mode());
 		
 		
 	}

@@ -101,17 +101,18 @@ public class BinarySearchTree<E extends Comparable<E>>
 
 	/**
 	 * calls the private find_mode_recur method
-	 * @return return of the find_mode_recur
+	 * @return key of the pair object returned from find_mode_recur
 	 */
 	public E find_mode(){
-		return this.find_mode_recur();
+		Pair<E,Integer> pair = this.find_mode_recur();
+		return pair.getKey();
 	}
 
 	/**
 	 * Returns the mode value
-	 * @return mode value
+	 * @return key-value pair object
 	 */
-	private E find_mode_recur(){
+	private Pair<E,Integer> find_mode_recur(){
 
 		E mode = null;
 		int max = 0;
@@ -125,7 +126,7 @@ public class BinarySearchTree<E extends Comparable<E>>
 		}
 
 		if(this.left != null){
-			pair = this.left.node.findMode();
+			pair = this.left.find_mode_recur();
 			if(pair.getValue() > max){
 				max = pair.getValue();
 				mode = pair.getKey();
@@ -133,14 +134,14 @@ public class BinarySearchTree<E extends Comparable<E>>
 		}
 
 		if(this.right != null){
-			pair = this.right.node.findMode();
+			pair = this.right.find_mode_recur();
 			if(pair.getValue() > max){
 				max = pair.getValue();
 				mode = pair.getKey();
 			}
 		}
 
-		return mode;
+		return new Pair<E,Integer>(mode, max);
 
 	}
 
