@@ -1,22 +1,22 @@
 package com;
 
-import java.util.LinkedList;
+import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
-public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V> 
+public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V> 
 {
 	private int size;
 	private int cap;
 	private final double loadFactor = 1.5;
 	private final int INIT_CAP = 5;
-	private LinkedList<Node<K,V>>[] arr;
+	private TreeSet<Node<K,V>>[] arr;
 
 	@SuppressWarnings("unchecked")
-	public HashMapList(){
+	public HashMapTree(){
 		this.size = 0;
 		this.cap = INIT_CAP;
-		this.arr = (LinkedList<Node<K,V>>[]) new LinkedList<?>[this.cap];
+		this.arr = (TreeSet<Node<K,V>>[]) new TreeSet<?>[this.cap];
 	}
 
 	public V get(Object key){
@@ -49,9 +49,9 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		if(index >= this.cap || index < 0)	return null;
 
 		if(this.arr[index] == null){
-			this.arr[index] = new LinkedList<Node<K,V>>();
+			this.arr[index] = new TreeSet<Node<K,V>>();
 		}
-		this.arr[index].addLast(new Node<K,V>(key,value));
+		this.arr[index].add(new Node<K,V>(key,value));
 
 		this.size++;
 
@@ -106,7 +106,7 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		Node<K,V> current;
 		int index;
 
-		LinkedList<Node<K,V>>[] temp = (LinkedList<Node<K,V>>[]) new LinkedList<?>[this.cap*2+1];
+		TreeSet<Node<K,V>>[] temp = (TreeSet<Node<K,V>>[]) new TreeSet<?>[this.cap*2+1];
 			
 
 		for(int i=0; i<this.cap; i++){
@@ -119,10 +119,10 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				index = this.hash(current.getKey());
 
 				if(temp[i] == null){
-					temp[i] = new LinkedList<Node<K,V>>();
+					temp[i] = new TreeSet<Node<K,V>>();
 				}
 
-				temp[i].addLast(new Node<K,V>(current.getKey(), current.getValue()));
+				temp[i].add(new Node<K,V>(current.getKey(), current.getValue()));
 			}
 
 		}

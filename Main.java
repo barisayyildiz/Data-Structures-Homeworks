@@ -1,5 +1,5 @@
 import com.*;
-// import java.util.*;
+import java.util.*;
 
 public class Main
 {
@@ -21,7 +21,7 @@ public class Main
 
 		// System.out.println(mapIter);
 
-		HashMapList<Integer,String> hmap = new HashMapList<Integer,String>();
+		HashMapTree<Integer,String> hmap = new HashMapTree<Integer,String>();
 
 		hmap.put(1,"baris");
 		hmap.put(2,"baqwes");
@@ -32,7 +32,12 @@ public class Main
 		hmap.put(7,"b2qfqws");
 
 		System.out.println(hmap);
-	
+
+		hmap.remove(7);
+		hmap.remove(6);
+		hmap.remove(1);
+
+		System.out.println(hmap);
 
 
 
