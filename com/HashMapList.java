@@ -84,6 +84,7 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				value = current.getValue();
 				// this.arr[index].remove(counter);
 				this.arr[index].remove(new Node<K,V>(current.getKey(), current.getValue()));
+				this.size--;
 				return value;
 			}
 			counter++;
