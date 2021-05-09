@@ -98,6 +98,13 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				
 				currIndex = (index+incrememt)%this.cap;
 
+				if(counter > this.cap/2){
+					this.rehash();
+					counter = 0;
+					incrememt = 0;
+					currIndex = index;
+				}
+
 			}
 		}
 

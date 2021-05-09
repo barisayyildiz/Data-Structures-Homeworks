@@ -28,9 +28,10 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	public MapIterator(){
 		super();
 		this.counter = 0;
+		this.setInitial = false;
+		
 		this.setKeyArray();
 
-		this.setInitial = false;
 	}
 
 	/**
@@ -40,10 +41,11 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	public MapIterator(K key){
 		super();
 		this.counter = 0;
-		this.setKeyArray();
-
 		this.initialKey = key;
 		this.setInitial = true;
+
+		this.setKeyArray();
+
 
 	}
 
@@ -81,9 +83,9 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	 * returns the next key
 	 * @return next key
 	 */
-	public K next(){
+	public K next()throws IndexOutOfBoundsException{
 
-		if(this.counter == size()) throw new IndexOutOfBoundsException();
+		if(this.counter == size()) throw new IndexOutOfBoundsException("index is out of bounds");
 
 		this.setKeyArray();
 		return this.keyArr[this.counter++];
@@ -93,8 +95,8 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	 * returns the prev key
 	 * @return prev key
 	 */
-	public K prev(){
-		if(this.counter < 0) throw new IndexOutOfBoundsException();
+	public K prev()throws IndexOutOfBoundsException{
+		if(this.counter < 0) throw new IndexOutOfBoundsException("index is out of bounds");
 
 		this.setKeyArray();
 		return this.keyArr[--this.counter];
