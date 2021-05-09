@@ -80,6 +80,8 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		if(this.arr[index] == null){
 			this.arr[index] = new Node<K,V>(key,value);
 		}else{
+			
+			if(this.contains(key)) return null;
 
 			int counter = 0, incrememt = 0;
 			int currIndex = index;
@@ -163,6 +165,15 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	 */
 	public int size(){
 		return this.size;
+	}
+
+	private boolean contains(K key){
+		for(int i=0; i<this.cap; i++){
+			if(this.arr[i] == null)	continue;
+			if(this.arr[i].getKey().compareTo(key) == 0) return true;
+		}
+		return false;
+
 	}
 
 	/**
