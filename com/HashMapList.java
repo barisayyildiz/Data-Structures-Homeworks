@@ -156,10 +156,13 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		Node<K,V> current;
 		int index;
 
-		LinkedList<Node<K,V>>[] temp = (LinkedList<Node<K,V>>[]) new LinkedList<?>[this.cap*2+1];
+		int oldCap = this.cap;
+		this.cap = 2*this.cap+1;
+
+		LinkedList<Node<K,V>>[] temp = (LinkedList<Node<K,V>>[]) new LinkedList<?>[this.cap];
 			
 
-		for(int i=0; i<this.cap; i++){
+		for(int i=0; i<oldCap; i++){
 			if(this.arr[i] == null || this.arr[i].size() == 0)	continue;
 
 			iter = this.arr[i].iterator();
@@ -168,17 +171,16 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				current = iter.next();
 				index = this.hash(current.getKey());
 
-				if(temp[i] == null){
-					temp[i] = new LinkedList<Node<K,V>>();
+				if(temp[index] == null){
+					temp[index] = new LinkedList<Node<K,V>>();
 				}
 
-				temp[i].addLast(new Node<K,V>(current.getKey(), current.getValue()));
+				temp[index].addLast(new Node<K,V>(current.getKey(), current.getValue()));
 			}
 
 		}
 
 		this.arr = temp;
-		this.cap *= 2 + 1;
 
 	}
 

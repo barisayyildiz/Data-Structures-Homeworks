@@ -155,10 +155,13 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		Node<K,V> current;
 		int index;
 
-		TreeSet<Node<K,V>>[] temp = (TreeSet<Node<K,V>>[]) new TreeSet<?>[this.cap*2+1];
+		int oldCap = this.cap;
+		this.cap = 2*this.cap+1;
+
+		TreeSet<Node<K,V>>[] temp = (TreeSet<Node<K,V>>[]) new TreeSet<?>[this.cap];
 			
 
-		for(int i=0; i<this.cap; i++){
+		for(int i=0; i<oldCap; i++){
 			if(this.arr[i] == null || this.arr[i].size() == 0)	continue;
 
 			iter = this.arr[i].iterator();
@@ -167,17 +170,16 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				current = iter.next();
 				index = this.hash(current.getKey());
 
-				if(temp[i] == null){
-					temp[i] = new TreeSet<Node<K,V>>();
+				if(temp[index] == null){
+					temp[index] = new TreeSet<Node<K,V>>();
 				}
 
-				temp[i].add(new Node<K,V>(current.getKey(), current.getValue()));
+				temp[index].add(new Node<K,V>(current.getKey(), current.getValue()));
 			}
 
 		}
 
 		this.arr = temp;
-		this.cap *= 2 + 1;
 
 	}
 
