@@ -61,7 +61,7 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 		while(iter.hasNext()){
 			current = iter.next();
-			if(current.getKey() == myKey){
+			if(current.getKey().compareTo(myKey) == 0){
 				return current.getValue();
 			}
 		}
@@ -77,6 +77,7 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	public V put(K key, V value){
 
 		Iterator<Node<K,V>> iter;
+		Node<K,V> curr;
 
 		int index = this.hash(key);
 
@@ -86,9 +87,14 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 			this.arr[index] = new TreeSet<Node<K,V>>();
 		}
 
+		// change value, if the key exists
 		iter = this.arr[index].iterator();
 		while(iter.hasNext()){
-			if(iter.next().getKey().equals(key)) return null;
+			curr = iter.next();
+			if(curr.getKey().equals(key)){
+				curr.setValue(value);
+				return value;
+			}
 		}
 
 		this.arr[index].add(new Node<K,V>(key,value));
@@ -126,10 +132,11 @@ public class HashMapTree<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 		while(iter.hasNext()){
 			current = iter.next();
-			if(current.getKey() == myKey){
+			if(current.getKey().compareTo(myKey) == 0){
 				value = current.getValue();
 				// this.arr[index].remove(counter);
 				this.arr[index].remove(new Node<K,V>(current.getKey(), current.getValue()));
+				this.size--;
 				return value;
 			}
 			counter++;

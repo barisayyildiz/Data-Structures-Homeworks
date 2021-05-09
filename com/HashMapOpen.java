@@ -19,9 +19,9 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	/** size of the array */
 	private int cap;
 	/** maximum loadfactor */
-	private final double loadFactor = 0.75;
+	private final double loadFactor = 0.6;
 	/** initial capacity */
-	private final int INIT_CAP = 5;
+	private final int INIT_CAP = 11;
 	/** array of node */
 	private Node<K,V>[] arr; // circular array
 
@@ -53,6 +53,8 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		int currIndex = index;
 
 		while(true){
+
+			System.out.println("currIndex :" + currIndex);
 			
 			if(this.arr[currIndex].getKey().compareTo(myKey) == 0){
 				return this.arr[currIndex].getValue();
@@ -80,8 +82,6 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		if(this.arr[index] == null){
 			this.arr[index] = new Node<K,V>(key,value);
 		}else{
-			
-			if(this.contains(key)) return null;
 
 			int counter = 0, incrememt = 0;
 			int currIndex = index;
@@ -90,22 +90,23 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				counter++;
 				incrememt = counter*counter;
 
-				if(this.arr[(index+incrememt)%this.cap] == null){
-					this.arr[currIndex].setNext((index+incrememt)%this.cap);					// orayı göster
-					this.arr[(index+incrememt)%this.cap] = new Node<K,V>(key,value);	// orayı init et
+				// if the key exists, update
+				if(this.arr[currIndex].getKey().compareTo(key) == 0){
+					this.arr[currIndex].setValue(value);
+					return value;
+				}
+
+				if(this.arr[currIndex].getNext() == -1){
+					this.arr[(index+incrememt)%this.cap] = new Node<K,V>(key,value);
+					this.arr[currIndex].setNext((index+incrememt)%this.cap);
 					break;
 				}
-				
-				currIndex = (index+incrememt)%this.cap;
 
-				if(counter > this.cap/2){
-					this.rehash();
-					counter = 0;
-					incrememt = 0;
-					currIndex = index;
-				}
+				currIndex = this.arr[currIndex].getNext();
 
 			}
+
+
 		}
 
 		this.size++;
@@ -128,32 +129,43 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	public V remove(Object key){
 
 		K myKey = (K)key;
-		if(myKey == null) return null;
+		if(myKey == null)	return null;
 
 		int index = this.hash(myKey);
 
 		if(index >= this.cap || index < 0 || this.arr[index] == null)	return null;
 
-		int currIndex = index;
 
-		// find the node that is going to be deleted
-		while(this.arr[currIndex].getKey().compareTo(myKey) != 0){
-			currIndex = this.arr[currIndex].getNext();
+		int prevIndex = index;
+
+		while(this.arr[index].getKey().compareTo(myKey) != 0){
+			prevIndex = index;
+			index = this.arr[index].getNext();
+			if(index == -1)	return null;
+		}
+
+		// in the tail
+		if(this.arr[index].getNext() == -1){
+			this.arr[prevIndex].setNext(-1);
+			this.size--;
+			V val = this.arr[index].getValue();
+			this.arr[index] = null;
+			return val;
 		}
 
 		while(true){
-			int nextIndex = this.arr[currIndex].getNext();
 
-			if(nextIndex == -1){
-				V value = this.arr[currIndex].getValue();
-				this.arr[currIndex] = null;
+			this.arr[index].setValue(this.arr[index].getValue());
+			this.arr[index].setKey(this.arr[index].getKey());
+
+			if(this.arr[this.arr[index].getNext()].getNext() == -1){
+				this.arr[index].setNext(-1);
+				V val = this.arr[index].getValue();
+				this.arr[this.arr[index].getNext()] = null;
 				this.size--;
-				return value;
+				return val;				
 			}
-
-			this.arr[currIndex] = this.arr[nextIndex];
-			currIndex = nextIndex;
-
+	
 		}
 
 	}
@@ -172,15 +184,6 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	 */
 	public int size(){
 		return this.size;
-	}
-
-	private boolean contains(K key){
-		for(int i=0; i<this.cap; i++){
-			if(this.arr[i] == null)	continue;
-			if(this.arr[i].getKey().compareTo(key) == 0) return true;
-		}
-		return false;
-
 	}
 
 	/**
@@ -212,15 +215,32 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				counter++;
 				incrememt = counter*counter;
 
-				if(temp[(index+incrememt)%this.cap] == null){
-					temp[currIndex].setNext((index+incrememt)%this.cap);																						// orayı göster
-					temp[(index+incrememt)%this.cap] = new Node<K,V>(this.arr[i].getKey(), this.arr[i].getValue());	// orayı init et
+				if(temp[currIndex].getNext() == -1){
+					temp[(index+incrememt)%this.cap] = new Node<K,V>(this.arr[i].getKey(), this.arr[i].getValue());
+					temp[currIndex].setNext((index+incrememt)%this.cap);
 					break;
 				}
-				
-				currIndex = (index+incrememt)%this.cap;
+
+				currIndex = temp[currIndex].getNext();
 
 			}
+
+			// int counter = 0, incrememt = 0;
+			// int currIndex = index;
+
+			// while(true){
+			// 	counter++;
+			// 	incrememt = counter*counter;
+
+			// 	if(temp[(index+incrememt)%this.cap] == null){
+			// 		temp[currIndex].setNext((index+incrememt)%this.cap);																						// orayı göster
+			// 		temp[(index+incrememt)%this.cap] = new Node<K,V>(this.arr[i].getKey(), this.arr[i].getValue());	// orayı init et
+			// 		break;
+			// 	}
+				
+			// 	currIndex = (index+incrememt)%this.cap;
+
+			// }
 
 		}
 
