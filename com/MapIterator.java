@@ -51,11 +51,16 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	}
 
 	public K next(){
+
+		if(this.counter == size()) throw new IndexOutOfBoundsException();
+
 		this.setKeyArray();
 		return this.keyArr[this.counter++];
 	}
 	
 	public K prev(){
+		if(this.counter < 0) throw new IndexOutOfBoundsException();
+
 		this.setKeyArray();
 		return this.keyArr[--this.counter];
 	}
