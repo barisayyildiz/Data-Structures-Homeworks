@@ -77,6 +77,8 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 	 */
 	public V put(K key, V value){
 
+		Iterator<Node<K,V>> iter;
+
 		int index = this.hash(key);
 
 		if(index >= this.cap || index < 0)	return null;
@@ -84,6 +86,12 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		if(this.arr[index] == null){
 			this.arr[index] = new LinkedList<Node<K,V>>();
 		}
+
+		iter = this.arr[index].iterator();
+		while(iter.hasNext()){
+			if(iter.next().getKey().equals(key)) return null;
+		}
+
 		this.arr[index].addLast(new Node<K,V>(key,value));
 
 		this.size++;

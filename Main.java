@@ -34,6 +34,7 @@ public class Main
 		hmap.put(6,"qwe");
 		hmap.put(7,"qwe");
 		hmap.put(8,"qwe");
+		hmap.put(8,"123213");
 		// hmap.put(9,"qwe");
 		// hmap.put(10,"qwe");
 		// hmap.put(11,"qwe");
@@ -45,7 +46,7 @@ public class Main
 
 		System.out.println(hmap);
 
-		hmap.remove(8);
+		hmap.remove(4);
 
 		// hmap.put(1,"baris");
 		// hmap.put(2,"baqwes");
