@@ -2,23 +2,52 @@ package com;
 
 import java.util.LinkedList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 
+/**
+ * @author Barış Ayyıldız
+ * 
+ * HashMapList
+ * HashMap that is implemented with a LinkedList
+ * part-2
+ * 
+ */
+
+
+/**
+ * @param K key type, it should be compareable
+ * @param V value type
+ */
 public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V> 
 {
+	// data fields
+
+	/** number of elements in the hashmap */
 	private int size;
+	/** size of the linkedlist */
 	private int cap;
+	/** maximum loadfactor */
 	private final double loadFactor = 1.5;
+	/** initial capacity */
 	private final int INIT_CAP = 5;
+	/** node's of linkedlist */
 	private LinkedList<Node<K,V>>[] arr;
 
+	/**
+	 * zero parameter constructor
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMapList(){
 		this.size = 0;
 		this.cap = INIT_CAP;
 		this.arr = (LinkedList<Node<K,V>>[]) new LinkedList<?>[this.cap];
 	}
-
+	
+	/**
+	 * returns the value with the matching key
+	 * @param key key parameter
+	 * @return null if the key's data type is not K or not found in the hashmap, if it is found returns the matching value
+	 */
+	@SuppressWarnings("unchecked")
 	public V get(Object key){
 
 		K myKey = (K)key;
@@ -41,7 +70,11 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * puts key,value pair to the hashmap
+	 * @param key key
+	 * @param value value
+	 */
 	public V put(K key, V value){
 
 		int index = this.hash(key);
@@ -64,6 +97,12 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 	}
 
+	/**
+	 * removes the key,value pair based on the parameter key
+	 * @param key key
+	 * @return deleted value, or null if it is not deleted
+	 */
+	@SuppressWarnings("unchecked")
 	public V remove(Object key){
 
 		K myKey = (K)key;
@@ -82,7 +121,6 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 			current = iter.next();
 			if(current.getKey() == myKey){
 				value = current.getValue();
-				// this.arr[index].remove(counter);
 				this.arr[index].remove(new Node<K,V>(current.getKey(), current.getValue()));
 				this.size--;
 				return value;
@@ -93,14 +131,25 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		return null;
 	}
 
+	/**
+	 * checks if the hashmap is empty
+	 * @return true if the hashmap is empty
+	 */
 	public boolean isEmpty(){
 		return this.size == 0;
 	}
 
+	/**
+	 * returns the number of elements in the hashmap
+	 * @return number of elements in the hashmap
+	 */
 	public int size(){
 		return this.size;
 	}
 
+	/**
+	 * does rehashing when it is needed
+	 */
 	@SuppressWarnings("unchecked")
 	private void rehash(){
 		Iterator<Node<K,V>> iter;
@@ -133,7 +182,11 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 	}
 
-
+	/**
+	 * gets a key and hashes it and returns the index
+	 * @param key key
+	 * @return hashed index
+	 */
 	private int hash(K key){
 		int index = key.hashCode() % this.cap;
 		if(index < 0){
@@ -142,6 +195,10 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		return index;
 	}
 
+	/**
+	 * returns the string representation of the hasmap
+	 * @return string representation of the hasmap 
+	 */
 	@Override
 	public String toString(){
 		String str = "{";
@@ -166,36 +223,72 @@ public class HashMapList<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 
 
+	/**
+	 * Node, private inner class. Holds a key value pair
+	 * @param <K> key, should be compareable
+	 * @param <V> value
+	 */
 	private class Node<K extends Comparable<K>,V> implements Comparable<Node<K,V>>
 	{
+		/** key */
 		private K key;
+		/** value */
 		private V value;
 
+		/**
+		 * constructor
+		 * @param key key
+		 * @param value value
+		 */
 		public Node(K key, V value){
 			this.key = key;
 			this.value = value;
 		}
 
+		/**
+		 * returns the key
+		 * @return key
+		 */
 		public K getKey(){
 			return this.key;
 		}
 
+		/**
+		 * returns the value
+		 * @return value
+		 */
 		public V getValue(){
 			return this.value;
 		}
 
+		/**
+		 * sets the key with key parameter
+		 * @param key key
+		 */
 		public void setKey(K key){
 			this.key = key;
 		}
 
+		/**
+		 * sets the value with value parameter
+		 * @param value value
+		 */
 		public void setValue(V value){
 			this.value = value;
 		}
 
+		/**
+		 * overriden compareTo method
+		 * @return result of the key's compareto method
+		 */
 		public int compareTo(Node<K,V> node){
 			return this.key.compareTo(node.getKey());
 		}
 
+		/**
+		 * overriden equals method
+		 * @return true if the keys are the same
+		 */
 		@Override
 		public boolean equals(Object obj){
 			Node<K,V> temp = (Node<K,V>)obj;

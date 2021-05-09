@@ -2,13 +2,29 @@ package com;
 
 import java.util.HashMap;
 
+/**
+ * @author Barış Ayyıldız
+ * MapIterator that extends HashMap
+ */
+
+/**
+ * @param K key type, it should be compareable
+ * @param V value type
+ */
 public class MapIterator<K,V> extends HashMap<K,V>
 {
+	/** cursor of the iterator */
 	private int counter;
+	/** array of key values */
 	private K[] keyArr;
+	/** initialKey */
 	private K initialKey;
+	/** true, if the initial key is set by the user */
 	private boolean setInitial;
 
+	/**
+	 * zero parameter constructor
+	 */
 	public MapIterator(){
 		super();
 		this.counter = 0;
@@ -17,6 +33,10 @@ public class MapIterator<K,V> extends HashMap<K,V>
 		this.setInitial = false;
 	}
 
+	/**
+	 * one parameter constructor, sets the initialKey to key
+	 * @param key key
+	 */
 	public MapIterator(K key){
 		super();
 		this.counter = 0;
@@ -27,6 +47,9 @@ public class MapIterator<K,V> extends HashMap<K,V>
 
 	}
 
+	/**
+	 * sets key array
+	 */
 	@SuppressWarnings("unchecked")
 	private void setKeyArray(){
 		this.keyArr = (K[])keySet().toArray();
@@ -46,10 +69,18 @@ public class MapIterator<K,V> extends HashMap<K,V>
 
 	}
 
+	/**
+	 * returns true if iterator hasn't exceeded the size of the hashmap
+	 * @return true if iterator hasn't exceeded the size of the hashmap
+	 */
 	public boolean hasNext(){
 		return this.counter < size();
 	}
 
+	/**
+	 * returns the next key
+	 * @return next key
+	 */
 	public K next(){
 
 		if(this.counter == size()) throw new IndexOutOfBoundsException();
@@ -58,6 +89,10 @@ public class MapIterator<K,V> extends HashMap<K,V>
 		return this.keyArr[this.counter++];
 	}
 	
+	/**
+	 * returns the prev key
+	 * @return prev key
+	 */
 	public K prev(){
 		if(this.counter < 0) throw new IndexOutOfBoundsException();
 
