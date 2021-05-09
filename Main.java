@@ -39,68 +39,70 @@ public class Main
 		String rndStr = "";
 		int rndInt = 0;
 
-		// for(int i=0; i<20; i++){
-		// 	rndInt = randomIntger(20);
-		// 	rndStr = randomString();
+		for(int i=0; i<20; i++){
+			rndInt = randomIntger(20);
+			rndStr = randomString();
 
-		// 	hMapList.put(rndInt, rndStr);
-		// 	hMapTree.put(rndInt, rndStr);
-		// 	hMapOpen.put(rndInt, rndStr);
-		// }
+			System.out.println("rand : " + rndInt + ", str : " + rndStr);
 
-		// System.out.println("HashMapList : " +  hMapList);
-		// System.out.println("HashMapTree : " +  hMapTree);
-		// System.out.println("HashMapOpen : " +  hMapOpen + "\n");
+			hMapList.put(rndInt, rndStr);
+			hMapTree.put(rndInt, rndStr);
+			hMapOpen.put(rndInt, rndStr);
+		}
 
-		// System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
-		// System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
-		// System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
+		System.out.println("HashMapList : " +  hMapList);
+		System.out.println("HashMapTree : " +  hMapTree);
+		System.out.println("HashMapOpen : " +  hMapOpen + "\n");
 
-		// System.out.println("\nRemoving the pair with the key value of " + rndInt);
-		// hMapList.remove(rndInt);
-		// hMapTree.remove(rndInt);
-		// hMapOpen.remove(rndInt);
-		// System.out.println("After removal...\n");
-		// System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
-		// System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
-		// System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
+		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
+		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
+		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-		// System.out.println("\nRemoving non existing item 999");
-		// System.out.println("Removed value is " + hMapList.remove(999));
-		// System.out.println("Removed value is " + hMapTree.remove(999));
-		// System.out.println("Removed value is " + hMapOpen.remove(999));
+		System.out.println("\nRemoving the pair with the key value of " + rndInt);
+		hMapList.remove(rndInt);
+		hMapTree.remove(rndInt);
+		hMapOpen.remove(rndInt);
+		System.out.println("After removal...\n");
+		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
+		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
+		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-
-
-
-		// System.out.println("\n =============== Adding 100 more items =============== \n");
-
-		// for(int i=0; i<100; i++){
-		// 	rndInt = randomIntger(200);
-		// 	rndStr = randomString();
-
-		// 	hMapList.put(rndInt, rndStr);
-		// 	hMapTree.put(rndInt, rndStr);
-		// 	hMapOpen.put(rndInt, rndStr);
-		// }
-
-		// System.out.println("HashMapList : " +  hMapList + "\n");
-		// System.out.println("HashMapTree : " +  hMapTree + "\n");
-		// System.out.println("HashMapOpen : " +  hMapOpen + "\n");
+		System.out.println("\nRemoving non existing item 999");
+		System.out.println("Removed value is " + hMapList.remove(999));
+		System.out.println("Removed value is " + hMapTree.remove(999));
+		System.out.println("Removed value is " + hMapOpen.remove(999));
 
 
-		// System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
-		// System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
-		// System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-		// System.out.println("\nRemoving the pair with the key value of " + rndInt);
-		// hMapList.remove(rndInt);
-		// hMapTree.remove(rndInt);
-		// hMapOpen.remove(rndInt);
-		// System.out.println("After removal...\n");
-		// System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
-		// System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
-		// System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
+
+		System.out.println("\n =============== Adding 100 more items =============== \n");
+
+		for(int i=0; i<100; i++){
+			rndInt = randomIntger(200);
+			rndStr = randomString();
+
+			hMapList.put(rndInt, rndStr);
+			hMapTree.put(rndInt, rndStr);
+			hMapOpen.put(rndInt, rndStr);
+		}
+
+		System.out.println("HashMapList : " +  hMapList + "\n");
+		System.out.println("HashMapTree : " +  hMapTree + "\n");
+		System.out.println("HashMapOpen : " +  hMapOpen + "\n");
+
+
+		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
+		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
+		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
+
+		System.out.println("\nRemoving the pair with the key value of " + rndInt);
+		hMapList.remove(rndInt);
+		hMapTree.remove(rndInt);
+		hMapOpen.remove(rndInt);
+		System.out.println("After removal...\n");
+		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
+		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
+		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
 
 
@@ -135,17 +137,11 @@ public class Main
 		System.out.println("After removal...\n");
 		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
-		// System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
-		hMapOpen.get(rndInt);
+		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-		System.out.println("HashMapList size : " + hMapList.size());
-		System.out.println("HashMapTree size : " + hMapTree.size());
-		System.out.println("HashMapOpen size : " + hMapOpen.size());
-
-
-
-
-
+		System.out.println("\nSize of HashMapList : " + hMapList.size());
+		System.out.println("Size of HashMapTree : " + hMapTree.size());
+		System.out.println("Size of HashMapOpen : " + hMapOpen.size());
 
 	}
 
@@ -171,19 +167,26 @@ public class Main
 	public static void testCases2(){
 
 		HashMapOpen<Integer,String> hMapOpen = new HashMapOpen<Integer,String>();
+		hMapOpen.put(17,"qawe");
+		hMapOpen.put(17,"qawe");
+		hMapOpen.put(13,"qawe");
 		hMapOpen.put(8,"qawe");
-		hMapOpen.put(5,"qawe");
+		hMapOpen.put(14,"qawe");
+		hMapOpen.put(2,"qawe");
 		hMapOpen.put(11,"qawe");
+		hMapOpen.put(12,"qawe");
+		hMapOpen.put(2,"qawe");
+		hMapOpen.put(16,"qawe");
+		hMapOpen.put(0,"qawe");
+		hMapOpen.put(3,"qawe");
+		hMapOpen.put(5,"qawe");
+		hMapOpen.put(6,"qawe");
+		hMapOpen.put(7,"qawe");
+		hMapOpen.put(10,"qawe");
+		hMapOpen.put(16,"qawe");
 		hMapOpen.put(18,"qawe");
 		hMapOpen.put(6,"qawe");
-		hMapOpen.put(2,"qawe");
-		hMapOpen.put(17,"qawe");
-		hMapOpen.put(3,"qawe");
-		hMapOpen.put(13,"qawe");
-		hMapOpen.put(21,"qawe");
-		hMapOpen.put(34,"qawe");
-		hMapOpen.put(-34,"qawe");
-		hMapOpen.put(-34,"12317273");
+		hMapOpen.put(11,"qawe");
 
 		System.out.println(hMapOpen);
 
