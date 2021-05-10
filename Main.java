@@ -166,27 +166,6 @@ public class Main
 		return rand.nextInt(n);
 	}
 
-	public static void testCases2(){
-
-		HashMapOpen<Integer,String> hmap = new HashMapOpen<Integer,String>();
-		// hmap.put(randomIntger(100), randomString());
-
-		hmap.put(2, "a");
-		hmap.put(13, "b");
-		hmap.put(24, "c");
-		hmap.put(7, "d");
-		hmap.put(8, "e");
-		hmap.put(99, "f");
-
-		hmap.remove(2);
-		hmap.remove(24);
-		hmap.remove(99);
-		hmap.remove(13);
-
-		System.out.println(hmap);
-
-	}
-
 	public static void main(String args[]){
 
 		testCases();
