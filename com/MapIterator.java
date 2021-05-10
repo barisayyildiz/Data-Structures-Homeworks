@@ -83,9 +83,9 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	 * returns the next key
 	 * @return next key
 	 */
-	public K next()throws IndexOutOfBoundsException{
+	public K next(){
 
-		if(this.counter == size()) throw new IndexOutOfBoundsException("index is out of bounds");
+		if(this.counter == size()) this.counter = 0;
 
 		this.setKeyArray();
 		return this.keyArr[this.counter++];
@@ -95,8 +95,8 @@ public class MapIterator<K,V> extends HashMap<K,V>
 	 * returns the prev key
 	 * @return prev key
 	 */
-	public K prev()throws IndexOutOfBoundsException{
-		if(this.counter < 0) throw new IndexOutOfBoundsException("index is out of bounds");
+	public K prev(){
+		if(this.counter == 0) this.counter = size();
 
 		this.setKeyArray();
 		return this.keyArr[--this.counter];

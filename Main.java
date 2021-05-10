@@ -12,26 +12,22 @@ public class Main
 		MapIterator<String,Integer> hashMapIter = new MapIterator<String,Integer>();
 
 		hashMapIter.put("baris",100); hashMapIter.put("asya",95);	hashMapIter.put("ruzgar",85);	hashMapIter.put("pelin",70);	hashMapIter.put("orhun",88);
-		hashMapIter.next();	hashMapIter.next();	hashMapIter.prev();
-
-		System.out.println("next : " + hashMapIter.next());
-		System.out.println("next : " + hashMapIter.next());
-		System.out.println("next : " + hashMapIter.prev());
-		System.out.println("next : " + hashMapIter.next());
-		System.out.println("next : " + hashMapIter.next());
 
 		System.out.println("\nHashMap : " + hashMapIter);
-		System.out.println("testing hasNext, prev and next methods\n");
 
-		while(hashMapIter.hasNext()){
-			System.out.println(hashMapIter.next());
-		}
+		System.out.println("\nTest Case ID 000 and 001 : ");
 
-		try{
-			System.out.println(hashMapIter.next());
-		}catch(Exception exception){
-			System.out.println(exception.getMessage() + "\n");
-		}
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("prev : " + hashMapIter.prev());
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("prev : " + hashMapIter.prev());
+		System.out.println("prev : " + hashMapIter.prev());
+
+		System.out.println("\nTest Case ID 002 : ");
+		System.out.println("hasNext : " + hashMapIter.hasNext());
+
 
 		MapIterator<String,Integer> hashMapIter2 = new MapIterator<String,Integer>("baris");
 		hashMapIter2.put("baris",100); hashMapIter2.put("asya",95);	hashMapIter2.put("ruzgar",85);	hashMapIter2.put("pelin",70);	hashMapIter2.put("orhun",88);
@@ -39,6 +35,7 @@ public class Main
 		System.out.println("\nHashMap : " + hashMapIter2);
 		System.out.println("One parameter constructor with the parameter \'baris\'");
 
+		System.out.println("\nTest Case ID 000 and 002 : ");
 		while(hashMapIter2.hasNext()){
 			System.out.println(hashMapIter2.next());
 		}
@@ -52,6 +49,8 @@ public class Main
 		String rndStr = "";
 		int rndInt = 0;
 
+		System.out.println("\nTest Case ID 003, 004 and 005 : ");
+		System.out.println("\n =============== Adding 100 more items =============== \n");
 		for(int i=0; i<20; i++){
 			rndInt = randomIntger(20);
 			rndStr = randomString();
@@ -61,10 +60,12 @@ public class Main
 			hMapOpen.put(rndInt, rndStr);
 		}
 
+		System.out.println("\nTest Case ID 006, 007 and 008 : ");
 		System.out.println("\nFor HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
+		System.out.println("\nTest Case ID 009, 010 and 011 : ");
 		System.out.println("\nRemoving the pair with the key value of " + rndInt);
 		hMapList.remove(rndInt);
 		hMapTree.remove(rndInt);
@@ -74,7 +75,8 @@ public class Main
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-		System.out.println("\nRemoving non existing item 999");
+		System.out.println("\nTest Case ID 009, 010 and 011 : ");
+		System.out.println("Removing non existing item 999");
 		System.out.println("Removed value is " + hMapList.remove(999));
 		System.out.println("Removed value is " + hMapTree.remove(999));
 		System.out.println("Removed value is " + hMapOpen.remove(999));
@@ -82,8 +84,8 @@ public class Main
 
 
 
+		System.out.println("\nTest Case ID 003, 004 and 005 : ");
 		System.out.println("\n =============== Adding 100 more items =============== \n");
-
 		for(int i=0; i<100; i++){
 			rndInt = randomIntger(200);
 			rndStr = randomString();
@@ -93,12 +95,13 @@ public class Main
 			hMapOpen.put(rndInt, rndStr);
 		}
 
-
+		System.out.println("\nTest Case ID 006, 007 and 008 : ");
 		System.out.println("\nFor HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-		System.out.println("\nRemoving the pair with the key value of " + rndInt);
+		System.out.println("\nTest Case ID 009, 010 and 011 : ");
+		System.out.println("Removing the pair with the key value of " + rndInt);
 		hMapList.remove(rndInt);
 		hMapTree.remove(rndInt);
 		hMapOpen.remove(rndInt);
@@ -108,8 +111,8 @@ public class Main
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 		
 
+		System.out.println("\nTest Case ID 003, 004 and 005 : ");
 		System.out.println("\n =============== Adding 500 more items =============== \n");
-
 		for(int i=0; i<500; i++){
 			rndInt = randomIntger(2000);
 			rndStr = randomString();
@@ -122,11 +125,13 @@ public class Main
 
 		System.out.println("HashMapOpen : " +  hMapOpen + "\n");
 
+		System.out.println("\nTest Case ID 006, 007 and 008 : ");
 		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 		hMapOpen.get(rndInt);
 
+		System.out.println("\nTest Case ID 009, 010 and 011 : ");
 		System.out.println("\nRemoving the pair with the key value of " + rndInt);
 		hMapList.remove(rndInt);
 		hMapTree.remove(rndInt);
@@ -136,6 +141,7 @@ public class Main
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
+		System.out.println("\nTest Case ID 012, 013 and 014 : ");
 		System.out.println("\nSize of HashMapList : " + hMapList.size());
 		System.out.println("Size of HashMapTree : " + hMapTree.size());
 		System.out.println("Size of HashMapOpen : " + hMapOpen.size());
@@ -183,8 +189,8 @@ public class Main
 
 	public static void main(String args[]){
 
-//		testCases();
-		testCases2();
+		testCases();
+		// testCases2();
 
 	}
 }
