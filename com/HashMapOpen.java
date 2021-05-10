@@ -155,7 +155,7 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 
 		if(index >= this.cap || index < 0 || this.arr[index] == null)	return null;
 
-
+		V val;
 		int prevIndex = index;
 
 		while(this.arr[index].getKey().compareTo(myKey) != 0){
@@ -168,23 +168,28 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 		if(this.arr[index].getNext() == -1){
 			this.arr[prevIndex].setNext(-1);
 			this.size--;
-			V val = this.arr[index].getValue();
+			val = this.arr[index].getValue();
 			this.arr[index] = null;
 			return val;
 		}
+		
+		val = this.arr[index].getValue();
+		index = this.arr[index].getNext();
 
 		while(true){
 
-			this.arr[index].setValue(this.arr[index].getValue());
-			this.arr[index].setKey(this.arr[index].getKey());
+			this.arr[prevIndex].setValue(this.arr[index].getValue());
+			this.arr[prevIndex].setKey(this.arr[index].getKey());
 
-			if(this.arr[this.arr[index].getNext()].getNext() == -1){
-				this.arr[index].setNext(-1);
-				V val = this.arr[index].getValue();
-				this.arr[this.arr[index].getNext()] = null;
+			if(this.arr[index].getNext() == -1){
+				this.arr[prevIndex].setNext(-1);
+				this.arr[index] = null;
 				this.size--;
-				return val;				
+				return val;
 			}
+
+			prevIndex = index;
+			index = this.arr[index].getNext();
 	
 		}
 

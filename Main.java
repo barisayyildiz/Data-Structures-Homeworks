@@ -14,6 +14,15 @@ public class Main
 		hashMapIter.put("baris",100); hashMapIter.put("asya",95);	hashMapIter.put("ruzgar",85);	hashMapIter.put("pelin",70);	hashMapIter.put("orhun",88);
 		hashMapIter.next();	hashMapIter.next();	hashMapIter.prev();
 
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("next : " + hashMapIter.prev());
+		System.out.println("next : " + hashMapIter.next());
+		System.out.println("next : " + hashMapIter.next());
+
+		System.out.println("\nHashMap : " + hashMapIter);
+		System.out.println("testing hasNext, prev and next methods\n");
+
 		while(hashMapIter.hasNext()){
 			System.out.println(hashMapIter.next());
 		}
@@ -25,8 +34,11 @@ public class Main
 		}
 
 		MapIterator<String,Integer> hashMapIter2 = new MapIterator<String,Integer>("baris");
-		hashMapIter2.put("baris",100); hashMapIter2.put("asya",95);	hashMapIter2.put("ruzgar",85);	hashMapIter2.put("pelin",70);	hashMapIter.put("orhun",88);
+		hashMapIter2.put("baris",100); hashMapIter2.put("asya",95);	hashMapIter2.put("ruzgar",85);	hashMapIter2.put("pelin",70);	hashMapIter2.put("orhun",88);
 		
+		System.out.println("\nHashMap : " + hashMapIter2);
+		System.out.println("One parameter constructor with the parameter \'baris\'");
+
 		while(hashMapIter2.hasNext()){
 			System.out.println(hashMapIter2.next());
 		}
@@ -148,9 +160,31 @@ public class Main
 		return rand.nextInt(n);
 	}
 
+	public static void testCases2(){
+
+		HashMapOpen<Integer,String> hmap = new HashMapOpen<Integer,String>();
+		// hmap.put(randomIntger(100), randomString());
+
+		hmap.put(2, "a");
+		hmap.put(13, "b");
+		hmap.put(24, "c");
+		hmap.put(7, "d");
+		hmap.put(8, "e");
+		hmap.put(99, "f");
+
+		hmap.remove(2);
+		hmap.remove(24);
+		hmap.remove(99);
+		hmap.remove(13);
+
+		System.out.println(hmap);
+
+	}
+
 	public static void main(String args[]){
 
-		testCases();
+//		testCases();
+		testCases2();
 
 	}
 }
