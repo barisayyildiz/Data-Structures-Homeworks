@@ -81,29 +81,6 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 			this.arr[index] = new Node<K,V>(key,value);
 		}else{
 
-			// int counter = 0, incrememt = 0;
-			// int currIndex = index;
-
-			// while(true){
-			// 	counter++;
-			// 	incrememt = counter*counter;
-
-			// 	// if the key exists, update
-			// 	if(this.arr[currIndex].getKey().compareTo(key) == 0){
-			// 		this.arr[currIndex].setValue(value);
-			// 		return value;
-			// 	}
-
-			// 	if(this.arr[currIndex].getNext() == -1){
-			// 		this.arr[(index+incrememt)%this.cap] = new Node<K,V>(key,value);
-			// 		this.arr[currIndex].setNext((index+incrememt)%this.cap);
-			// 		break;
-			// 	}
-
-			// 	currIndex = this.arr[currIndex].getNext();
-
-			// }
-
 			if(setIfExists(key, value))	return value;
 
 			int counter = 0, incrememt = 0;
@@ -249,23 +226,6 @@ public class HashMapOpen<K extends Comparable<K>,V> implements KWHashMap<K,V>
 				temp[index] = new Node<K,V>(this.arr[i].getKey(), this.arr[i].getValue());
 				continue;
 			}
-
-			// int counter = 0, incrememt = 0;
-			// int currIndex = index;
-
-			// while(true){
-			// 	counter++;
-			// 	incrememt = counter*counter;
-
-			// 	if(temp[currIndex].getNext() == -1){
-			// 		temp[(index+incrememt)%this.cap] = new Node<K,V>(this.arr[i].getKey(), this.arr[i].getValue());
-			// 		temp[currIndex].setNext((index+incrememt)%this.cap);
-			// 		break;
-			// 	}
-
-			// 	currIndex = temp[currIndex].getNext();
-
-			// }
 
 			int counter = 0, incrememt = 0;
 			int currIndex = index;

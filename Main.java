@@ -116,7 +116,6 @@ public class Main
 		for(int i=0; i<500; i++){
 			rndInt = randomIntger(2000);
 			rndStr = randomString();
-			// rndInt = i;
 
 			hMapList.put(rndInt, rndStr);
 			hMapTree.put(rndInt, rndStr);
@@ -169,7 +168,6 @@ public class Main
 	public static void main(String args[]){
 
 		testCases();
-		// testCases2();
 
 	}
 }
