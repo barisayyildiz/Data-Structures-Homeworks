@@ -140,7 +140,7 @@ public class Main
 		System.out.println("Removing a single element from HashMapList with " + String.valueOf(hMapList.size() + 1)  + " elements took " + (endTime - startTime) / BILLION);
 		System.out.println("For HashMapList key : " + rndInt + ", value : " + hMapList.get(rndInt));
 
-
+		System.out.println("\nTest Case ID 012 : ");
 		System.out.println("Size of HashMapList : " + hMapList.size());
 
 	}
@@ -157,7 +157,7 @@ public class Main
 		// ============= Small Sized HashMapTree
 		HashMapTree<Integer,String> hMapTree = new HashMapTree<Integer,String>();
 
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 004 : ");
 		System.out.println("============================== Adding 20 items ============================== ");
 		
 		startTime = System.nanoTime();
@@ -170,24 +170,25 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 20 elements to HashMapTree took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 007 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		endTime = System.nanoTime();
 		System.out.println("Getting a single element from HashMapTree with " + hMapTree.size()  + " elements took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 010 : ");
 		startTime = System.nanoTime();
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		hMapTree.remove(rndInt);
 		endTime = System.nanoTime();
 		System.out.println("Removing a single element from HashMapTree with " + String.valueOf(hMapTree.size() + 1)  + " elements took " + (endTime - startTime) / BILLION);
 
+		System.out.println("\nTest Case ID 013 : ");
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 
 
 		// ============= Medium Sized HashMapTree
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 004 : ");
 		System.out.println("============================== Adding 100 more items ============================== ");
 		startTime = System.nanoTime();
 		for(int i=0; i<100; i++){
@@ -199,7 +200,7 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 100 elements to HashMapTree took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 007 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		endTime = System.nanoTime();
@@ -207,7 +208,7 @@ public class Main
 
 
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 010 : ");
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		startTime = System.nanoTime();
 		hMapTree.remove(rndInt);
@@ -216,7 +217,7 @@ public class Main
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 
 
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 004 : ");
 		System.out.println("============================== Adding 1000 more items ============================== ");
 		startTime = System.nanoTime();
 		for(int i=0; i<1000; i++){
@@ -228,7 +229,7 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 100 elements to HashMapTree took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 007 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 		endTime = System.nanoTime();
@@ -236,7 +237,7 @@ public class Main
 
 
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 010 : ");
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		startTime = System.nanoTime();
 		hMapTree.remove(rndInt);
@@ -244,7 +245,7 @@ public class Main
 		System.out.println("Removing a single element from HashMapTree with " + String.valueOf(hMapTree.size() + 1)  + " elements took " + (endTime - startTime) / BILLION);
 		System.out.println("For HashMapTree key : " + rndInt + ", value : " + hMapTree.get(rndInt));
 
-
+		System.out.println("\nTest Case ID 013 : ");
 		System.out.println("Size of HashMapTree : " + hMapTree.size());
 
 	}
@@ -261,7 +262,7 @@ public class Main
 		// ============= Small Sized HashMapOpen
 		HashMapOpen<Integer,String> hMapOpen = new HashMapOpen<Integer,String>();
 
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 005 : ");
 		System.out.println("============================== Adding 20 items ============================== ");
 		
 		startTime = System.nanoTime();
@@ -274,13 +275,13 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 20 elements to HashMapOpen took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 008 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 		endTime = System.nanoTime();
 		System.out.println("Getting a single element from HashMapOpen with " + hMapOpen.size()  + " elements took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 011 : ");
 		startTime = System.nanoTime();
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		hMapOpen.remove(rndInt);
@@ -291,7 +292,7 @@ public class Main
 
 
 		// ============= Medium Sized HashMapOpen
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 005 : ");
 		System.out.println("============================== Adding 100 more items ============================== ");
 		startTime = System.nanoTime();
 		for(int i=0; i<100; i++){
@@ -303,7 +304,7 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 100 elements to HashMapOpen took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 007 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 		endTime = System.nanoTime();
@@ -311,7 +312,7 @@ public class Main
 
 
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 011 : ");
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		startTime = System.nanoTime();
 		hMapOpen.remove(rndInt);
@@ -320,7 +321,7 @@ public class Main
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
 
-		System.out.println("\nTest Case ID 003 : ");
+		System.out.println("\nTest Case ID 005 : ");
 		System.out.println("============================== Adding 1000 more items ============================== ");
 		startTime = System.nanoTime();
 		for(int i=0; i<1000; i++){
@@ -332,7 +333,7 @@ public class Main
 		endTime = System.nanoTime();
 		System.out.println("Putting 100 elements to HashMapOpen took " + (endTime - startTime) / BILLION);
 
-		System.out.println("\nTest Case ID 006 : ");
+		System.out.println("\nTest Case ID 008 : ");
 		startTime = System.nanoTime();
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 		endTime = System.nanoTime();
@@ -340,7 +341,7 @@ public class Main
 
 
 
-		System.out.println("\nTest Case ID 009 : ");
+		System.out.println("\nTest Case ID 011 : ");
 		System.out.println("Removing the pair with the key value of " + rndInt);
 		startTime = System.nanoTime();
 		hMapOpen.remove(rndInt);
@@ -348,7 +349,7 @@ public class Main
 		System.out.println("Removing a single element from HashMapOpen with " + String.valueOf(hMapOpen.size() + 1)  + " elements took " + (endTime - startTime) / BILLION);
 		System.out.println("For HashMapOpen key : " + rndInt + ", value : " + hMapOpen.get(rndInt));
 
-
+		System.out.println("\nTest Case ID 014 : ");
 		System.out.println("Size of HashMapOpen : " + hMapOpen.size());
 
 	}
