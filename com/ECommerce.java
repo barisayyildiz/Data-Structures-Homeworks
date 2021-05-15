@@ -184,6 +184,46 @@ public class ECommerce {
 
 	}
 
+	public static void editProduct(String id, String description){
+
+		String row;
+		BufferedReader myreader;
+		BufferedWriter mywriter;
+
+		try{
+
+			myreader = new BufferedReader(new FileReader("products.txt"));
+			mywriter = new BufferedWriter(new FileWriter("temp_products.txt"));
+
+			// read header
+			row = myreader.readLine();
+			mywriter.write(row + "\n");
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+				
+				if(data[0].equals(id)){
+					row = data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";"	+ description + ";" + data[6];
+				}
+
+				mywriter.write(row + "\n");
+			}
+
+			// rename the temp_products.txt to products.txt
+			File file = new File("temp_products.txt");
+			File file2 = new File("products.txt");
+			file.renameTo(file2);
+
+			myreader.close();
+			mywriter.close();
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+		}
+
+	}
+
 
 
 

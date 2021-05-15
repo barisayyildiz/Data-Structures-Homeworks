@@ -47,7 +47,10 @@ public class Main
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
 		String command;
-		
+
+		String productName, description, id;
+		int price, discountedPrice;
+
 		System.out.println("Trader Menu : \n");
 
 		while(flag){
@@ -59,6 +62,7 @@ public class Main
 			System.out.println("5. See list of orders");
 			System.out.println("q. Exit");
 			
+			System.out.print("\nCommand : ");
 			command = scanner.nextLine();
 
 			switch(command){
@@ -66,9 +70,6 @@ public class Main
 					System.out.println(trader.showAllProducts());
 					break;
 				case "2":
-
-					String productName, description;
-					int price, discountedPrice;
 
 					System.out.print("Product name : ");
 					productName = scanner.nextLine();
@@ -87,7 +88,6 @@ public class Main
 
 					break;
 				case "3":
-					String id;
 					System.out.print("Product id : ");
 					id = scanner.nextLine();
 
@@ -95,6 +95,14 @@ public class Main
 
 					break;
 				case "4":
+
+					System.out.print("Product id : ");
+					id = scanner.nextLine();
+					System.out.print("Product Description : ");
+					description = scanner.nextLine();
+
+					trader.editProduct(id, description);
+
 					break;
 				case "5":
 					break;

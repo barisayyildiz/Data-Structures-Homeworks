@@ -24,5 +24,9 @@ public class Trader extends User {
 		ECommerce.removeProduct(id);
 	}
 
+	public void editProduct(String id, String description){
+		ECommerce.editProduct(id, description);
+	}
+
 
 }
