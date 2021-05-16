@@ -120,5 +120,22 @@ public class Customer extends User{
 		return this.searchResult;
 
 	}
+
+	public ArrayList<Product> filterByCategory(String query){
+		ArrayList<Product> temp = new ArrayList<Product>();
+		Iterator<Product> iter = this.searchResult.iterator();
+		Product current;
+
+		while(iter.hasNext()){
+			current = iter.next();
+			if(current.containsCategory(query)){
+				temp.add(current);
+			}
+		}
+		
+		this.searchResult = temp;
+		return this.searchResult;
+
+	}
 	
 }

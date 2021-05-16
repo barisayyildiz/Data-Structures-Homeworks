@@ -1,5 +1,6 @@
 package com;
 
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Product {
@@ -56,6 +57,16 @@ public class Product {
 
 	public String getTrader(){
 		return this.trader;
+	}
+
+	public boolean containsCategory(String query){
+		Iterator<String> iter = this.categoryTree.iterator();
+		String current;
+		while(iter.hasNext()){
+			current = iter.next();
+			if(current.contains(query))	return true;
+		}
+		return false;
 	}
 
 	@Override

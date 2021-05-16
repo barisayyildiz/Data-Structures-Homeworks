@@ -151,6 +151,7 @@ public class Main
 			System.out.println("7. Filter by price ( upper and lower bounds )");
 			System.out.println("8. Filter by price ( only lower bound ) ");
 			System.out.println("9. Filter by price ( only upper bound ) ");
+			System.out.println("10. Filter by category name");
 			System.out.println("q. Exit");
 			
 			System.out.print("\nCommand : ");
@@ -202,6 +203,11 @@ public class Main
 					upperBound = scanner.nextInt();
 					scanner.nextLine();
 					System.out.println(customer.filterByPriceUpperBound(upperBound));
+					break;
+				case "10":
+					System.out.println("Category name : ");
+					query = scanner.nextLine();
+					System.out.println(customer.filterByCategory(query));
 					break;
 				case "q":
 					flag = false;
