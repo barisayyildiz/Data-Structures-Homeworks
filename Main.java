@@ -192,8 +192,16 @@ public class Main
 
 					break;
 				case "8":
+					System.out.println("Lower bound : ");
+					lowerBound = scanner.nextInt();
+					scanner.nextLine();
+					System.out.println(customer.filterByPriceLowerBound(lowerBound));
 					break;
 				case "9":
+					System.out.println("Upper bound : ");
+					upperBound = scanner.nextInt();
+					scanner.nextLine();
+					System.out.println(customer.filterByPriceUpperBound(upperBound));
 					break;
 				case "q":
 					flag = false;
