@@ -447,4 +447,51 @@ public class ECommerce {
 	}
 
 
+	public static ArrayList<Product> getProductsByQuery(String query){
+
+		String row;
+		BufferedReader myreader;
+		ArrayList<Product> products = new ArrayList<Product>();
+		TreeSet<String> categoryTree = new TreeSet<String>();
+
+		try{
+			myreader = new BufferedReader(new FileReader("products.txt"));
+			
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+
+				// if name or description contains the query
+				if(data[1].contains(query) || data[5].contains(query)){
+
+					data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
+					String[] tree = data[2].split(" >> ");
+
+					for(int i=0; i<tree.length; i++){
+						categoryTree.add(tree[i]);
+					}				
+				
+					products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
+				}
+
+				categoryTree.clear();
+
+
+			}
+
+			myreader.close();
+			return products;
+
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return null;
+		}
+
+
+	}
+
+
 }

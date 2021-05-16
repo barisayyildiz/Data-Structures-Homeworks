@@ -135,7 +135,7 @@ public class Main
 		boolean flag = true;
 		String command;
 
-		String traderName, productId;
+		String traderName, productId, query;
 
 		System.out.println("Customer Menu : \n");
 
@@ -145,13 +145,9 @@ public class Main
 			System.out.println("2. Show single trader's products...");
 			System.out.println("3. Make an order...");
 			System.out.println("4. See list of orders.");
-
-			// System.out.println("1. Show all your products");
-			// System.out.println("2. Add product");
-			// System.out.println("3. Remove product");
-			// System.out.println("4. Edit product");
-			// System.out.println("5. See list of orders");
-			// System.out.println("q. Exit");
+			System.out.println("5. Search for a product...");
+			System.out.println("6. Get last searched result");
+			System.out.println("q. Exit");
 			
 			System.out.print("\nCommand : ");
 			command = scanner.nextLine();
@@ -174,7 +170,12 @@ public class Main
 					customer.getOrdersCustomer();
 					break;
 				case "5":
+					System.out.print("Query : ");
+					query = scanner.nextLine();
+					customer.search(query);
 					break;
+				case "6":
+					System.out.println(customer.getSearchResult());
 				case "q":
 					flag = false;
 					break;
@@ -192,8 +193,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		traderMenu();
-		// customerMenu();
+		// traderMenu();
+		customerMenu();
 
 	}
 }

@@ -5,10 +5,12 @@ import java.util.*;
 public class Customer extends User{
 
 	private LinkedList<Order> orders;
+	private ArrayList<Product> searchResult;
 
 	public Customer(int id, String name, String password){
 		super(id, name, password);
 		this.orders = null;
+		this.searchResult = null;
 	}
 
 	// get trader name as a paramter
@@ -46,6 +48,18 @@ public class Customer extends User{
 		while(iter.hasNext()){
 			System.out.println(iter.next());
 		}
+	}
+
+	public void search(String query){
+
+		this.searchResult = ECommerce.getProductsByQuery(query);
+
+		System.out.println(searchResult);
+
+	}
+
+	public ArrayList<Product> getSearchResult(){
+		return this.searchResult;
 	}
 	
 }

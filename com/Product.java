@@ -60,7 +60,6 @@ public class Product {
 
 	@Override
 	public String toString(){
-		System.out.println("size : " + this.categoryTree.size());
 		String str = "";
 		// str += "id;product_name;price;discounted_price;description;trader\n";
 		str += this.id + ";" + this.productName + ";" + this.price + ";" + this.discountedPrice + ";" + this.description + ";" + this.description + "\n";
