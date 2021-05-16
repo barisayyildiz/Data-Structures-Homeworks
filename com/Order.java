@@ -5,11 +5,13 @@ public class Order {
 	private String productId;
 	private int customerId;
 	private int traderId;
+	private OrderState state;
 
 	public Order(String productId, int customerId, int traderId){
 		this.productId = productId;
 		this.customerId = customerId;
 		this.traderId = traderId;
+		this.state = OrderState.WAITING;
 	}
 
 	public String getProductId(){
@@ -21,6 +23,9 @@ public class Order {
 	public int getTraderId(){
 		return this.traderId;
 	}
+	public OrderState getOrderStatus(){
+		return this.state;
+	}
 	public void setProductId(String productId){
 		this.productId = productId;
 	}
@@ -29,6 +34,9 @@ public class Order {
 	}
 	public void setTraderId(int traderId){
 		this.traderId = traderId;
+	}
+	public void setSOrderStatus(OrderState state){
+		this.state = state;
 	}
 
 	@Override

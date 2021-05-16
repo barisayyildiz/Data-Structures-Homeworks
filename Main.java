@@ -60,6 +60,8 @@ public class Main
 			System.out.println("3. Remove product");
 			System.out.println("4. Edit product");
 			System.out.println("5. See list of orders");
+			System.out.println("6. Meet the first order in the order list");
+			System.out.println("7. Cancel the first order in the order list");
 			System.out.println("q. Exit");
 			
 			System.out.print("\nCommand : ");
@@ -95,17 +97,21 @@ public class Main
 
 					break;
 				case "4":
-
 					System.out.print("Product id : ");
 					id = scanner.nextLine();
 					System.out.print("Product Description : ");
 					description = scanner.nextLine();
 
 					trader.editProduct(id, description);
-
 					break;
 				case "5":
 					trader.getOrders();
+					break;
+				case "6":
+					trader.meetOrder();
+					break;
+				case "7":
+					trader.cancelOrder();
 					break;
 				case "q":
 					flag = false;

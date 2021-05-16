@@ -43,5 +43,15 @@ public class Trader extends User {
 		}
 	}
 
+	public void meetOrder(){
+		this.orders.getFirst().setSOrderStatus(OrderState.ACCEPTED);
+		this.orders.poll();
+	}
+
+	public void cancelOrder(){
+		this.orders.getFirst().setSOrderStatus(OrderState.CANCELLED);
+		this.orders.poll();
+	}
+
 
 }
