@@ -105,6 +105,7 @@ public class Main
 
 					break;
 				case "5":
+					trader.getOrders();
 					break;
 				case "q":
 					flag = false;
@@ -183,8 +184,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		// traderMenu();
-		customerMenu();
+		traderMenu();
+		// customerMenu();
 
 	}
 }

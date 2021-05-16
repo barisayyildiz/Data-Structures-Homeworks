@@ -3,10 +3,12 @@ package com;
 import java.util.*;
 
 public class Trader extends User {
+
+	private LinkedList<Order> orders;
 	
 	public Trader(int id, String name, String password){
 		super(id, name, password);
-
+		this.orders = null;
 	}
 
 	public String showAllProducts(){
@@ -26,6 +28,19 @@ public class Trader extends User {
 
 	public void editProduct(String id, String description){
 		ECommerce.editProduct(id, description);
+	}
+
+	private void syncOrders(){
+		this.orders = ECommerce.getOrders(this.getName());
+		System.out.println(this.orders == null);
+	}
+
+	public void getOrders(){
+		this.syncOrders();
+		Iterator<Order> iter = this.orders.iterator();
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
 	}
 
 

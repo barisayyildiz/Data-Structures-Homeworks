@@ -9,6 +9,8 @@ import java.io.FileWriter;   // Import the FileWriter class
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class ECommerce {
 
@@ -313,6 +315,76 @@ public class ECommerce {
 			System.out.println(exception.getMessage());
 			return;
 		}
+
+
+	}
+
+	public static LinkedList<Order> getOrders(String name){
+
+		String row;
+		BufferedReader myreader;
+		LinkedList<Order> result = new LinkedList<Order>();
+
+		int id = getUserId(name);
+
+		System.out.println("Name : " + name + ", id : " + id);
+
+		try{
+			myreader = new BufferedReader(new FileReader("orders.txt"));
+
+			// read header first
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+
+				if(data[2].equals (String.valueOf(id) )){
+					System.out.println("match!!");
+					result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+				}
+			}
+
+			myreader.close();
+			return result;
+
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return null;
+		}
+
+		// String row;
+		// BufferedReader myreader;
+		// BufferedWriter mywriter;
+		
+		// try{
+		// 	myreader = new BufferedReader(new FileReader("products.txt"));
+		// 	mywriter = new BufferedWriter(new FileWriter("orders.txt", true));
+
+		// 	// read header first
+		// 	myreader.readLine();
+
+		// 	while((row = myreader.readLine()) != null){
+
+		// 		String[] data = row.split(";");
+
+		// 		// product id's matches
+		// 		if(data[0].equals(productId)){
+		// 			mywriter.write(productId + ";" + customerId + ";" + getUserId(data[6]) + "\n");
+		// 			break;
+		// 		}
+		// 	}
+
+		// 	myreader.close();
+		// 	mywriter.close();
+
+		// }catch(Exception exception){
+		// 	System.out.println(exception.getMessage());
+		// 	return;
+		// }
+
+
 
 
 	}
