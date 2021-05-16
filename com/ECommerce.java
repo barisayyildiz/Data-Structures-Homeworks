@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;   // Import the FileWriter class
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ECommerce {
 
@@ -224,10 +225,97 @@ public class ECommerce {
 
 	}
 
+	public static LinkedList<String> getAllTraders(){
+
+		String row;
+		BufferedReader myreader;
+		LinkedList<String> traders = new LinkedList<String>();
+
+		try{
+			myreader = new BufferedReader(new FileReader("users.txt"));
+
+			// read header first
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+				String[] data = row.split(";");
+				if(data[3].equals("trader"))
+					traders.add(data[1]);
+			}
+
+			myreader.close();
+			return traders;
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return null;
+		} 
 
 
+	}
+
+	private static int getUserId(String name){
+		String row;
+		BufferedReader myreader;
+		int res = -1;
+
+		try{
+			myreader = new BufferedReader(new FileReader("users.txt"));
+
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+				String[] data = row.split(";");
+				// System.out.println(data[1]);
+				if(data[1].equals(name)){
+					res = Integer.parseInt(data[0]);
+				}
+			}
+
+			myreader.close();
+			return res;
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			System.out.println("hataaaaaaaa");
+			return res;
+		}
+	}
+
+	public static void makeAnOrder(int customerId, String productId){
+
+		String row;
+		BufferedReader myreader;
+		BufferedWriter mywriter;
+		
+		try{
+			myreader = new BufferedReader(new FileReader("products.txt"));
+			mywriter = new BufferedWriter(new FileWriter("orders.txt", true));
+
+			// read header first
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+
+				// product id's matches
+				if(data[0].equals(productId)){
+					mywriter.write(productId + ";" + customerId + ";" + getUserId(data[6]) + "\n");
+					break;
+				}
+			}
+
+			myreader.close();
+			mywriter.close();
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return;
+		}
 
 
+	}
 
 
 

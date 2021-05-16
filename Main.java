@@ -122,13 +122,69 @@ public class Main
 
 	public static void customerMenu(){
 
+		Customer customer = new Customer(39469264, "Barış Ayyıldız", "123456");
+
+		Scanner scanner = new Scanner(System.in);		
+		boolean flag = true;
+		String command;
+
+		String traderName, productId;
+
+		System.out.println("Customer Menu : \n");
+
+		while(flag){
+
+			System.out.println("1. Show all traders names...");
+			System.out.println("2. Show single trader's products...");
+			System.out.println("3. Make an order...");
+
+			// System.out.println("1. Show all your products");
+			// System.out.println("2. Add product");
+			// System.out.println("3. Remove product");
+			// System.out.println("4. Edit product");
+			// System.out.println("5. See list of orders");
+			// System.out.println("q. Exit");
+			
+			System.out.print("\nCommand : ");
+			command = scanner.nextLine();
+
+			switch(command){
+				case "1":
+					customer.showAllTraderNames();
+					break;
+				case "2":
+					System.out.print("Trader name : ");
+					traderName = scanner.nextLine();
+					System.out.println(customer.showSingleTrader(traderName));
+					break;
+				case "3":
+					System.out.print("Product id : ");
+					productId = scanner.nextLine();
+					customer.makeAnOrder(productId);
+					break;
+				case "4":
+					break;
+				case "5":
+					break;
+				case "q":
+					flag = false;
+					break;
+				default:
+					System.out.println("Command not valid\n");
+			}
+
+		}
+
+		scanner.close();
+
 	}
 
 
 	public static void main(String args[]){
 		
 		// menu();
-		traderMenu();
+		// traderMenu();
+		customerMenu();
 
 	}
 }
