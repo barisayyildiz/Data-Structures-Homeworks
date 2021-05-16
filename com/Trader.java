@@ -31,11 +31,11 @@ public class Trader extends User {
 	}
 
 	private void syncOrders(){
-		this.orders = ECommerce.getOrders(this.getName());
+		this.orders = ECommerce.getOrdersTrader(this.getName());
 		System.out.println(this.orders == null);
 	}
 
-	public void getOrders(){
+	public void getOrdersTrader(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();
 		while(iter.hasNext()){
@@ -44,12 +44,18 @@ public class Trader extends User {
 	}
 
 	public void meetOrder(){
-		this.orders.getFirst().setSOrderStatus(OrderState.ACCEPTED);
+
+		ECommerce.updateOrders(this.orders.getFirst(), OrderState.ACCEPTED);
+
+		// this.orders.getFirst().setSOrderStatus(OrderState.ACCEPTED);
 		this.orders.poll();
 	}
 
 	public void cancelOrder(){
-		this.orders.getFirst().setSOrderStatus(OrderState.CANCELLED);
+
+		ECommerce.updateOrders(this.orders.getFirst(), OrderState.CANCELLED);
+
+		// this.orders.getFirst().setSOrderStatus(OrderState.CANCELLED);
 		this.orders.poll();
 	}
 

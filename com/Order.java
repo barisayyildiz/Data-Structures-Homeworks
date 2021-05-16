@@ -14,6 +14,13 @@ public class Order {
 		this.state = OrderState.WAITING;
 	}
 
+	public Order(String productId, int customerId, int traderId, OrderState state){
+		this.productId = productId;
+		this.customerId = customerId;
+		this.traderId = traderId;
+		this.state = state;
+	}
+
 	public String getProductId(){
 		return this.productId;
 	}
@@ -41,7 +48,7 @@ public class Order {
 
 	@Override
 	public String toString(){
-		return this.productId + ";" + this.customerId + ";" + this.traderId;
+		return this.productId + ";" + this.customerId + ";" + this.traderId + ";" + this.state;
 	}
 
 	

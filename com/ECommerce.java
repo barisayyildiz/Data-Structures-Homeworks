@@ -317,15 +317,13 @@ public class ECommerce {
 
 	}
 
-	public static LinkedList<Order> getOrders(String name){
+	public static LinkedList<Order> getOrdersTrader(String name){
 
 		String row;
 		BufferedReader myreader;
 		LinkedList<Order> result = new LinkedList<Order>();
 
 		int id = getUserId(name);
-
-		System.out.println("Name : " + name + ", id : " + id);
 
 		try{
 			myreader = new BufferedReader(new FileReader("orders.txt"));
@@ -337,8 +335,43 @@ public class ECommerce {
 
 				String[] data = row.split(";");
 
-				if(data[2].equals (String.valueOf(id) )){
-					System.out.println("match!!");
+				if(data[2].equals(String.valueOf(id)) && data[3].equals(String.valueOf(OrderState.WAITING))){
+
+					result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), OrderState.valueOf(data[3])));
+				}
+			}
+
+			myreader.close();
+			return result;
+
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return null;
+		}
+
+
+	}
+
+	public static LinkedList<Order> getOrdersCustomer(String name){
+
+		String row;
+		BufferedReader myreader;
+		LinkedList<Order> result = new LinkedList<Order>();
+
+		int id = getUserId(name);
+
+		try{
+			myreader = new BufferedReader(new FileReader("orders.txt"));
+
+			// read header first
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+
+				if(data[1].equals (String.valueOf(id) )){
 					result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2])));
 				}
 			}
@@ -352,65 +385,51 @@ public class ECommerce {
 			return null;
 		}
 
-		// String row;
-		// BufferedReader myreader;
-		// BufferedWriter mywriter;
-		
-		// try{
-		// 	myreader = new BufferedReader(new FileReader("products.txt"));
-		// 	mywriter = new BufferedWriter(new FileWriter("orders.txt", true));
-
-		// 	// read header first
-		// 	myreader.readLine();
-
-		// 	while((row = myreader.readLine()) != null){
-
-		// 		String[] data = row.split(";");
-
-		// 		// product id's matches
-		// 		if(data[0].equals(productId)){
-		// 			mywriter.write(productId + ";" + customerId + ";" + getUserId(data[6]) + "\n");
-		// 			break;
-		// 		}
-		// 	}
-
-		// 	myreader.close();
-		// 	mywriter.close();
-
-		// }catch(Exception exception){
-		// 	System.out.println(exception.getMessage());
-		// 	return;
-		// }
-
-
-
 
 	}
 
+	public static void updateOrders(Order order, OrderState state){
+
+		String row;
+		BufferedReader myreader;
+		BufferedWriter mywriter;
+
+		try{
+
+			myreader = new BufferedReader(new FileReader("orders.txt"));
+			mywriter = new BufferedWriter(new FileWriter("temp_orders.txt"));
+
+			// read header first
+			row = myreader.readLine();
+			mywriter.write(row + "\n");
+
+			while((row = myreader.readLine()) != null){
+
+				String[] data = row.split(";");
+
+				// found a match
+				if(data[0].equals(order.getProductId()) && data[1].equals(String.valueOf(order.getCustomerId())) && data[2].equals(String.valueOf(order.getTraderId())) ){
+					row = order.getProductId() + ";" + order.getCustomerId() + ";" + order.getTraderId() + ";" + state;
+				}
+
+				mywriter.write(row + "\n");
+
+			}
+
+			// rename the temp_orders.txt to orders.txt
+			File file = new File("temp_orders.txt");
+			File file2 = new File("orders.txt");
+			file.renameTo(file2);
+
+			myreader.close();
+			mywriter.close();
 
 
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+		}
 
-
-	// private class Trader
-	// {
-	// 	private String name;
-	// 	private int id;
-	// 	private String password; 
-	// 	public Trader(String name){
-	// 		this.name = name;
-	// 		this.id = this.name.hashCode() % 100000000;
-	// 		if(this.id < 0){
-	// 			this.id += 100000000;
-	// 		}
-	// 		this.password = "123456";
-	// 	}
-		
-	// 	@Override
-	// 	public String toString(){
-	// 		return this.id + ";" + this.name + ";" + this.password;
-	// 	}
-
-	// }
+	}
 
 
 }

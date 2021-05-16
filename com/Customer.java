@@ -4,8 +4,11 @@ import java.util.*;
 
 public class Customer extends User{
 
+	private LinkedList<Order> orders;
+
 	public Customer(int id, String name, String password){
 		super(id, name, password);
+		this.orders = null;
 	}
 
 	// get trader name as a paramter
@@ -30,6 +33,19 @@ public class Customer extends User{
 		
 		ECommerce.makeAnOrder(this.getId(), productId);
 
+	}
+
+	private void syncOrders(){
+		this.orders = ECommerce.getOrdersCustomer(this.getName());
+		System.out.println(this.orders == null);
+	}
+
+	public void getOrdersCustomer(){
+		this.syncOrders();
+		Iterator<Order> iter = this.orders.iterator();
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
 	}
 	
 }

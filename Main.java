@@ -105,7 +105,7 @@ public class Main
 					trader.editProduct(id, description);
 					break;
 				case "5":
-					trader.getOrders();
+					trader.getOrdersTrader();
 					break;
 				case "6":
 					trader.meetOrder();
@@ -144,6 +144,7 @@ public class Main
 			System.out.println("1. Show all traders names...");
 			System.out.println("2. Show single trader's products...");
 			System.out.println("3. Make an order...");
+			System.out.println("4. See list of orders.");
 
 			// System.out.println("1. Show all your products");
 			// System.out.println("2. Add product");
@@ -170,6 +171,7 @@ public class Main
 					customer.makeAnOrder(productId);
 					break;
 				case "4":
+					customer.getOrdersCustomer();
 					break;
 				case "5":
 					break;
@@ -190,8 +192,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		traderMenu();
-		// customerMenu();
+		// traderMenu();
+		customerMenu();
 
 	}
 }
