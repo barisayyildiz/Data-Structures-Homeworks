@@ -19,7 +19,7 @@ public class Trader extends User {
 
 	public void addProduct(String productName, String description, int price, int discountedPrice){
 
-		ECommerce.addProduct(new Product(productName, price, discountedPrice, description, this.getName()));
+		// ECommerce.addProduct(new Product(productName, price, discountedPrice, description, this.getName()));
 	}
 
 	public void removeProduct(String id){

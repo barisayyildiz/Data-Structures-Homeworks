@@ -4,17 +4,20 @@ public class Test {
 
 	public static void main(String args[]){
 
-		TreeSet<Integer> tree = new TreeSet<Integer>();
+		String str = "\"[\"\"Clothing >> Women's Clothing >> Lingerie, Sleep & Swimwear >> Shorts >> Alisha Shorts >> Alisha Solid Women's Cycling Shorts\"\"]\"";
 
-		tree.add(3);
-		tree.add(5);
-		tree.add(7);
+		// str = str.replace("\"", "").replace("[", "").replace("]", "");
+		// // str = str.replaceAll("\"" , "");
+		// // str = str.replaceAll("[", "");
+		// // str = str.replaceAll("[", "");
+		// String[] data = str.split(" >> ");
+		// System.out.println(data);
 
-		System.out.println(tree);
+		// for(int i=0; i<data.length; i++){
+		// 	System.out.println(data[i]);
+		// }
 
-		tree.remove(3);
-
-		System.out.println(tree);
+		int[] arr = {3,4,5};
 
 
 	}

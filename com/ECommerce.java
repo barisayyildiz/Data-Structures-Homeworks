@@ -9,6 +9,7 @@ import java.io.FileWriter;   // Import the FileWriter class
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.TreeSet;
 
 public class ECommerce {
 
@@ -110,15 +111,29 @@ public class ECommerce {
 		String row;
 		BufferedReader myreader;
 		ArrayList<Product> products = new ArrayList<Product>();
+		TreeSet<String> categoryTree = new TreeSet<String>();
 
 		try{
 			myreader = new BufferedReader(new FileReader("products.txt"));
+
+			myreader.readLine();
 			
 			while((row = myreader.readLine()) != null){
 				String[] data = row.split(";");
 				String str = data[6];
 				if(name.equals(str)){
-					products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
+
+					
+					data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
+					String[] tree = data[2].split(" >> ");
+
+					for(int i=0; i<tree.length; i++){
+						categoryTree.add(tree[i]);
+					}
+
+					products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
+
+					categoryTree.clear();
 				}
 			}
 

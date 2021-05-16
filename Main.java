@@ -192,8 +192,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		// traderMenu();
-		customerMenu();
+		traderMenu();
+		// customerMenu();
 
 	}
 }
