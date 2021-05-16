@@ -61,5 +61,64 @@ public class Customer extends User{
 	public ArrayList<Product> getSearchResult(){
 		return this.searchResult;
 	}
+
+
+	public ArrayList<Product> filterByPriceLowerBound(int lowerBound){
+
+		ArrayList<Product> temp = new ArrayList<Product>();
+
+		Iterator<Product> iter = this.searchResult.iterator();
+		Product current;
+
+		while(iter.hasNext()){
+			current = iter.next();
+			if(current.getPrice() >= lowerBound){
+				temp.add(current);
+			}
+		}
+
+		this.searchResult = temp;
+		return this.searchResult;
+
+	}
+
+	public ArrayList<Product> filterByPriceUpperBound(int upperBound){
+
+		ArrayList<Product> temp = new ArrayList<Product>();
+
+		Iterator<Product> iter = this.searchResult.iterator();
+		Product current;
+
+		while(iter.hasNext()){
+			current = iter.next();
+			if(current.getPrice() <= upperBound){
+				temp.add(current);
+			}
+		}
+
+		this.searchResult = temp;
+		return this.searchResult;
+		
+	}
+
+	public ArrayList<Product> filterByPrice(int lowerBound, int upperBound){
+
+		ArrayList<Product> temp = new ArrayList<Product>();
+
+		Iterator<Product> iter = this.searchResult.iterator();
+		Product current;
+
+		while(iter.hasNext()){
+			current = iter.next();
+			if(current.getPrice() >= lowerBound && current.getPrice() <= upperBound){
+				temp.add(current);
+			}
+		}
+
+		this.searchResult = temp;
+
+		return this.searchResult;
+
+	}
 	
 }

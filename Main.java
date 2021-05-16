@@ -136,6 +136,7 @@ public class Main
 		String command;
 
 		String traderName, productId, query;
+		int lowerBound, upperBound;
 
 		System.out.println("Customer Menu : \n");
 
@@ -147,6 +148,9 @@ public class Main
 			System.out.println("4. See list of orders.");
 			System.out.println("5. Search for a product...");
 			System.out.println("6. Get last searched result");
+			System.out.println("7. Filter by price ( upper and lower bounds )");
+			System.out.println("8. Filter by price ( only lower bound ) ");
+			System.out.println("9. Filter by price ( only upper bound ) ");
 			System.out.println("q. Exit");
 			
 			System.out.print("\nCommand : ");
@@ -176,6 +180,21 @@ public class Main
 					break;
 				case "6":
 					System.out.println(customer.getSearchResult());
+					break;
+				case "7":
+					System.out.println("Lower bound : ");
+					lowerBound = scanner.nextInt();
+					scanner.nextLine();
+					System.out.println("Upper bound : ");
+					upperBound = scanner.nextInt();
+
+					System.out.println(customer.filterByPrice(lowerBound, upperBound));
+
+					break;
+				case "8":
+					break;
+				case "9":
+					break;
 				case "q":
 					flag = false;
 					break;
