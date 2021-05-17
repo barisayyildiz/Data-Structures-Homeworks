@@ -137,5 +137,85 @@ public class Customer extends User{
 		return this.searchResult;
 
 	}
+
+	// quick sort is used
+	public ArrayList<Product> sortByName(){
+
+		quickSort(this.searchResult, 0, this.searchResult.size()-1);
+
+		return this.searchResult;
+
+	}
+
+	public ArrayList<Product> sortByPrice(){
+
+		bubbleSort(this.searchResult);
+
+		return this.searchResult;
+
+	}
+
+	public void sortByDiscount(){
+
+	}
+
+	private void bubbleSort(ArrayList<Product> arr){
+
+		int n = arr.size();
+
+		for(int i=0; i<n-1; i++){
+			for(int j=0; j<n-i-1; j++){
+				if(arr.get(j).getPrice() > arr.get(j+1).getPrice()){
+					swap(arr, j, j+1);
+				}
+			}
+		}
+
+	}
+
+	private void quickSort(ArrayList<Product> arr, int low, int high){
+
+		if(low < high){
+
+			int pi = partition(arr, low, high);
+
+			quickSort(arr, low, pi-1);
+			quickSort(arr, pi+1, high);
+
+		}
+
+	}
+
+	private int partition(ArrayList<Product> arr, int low, int high){
+		// pivot
+		Product pivot = arr.get(high);
+			 
+		// Index of smaller element and
+		// indicates the right position
+		// of pivot found so far
+		int i = (low - 1);
+ 
+		for(int j = low; j <= high - 1; j++)
+		{
+				 
+				// If current element is smaller
+				// than the pivot
+				if (arr.get(j).getProductName().compareTo(pivot.getProductName()) < 0)
+				{
+						// Increment index of
+						// smaller element
+						i++;
+						swap(arr, i, j);
+				}
+		}
+		swap(arr, i + 1, high);
+		return (i + 1);
+	}
+
+	private void swap(ArrayList<Product> arr, int i, int j){
+		Product temp = arr.get(i);
+		arr.set(i, arr.get(j));
+		arr.set(j, temp);
+	}
 	
 }

@@ -154,6 +154,9 @@ public class Main
 			System.out.println("8. Filter by price ( only lower bound ) ");
 			System.out.println("9. Filter by price ( only upper bound ) ");
 			System.out.println("10. Filter by category name");
+			System.out.println("11. Sort the results by name...");
+			System.out.println("12. Sort the results by price...");
+			System.out.println("13. Sort the results by % of discount...");
 			System.out.println("q. Exit");
 			
 			System.out.print("\nCommand : ");
@@ -210,6 +213,14 @@ public class Main
 					System.out.println("Category name : ");
 					query = scanner.nextLine();
 					System.out.println(customer.filterByCategory(query));
+					break;
+				case "11":
+					System.out.println(customer.sortByName());
+					break;
+				case "12":
+					System.out.println(customer.sortByPrice());
+					break;
+				case "13":
 					break;
 				case "q":
 					flag = false;
