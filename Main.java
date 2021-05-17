@@ -48,7 +48,7 @@ public class Main
 		boolean flag = true;
 		String command;
 
-		String productName, description, id;
+		String productName, description, id, categoryTree;
 		int price, discountedPrice;
 
 		System.out.println("Trader Menu : \n");
@@ -78,6 +78,8 @@ public class Main
 					// scanner.nextLine();
 					System.out.print("Product Description : ");
 					description = scanner.nextLine();
+					System.out.print("Category tree ( leave >>  between two categories => Clothing >> Women's Clothing >> Sports ) : ");
+					categoryTree = scanner.nextLine();
 					// scanner.nextLine();
 					System.out.print("Product Price : ");
 					price = scanner.nextInt();
@@ -86,7 +88,7 @@ public class Main
 					discountedPrice = scanner.nextInt();
 					scanner.nextLine();
 
-					trader.addProduct(productName, description, price, discountedPrice);
+					trader.addProduct(productName, description, price, discountedPrice, categoryTree);
 
 					break;
 				case "3":

@@ -17,9 +17,16 @@ public class Trader extends User {
 		return products.toString();
 	}
 
-	public void addProduct(String productName, String description, int price, int discountedPrice){
+	public void addProduct(String productName, String description, int price, int discountedPrice, String categoryTree){
 
-		// ECommerce.addProduct(new Product(productName, price, discountedPrice, description, this.getName()));
+		TreeSet<String> tree = new TreeSet<String>();
+		String[] tokens = categoryTree.split(" >> ");
+		for(String str : tokens){
+			tree.add(str);
+		}
+
+		ECommerce.addProduct(new Product(productName, price, discountedPrice, description, this.getName(), tree));
+
 	}
 
 	public void removeProduct(String id){
