@@ -11,6 +11,7 @@ public class Product {
 	private String description;
 	private String trader;
 	private TreeSet<String> categoryTree;
+	private double discountPercentage;
 
 	public Product(String id, String productName, int price, int discountedPrice, String description, String trader, TreeSet<String> categoryTree){
 		this.id = id;
@@ -20,6 +21,7 @@ public class Product {
 		this.description = description;
 		this.trader = trader;
 		this.categoryTree = categoryTree;
+		this.discountPercentage = ((this.price - this.discountedPrice) / (double)this.price) * 100;
 	}
 	 
 	public Product(String productName, int price, int discountedPrice, String description, String trader, TreeSet<String> categoryTree){
@@ -57,6 +59,10 @@ public class Product {
 
 	public String getTrader(){
 		return this.trader;
+	}
+
+	public double getDiscountPercentage(){
+		return this.discountPercentage;
 	}
 
 	public boolean containsCategory(String query){

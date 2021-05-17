@@ -155,7 +155,55 @@ public class Customer extends User{
 
 	}
 
-	public void sortByDiscount(){
+	public ArrayList<Product> sortByDiscount(){
+
+		this.searchResult = mergeSort(this.searchResult);
+
+		return this.searchResult;
+
+	}
+
+	private ArrayList<Product> mergeSort(ArrayList<Product> arr){
+
+		if(arr.size() == 1){
+			return arr;
+		}
+
+		// divide left and right arrays
+		ArrayList<Product> left = new ArrayList<Product>(arr.subList(0, arr.size()/2));
+		ArrayList<Product> right = new ArrayList<Product>(arr.subList(arr.size()/2, arr.size()));
+
+		left = mergeSort(left);
+		right = mergeSort(right);
+
+		int i = 0, j =0, counter = 0;
+
+		while(i < left.size() && j < right.size()){
+			if(left.get(i).getDiscountPercentage() > right.get(j).getDiscountPercentage()){
+				arr.set(counter, left.get(i));
+				i++;
+			}else{
+				arr.set(counter, right.get(j));
+				j++;
+			}
+			counter++;
+		}
+
+		// empty left array
+		while(i < left.size()){
+			arr.set(counter, left.get(i));
+			i++;
+			counter++;
+		}
+
+		// empty right array
+		while(j < right.size()){
+			arr.set(counter, right.get(j));
+			j++;
+			counter++;
+		}
+
+		return arr;
 
 	}
 

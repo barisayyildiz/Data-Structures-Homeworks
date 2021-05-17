@@ -221,6 +221,7 @@ public class Main
 					System.out.println(customer.sortByPrice());
 					break;
 				case "13":
+					System.out.println(customer.sortByDiscount());
 					break;
 				case "q":
 					flag = false;
