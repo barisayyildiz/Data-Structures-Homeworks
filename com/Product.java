@@ -22,6 +22,7 @@ public class Product {
 		this.description = description;
 		this.trader = trader;
 		this.categoryString = categoryString;
+		this.discountPercentage = ((this.price - this.discountedPrice) / (double)this.price) * 100;
 
 		this.categoryTree = new TreeSet<String>();
 		categoryString = categoryString.replace("\"", "").replace("[", "").replace("]", "");		
@@ -42,6 +43,7 @@ public class Product {
 		this.description = description;
 		this.trader = trader;
 		this.categoryString = categoryString;
+		this.discountPercentage = ((this.price - this.discountedPrice) / (double)this.price) * 100;
 
 		this.categoryTree = new TreeSet<String>();
 		categoryString = categoryString.replace("\"", "").replace("[", "").replace("]", "");		
@@ -100,11 +102,25 @@ public class Product {
 
 	@Override
 	public String toString(){
+		// String str = "";
+		// // str += "id;product_name;price;discounted_price;description;trader\n";
+		// str += this.id + ";" + this.productName + ";" + this.price + ";" + this.discountedPrice + ";" + this.description + ";" + this.description + "\n";
+		// str += this.categoryTree.toString() + "\n\n";
+		// return str;
+
 		String str = "";
-		// str += "id;product_name;price;discounted_price;description;trader\n";
-		str += this.id + ";" + this.productName + ";" + this.price + ";" + this.discountedPrice + ";" + this.description + ";" + this.description + "\n";
-		str += this.categoryTree.toString() + "\n\n";
+
+		str += "Id :\t" + this.id + "\n";
+		str += "Name : \t" + this.productName + "\n";
+		str += "Category Tree :\t" + this.categoryString.replace("\"", "").replace("[", "").replace("]", "") + "\n";
+		str += "Price :\t" + this.price + "\n";
+		str += "Discounted Price :\t" + this.discountedPrice + "\n";
+		str += "Discount Percentage :\t" + this.discountPercentage + "%\n";
+		str += "Description : \t" + this.description + "\n";
+		str += "Trader :\t" + this.trader + "\n\n";
+
 		return str;
+
 	}
 
 }

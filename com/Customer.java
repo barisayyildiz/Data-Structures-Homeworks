@@ -54,6 +54,10 @@ public class Customer extends User{
 
 		this.searchResult = ECommerce.getProductsByQuery(query);
 
+		// sort by name
+		quickSort(this.searchResult, 0, this.searchResult.size()-1);
+		
+
 		System.out.println(searchResult);
 
 	}
