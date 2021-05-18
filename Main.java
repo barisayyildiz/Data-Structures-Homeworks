@@ -107,7 +107,7 @@ public class Main
 					trader.editProduct(id, description);
 					break;
 				case "5":
-					trader.getOrdersTrader();
+					trader.getOrders();
 					break;
 				case "6":
 					trader.meetOrder();
@@ -177,7 +177,7 @@ public class Main
 					customer.makeAnOrder(productId);
 					break;
 				case "4":
-					customer.getOrdersCustomer();
+					customer.getOrders();
 					break;
 				case "5":
 					System.out.print("Query : ");

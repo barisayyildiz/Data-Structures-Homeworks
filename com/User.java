@@ -1,14 +1,18 @@
 package com;
 
+import java.util.LinkedList;
+
 public class User {
-	int id;
-	String name;
-	String password;
+	private int id;
+	private String name;
+	private String password;
+	protected LinkedList<Order> orders;
 	
 	public User(int id, String name, String password){
 		this.id = id;
 		this.name = name;
 		this.password = password;
+		this.orders = null;
 	}
 
 	public int getId(){

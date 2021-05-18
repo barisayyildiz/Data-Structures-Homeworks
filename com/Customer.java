@@ -2,14 +2,12 @@ package com;
 
 import java.util.*;
 
-public class Customer extends User{
+public class Customer extends User implements UserInterface{
 
-	private LinkedList<Order> orders;
 	private ArrayList<Product> searchResult;
 
 	public Customer(int id, String name, String password){
 		super(id, name, password);
-		this.orders = null;
 		this.searchResult = null;
 	}
 
@@ -41,7 +39,7 @@ public class Customer extends User{
 		System.out.println(this.orders == null);
 	}
 
-	public void getOrdersCustomer(){
+	public void getOrders(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();
 		while(iter.hasNext()){

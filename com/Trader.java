@@ -2,13 +2,10 @@ package com;
 
 import java.util.*;
 
-public class Trader extends User {
-
-	private LinkedList<Order> orders;
+public class Trader extends User implements UserInterface{
 	
 	public Trader(int id, String name, String password){
 		super(id, name, password);
-		this.orders = null;
 	}
 
 	public void showAllProducts(){
@@ -41,7 +38,7 @@ public class Trader extends User {
 		System.out.println(this.orders == null);
 	}
 
-	public void getOrdersTrader(){
+	public void getOrders(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();
 		while(iter.hasNext()){
