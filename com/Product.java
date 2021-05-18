@@ -12,19 +12,26 @@ public class Product {
 	private String trader;
 	private TreeSet<String> categoryTree;
 	private double discountPercentage;
+	private String categoryString;
 
-	public Product(String id, String productName, int price, int discountedPrice, String description, String trader, TreeSet<String> categoryTree){
+	public Product(String id, String productName, String categoryString, int price, int discountedPrice, String description, String trader){
 		this.id = id;
 		this.productName = productName;
 		this.price = price;
 		this.discountedPrice = discountedPrice;
 		this.description = description;
 		this.trader = trader;
-		this.categoryTree = categoryTree;
-		this.discountPercentage = ((this.price - this.discountedPrice) / (double)this.price) * 100;
+		this.categoryString = categoryString;
+
+		this.categoryTree = new TreeSet<String>();
+		categoryString = categoryString.replace("\"", "").replace("[", "").replace("]", "");		
+		String[] tokens = categoryString.split(" >> ");
+		for(String str : tokens){
+			this.categoryTree.add(str);
+		}
 	}
 	 
-	public Product(String productName, int price, int discountedPrice, String description, String trader, TreeSet<String> categoryTree){
+	public Product(String productName, String categoryString, int price, int discountedPrice, String description, String trader){
 		int temp = productName.hashCode();
 		if(temp < 0)	temp = -temp;
 
@@ -34,7 +41,15 @@ public class Product {
 		this.discountedPrice = discountedPrice;
 		this.description = description;
 		this.trader = trader;
-		this.categoryTree = categoryTree;
+		this.categoryString = categoryString;
+
+		this.categoryTree = new TreeSet<String>();
+		categoryString = categoryString.replace("\"", "").replace("[", "").replace("]", "");		
+		String[] tokens = categoryString.split(" >> ");
+		for(String str : tokens){
+			this.categoryTree.add(str);
+		}
+
 	}
 
 	public String getId(){
@@ -63,6 +78,14 @@ public class Product {
 
 	public double getDiscountPercentage(){
 		return this.discountPercentage;
+	}
+
+	public TreeSet<String> getCategoryTree(){
+		return this.categoryTree;
+	}
+
+	public String getCategoryString(){
+		return this.categoryString;
 	}
 
 	public boolean containsCategory(String query){

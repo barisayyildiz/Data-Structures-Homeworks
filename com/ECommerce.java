@@ -10,6 +10,7 @@ import java.io.FileWriter;   // Import the FileWriter class
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.TreeSet;
+import java.util.Iterator;
 
 public class ECommerce {
 
@@ -131,7 +132,9 @@ public class ECommerce {
 						categoryTree.add(tree[i]);
 					}
 
-					products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
+					// products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
+					// products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
+					products.add(new Product(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
 
 					categoryTree.clear();
 				}
@@ -152,8 +155,13 @@ public class ECommerce {
 
 		try{
 			FileWriter fw = new FileWriter("products.txt", true);
+
+			TreeSet<String> tree = product.getCategoryTree();
+			Iterator<String> iter = tree.iterator();
+
+			String str = product.getId() + ";" + product.getProductName() + ";" + product.getCategoryString() + ";" + product.getPrice() + ";" + product.discountedPrice() + ";" + product.getDescription() + ";" + product.getTrader() + "\n";
 	
-			fw.write(product.toString());
+			fw.write(str);
 
 			fw.close();
 
@@ -316,7 +324,7 @@ public class ECommerce {
 
 				// product id's matches
 				if(data[0].equals(productId)){
-					mywriter.write(productId + ";" + customerId + ";" + getUserId(data[6]) + "\n");
+					mywriter.write(productId + ";" + customerId + ";" + getUserId(data[6]) + ";" + String.valueOf(OrderState.WAITING) + "\n");
 					break;
 				}
 			}
@@ -466,14 +474,14 @@ public class ECommerce {
 				// if name or description contains the query
 				if(data[1].contains(query) || data[5].contains(query)){
 
-					data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
-					String[] tree = data[2].split(" >> ");
+					// data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
+					// String[] tree = data[2].split(" >> ");
 
-					for(int i=0; i<tree.length; i++){
-						categoryTree.add(tree[i]);
-					}				
+					// for(int i=0; i<tree.length; i++){
+					// 	categoryTree.add(tree[i]);
+					// }
 				
-					products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
+					products.add(new Product(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
 				}
 
 				categoryTree.clear();
