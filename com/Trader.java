@@ -37,7 +37,7 @@ public class Trader extends User {
 	}
 
 	private void syncOrders(){
-		this.orders = ECommerce.getOrdersTrader(this.getName());
+		this.orders = ECommerce.getOrders(this.getName(), true);
 		System.out.println(this.orders == null);
 	}
 

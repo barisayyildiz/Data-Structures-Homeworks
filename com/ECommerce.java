@@ -323,7 +323,7 @@ public class ECommerce {
 
 	}
 
-	public static LinkedList<Order> getOrdersTrader(String name){
+	public static LinkedList<Order> getOrders(String name, boolean isTrader){
 
 		String row;
 		BufferedReader myreader;
@@ -340,44 +340,14 @@ public class ECommerce {
 			while((row = myreader.readLine()) != null){
 				String[] data = row.split(";");
 
-				if(data[2].equals(String.valueOf(id)) && data[3].equals(String.valueOf(OrderState.WAITING))){
-
-					result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), OrderState.valueOf(data[3])));
-				}
-			}
-
-			myreader.close();
-			return result;
-
-
-		}catch(Exception exception){
-			System.out.println(exception.getMessage());
-			return null;
-		}
-
-
-	}
-
-	public static LinkedList<Order> getOrdersCustomer(String name){
-
-		String row;
-		BufferedReader myreader;
-		LinkedList<Order> result = new LinkedList<Order>();
-
-		int id = getUserId(name);
-
-		try{
-			myreader = new BufferedReader(new FileReader("orders.txt"));
-
-			// read header first
-			myreader.readLine();
-
-			while((row = myreader.readLine()) != null){
-
-				String[] data = row.split(";");
-
-				if(data[1].equals (String.valueOf(id) )){
-					result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+				if(isTrader){
+					if(data[2].equals(String.valueOf(id)) && data[3].equals(String.valueOf(OrderState.WAITING))){
+						result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), OrderState.valueOf(data[3])));
+					}
+				}else{
+					if(data[1].equals (String.valueOf(id) )){
+						result.offer(new Order(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+					}
 				}
 			}
 

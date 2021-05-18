@@ -37,7 +37,7 @@ public class Customer extends User{
 	}
 
 	private void syncOrders(){
-		this.orders = ECommerce.getOrdersCustomer(this.getName());
+		this.orders = ECommerce.getOrders(this.getName(), false);
 		System.out.println(this.orders == null);
 	}
 
@@ -61,6 +61,10 @@ public class Customer extends User{
 	}
 
 	public void getSearchResult(){
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
 		printProducts(this.searchResult);
 	}
 
