@@ -57,8 +57,10 @@ public class Customer extends User{
 		// sort by name
 		quickSort(this.searchResult, 0, this.searchResult.size()-1);
 		
-
-		System.out.println(searchResult);
+		Iterator<Product> iter = this.searchResult.iterator();
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
 
 	}
 
