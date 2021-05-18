@@ -22,12 +22,6 @@ public class Trader extends User {
 
 	public void addProduct(String productName, String description, int price, int discountedPrice, String categoryTree){
 
-		// TreeSet<String> tree = new TreeSet<String>();
-		// String[] tokens = categoryTree.split(" >> ");
-		// for(String str : tokens){
-		// 	tree.add(str);
-		// }
-
 		categoryTree = "\"[\"\"" + categoryTree + "\"\"]";
 
 		ECommerce.addProduct(new Product(productName, categoryTree, price, discountedPrice, description, this.getName()));
@@ -58,16 +52,12 @@ public class Trader extends User {
 	public void meetOrder(){
 
 		ECommerce.updateOrders(this.orders.getFirst(), OrderState.ACCEPTED);
-
-		// this.orders.getFirst().setSOrderStatus(OrderState.ACCEPTED);
 		this.orders.poll();
 	}
 
 	public void cancelOrder(){
 
 		ECommerce.updateOrders(this.orders.getFirst(), OrderState.CANCELLED);
-
-		// this.orders.getFirst().setSOrderStatus(OrderState.CANCELLED);
 		this.orders.poll();
 	}
 

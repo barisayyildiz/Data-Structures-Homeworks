@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 
-import java.io.FileWriter;   // Import the FileWriter class
+import java.io.FileWriter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -40,13 +40,10 @@ public class ECommerce {
 
 					if(!traderNames.contains(name)){
 						traderNames.add(name);
-						// traders.add(new Trader(name));
 
-						// tradersWriter.write(traders.get(traders.size()-1).toString() + ";trader" + "\n");
 						tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + "123456" + ";" +  "trader" + "\n");
 					}
 
-					// productsWriter.write(data[0] + ";" + data[1] + ";" + data[3] + ";" + data[4] + ";" + data[6] + "\n");
 					productsWriter.write(row + "\n");
 				}
 
@@ -112,7 +109,6 @@ public class ECommerce {
 		String row;
 		BufferedReader myreader;
 		ArrayList<Product> products = new ArrayList<Product>();
-		TreeSet<String> categoryTree = new TreeSet<String>();
 
 		try{
 			myreader = new BufferedReader(new FileReader("products.txt"));
@@ -124,19 +120,8 @@ public class ECommerce {
 				String str = data[6];
 				if(name.equals(str)){
 
-					
-					data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
-					String[] tree = data[2].split(" >> ");
-
-					for(int i=0; i<tree.length; i++){
-						categoryTree.add(tree[i]);
-					}
-
-					// products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], (TreeSet<String>)categoryTree.clone()));
-					// products.add(new Product(data[0], data[1], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
 					products.add(new Product(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
 
-					categoryTree.clear();
 				}
 			}
 
@@ -289,7 +274,6 @@ public class ECommerce {
 
 			while((row = myreader.readLine()) != null){
 				String[] data = row.split(";");
-				// System.out.println(data[1]);
 				if(data[1].equals(name)){
 					res = Integer.parseInt(data[0]);
 				}
@@ -300,7 +284,6 @@ public class ECommerce {
 
 		}catch(Exception exception){
 			System.out.println(exception.getMessage());
-			System.out.println("hataaaaaaaa");
 			return res;
 		}
 	}
@@ -355,7 +338,6 @@ public class ECommerce {
 			myreader.readLine();
 
 			while((row = myreader.readLine()) != null){
-
 				String[] data = row.split(";");
 
 				if(data[2].equals(String.valueOf(id)) && data[3].equals(String.valueOf(OrderState.WAITING))){
@@ -474,13 +456,6 @@ public class ECommerce {
 				// if name or description contains the query
 				if(data[1].contains(query) || data[5].contains(query)){
 
-					// data[2] = data[2].replace("\"", "").replace("[", "").replace("]", "");
-					// String[] tree = data[2].split(" >> ");
-
-					// for(int i=0; i<tree.length; i++){
-					// 	categoryTree.add(tree[i]);
-					// }
-				
 					products.add(new Product(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]));
 				}
 
@@ -498,8 +473,6 @@ public class ECommerce {
 			return null;
 		}
 
-
 	}
-
 
 }

@@ -48,7 +48,6 @@ public class Order {
 
 	@Override
 	public String toString(){
-		// return this.productId + ";" + this.customerId + ";" + this.traderId + ";" + this.state;
 		String str = "";
 		str += "Product id :\t" + this.productId + "\n";
 		str += "Customer id :\t" + this.customerId + "\n";

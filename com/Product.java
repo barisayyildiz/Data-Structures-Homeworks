@@ -102,12 +102,6 @@ public class Product {
 
 	@Override
 	public String toString(){
-		// String str = "";
-		// // str += "id;product_name;price;discounted_price;description;trader\n";
-		// str += this.id + ";" + this.productName + ";" + this.price + ";" + this.discountedPrice + ";" + this.description + ";" + this.description + "\n";
-		// str += this.categoryTree.toString() + "\n\n";
-		// return str;
-
 		String str = "";
 
 		str += "Id :\t" + this.id + "\n";
