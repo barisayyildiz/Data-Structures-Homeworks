@@ -14,12 +14,11 @@ public class Customer extends User{
 	}
 
 	// get trader name as a paramter
-	public String showSingleTrader(String name){
-
+	public void showSingleTrader(String name){
 		ArrayList<Product> products = ECommerce.getAllProducts(name);
 
-		return products.toString();
-		
+		printProducts(products);
+
 	}
 
 	public void showAllTraderNames(){
@@ -57,15 +56,12 @@ public class Customer extends User{
 		// sort by name
 		quickSort(this.searchResult, 0, this.searchResult.size()-1);
 		
-		Iterator<Product> iter = this.searchResult.iterator();
-		while(iter.hasNext()){
-			System.out.println(iter.next());
-		}
+		printProducts(this.searchResult);
 
 	}
 
-	public ArrayList<Product> getSearchResult(){
-		return this.searchResult;
+	public void getSearchResult(){
+		printProducts(this.searchResult);
 	}
 
 
@@ -145,28 +141,32 @@ public class Customer extends User{
 	}
 
 	// quick sort is used
-	public ArrayList<Product> sortByName(){
+	public void sortByName(){
 
 		quickSort(this.searchResult, 0, this.searchResult.size()-1);
 
-		return this.searchResult;
-
+		printProducts(this.searchResult);		
 	}
 
-	public ArrayList<Product> sortByPrice(){
+	public void sortByPrice(){
 
 		bubbleSort(this.searchResult);
-
-		return this.searchResult;
-
+		
+		printProducts(this.searchResult);
 	}
 
-	public ArrayList<Product> sortByDiscount(){
+	public void sortByDiscount(){
 
 		this.searchResult = mergeSort(this.searchResult);
 
-		return this.searchResult;
+		printProducts(this.searchResult);
+	}
 
+	private void printProducts(ArrayList<Product> arr){
+		Iterator<Product> iter = arr.iterator();
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
 	}
 
 	private ArrayList<Product> mergeSort(ArrayList<Product> arr){
@@ -186,27 +186,21 @@ public class Customer extends User{
 
 		while(i < left.size() && j < right.size()){
 			if(left.get(i).getDiscountPercentage() > right.get(j).getDiscountPercentage()){
-				arr.set(counter, left.get(i));
-				i++;
+				arr.set(counter, left.get(i++));
 			}else{
-				arr.set(counter, right.get(j));
-				j++;
+				arr.set(counter, right.get(j++));
 			}
 			counter++;
 		}
 
 		// empty left array
 		while(i < left.size()){
-			arr.set(counter, left.get(i));
-			i++;
-			counter++;
+			arr.set(counter++, left.get(i++));
 		}
 
 		// empty right array
 		while(j < right.size()){
-			arr.set(counter, right.get(j));
-			j++;
-			counter++;
+			arr.set(counter++, right.get(j++));
 		}
 
 		return arr;
@@ -241,26 +235,21 @@ public class Customer extends User{
 	}
 
 	private int partition(ArrayList<Product> arr, int low, int high){
-		// pivot
+		
+		// get the pivot
 		Product pivot = arr.get(high);
-			 
-		// Index of smaller element and
-		// indicates the right position
-		// of pivot found so far
+
 		int i = (low - 1);
  
 		for(int j = low; j <= high - 1; j++)
-		{
-				 
-				// If current element is smaller
-				// than the pivot
-				if (arr.get(j).getProductName().compareTo(pivot.getProductName()) < 0)
-				{
-						// Increment index of
-						// smaller element
-						i++;
-						swap(arr, i, j);
-				}
+		{ 
+			// When the current element smaller than the pivot
+			if (arr.get(j).getProductName().compareTo(pivot.getProductName()) < 0)
+			{
+				// Increase the left pointer and swap
+				i++;
+				swap(arr, i, j);
+			}
 		}
 		swap(arr, i + 1, high);
 		return (i + 1);

@@ -69,7 +69,7 @@ public class Main
 
 			switch(command){
 				case "1":
-					System.out.println(trader.showAllProducts());
+					trader.showAllProducts();
 					break;
 				case "2":
 
@@ -169,7 +169,7 @@ public class Main
 				case "2":
 					System.out.print("Trader name : ");
 					traderName = scanner.nextLine();
-					System.out.println(customer.showSingleTrader(traderName));
+					customer.showSingleTrader(traderName);
 					break;
 				case "3":
 					System.out.print("Product id : ");
@@ -185,7 +185,7 @@ public class Main
 					customer.search(query);
 					break;
 				case "6":
-					System.out.println(customer.getSearchResult());
+					customer.getSearchResult();
 					break;
 				case "7":
 					System.out.println("Lower bound : ");
@@ -215,13 +215,13 @@ public class Main
 					System.out.println(customer.filterByCategory(query));
 					break;
 				case "11":
-					System.out.println(customer.sortByName());
+					customer.sortByName();
 					break;
 				case "12":
-					System.out.println(customer.sortByPrice());
+					customer.sortByPrice();
 					break;
 				case "13":
-					System.out.println(customer.sortByDiscount());
+					customer.sortByDiscount();
 					break;
 				case "q":
 					flag = false;

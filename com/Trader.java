@@ -11,10 +11,13 @@ public class Trader extends User {
 		this.orders = null;
 	}
 
-	public String showAllProducts(){
+	public void showAllProducts(){
 		ArrayList<Product> products = ECommerce.getAllProducts(this.getName());
 
-		return products.toString();
+		Iterator<Product> iter = products.iterator();
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
 	}
 
 	public void addProduct(String productName, String description, int price, int discountedPrice, String categoryTree){
