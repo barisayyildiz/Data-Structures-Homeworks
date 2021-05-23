@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 
 public class ECommerce {
 
 	public static void initDataBase(){
 		ArrayList<String> traderNames = new ArrayList<String>();
-		HashMap<String,String> traders = new HashMap<String,String>();
+		Hashtable<String,String> traders = new Hashtable<String,String>();
 
 		// read csv
 		try{
@@ -306,6 +306,7 @@ public class ECommerce {
 				String[] data = row.split(";");
 				if(data[1].equals(name)){
 					res = Integer.parseInt(data[0]);
+					break;
 				}
 			}
 
@@ -316,6 +317,35 @@ public class ECommerce {
 			System.out.println(exception.getMessage());
 			return res;
 		}
+	}
+
+	public static String getUserName(int id){
+		String row;
+		BufferedReader myreader;
+		String res = "";
+
+		try{
+			myreader = new BufferedReader(new FileReader("users.txt"));
+			
+			// read header
+			myreader.readLine();
+
+			while((row = myreader.readLine()) != null){
+				String[] data = row.split(";");
+				if(Integer.parseInt(data[0]) == id){
+					res = data[1];
+					break;
+				}
+			}
+
+			myreader.close();
+			return res;
+
+		}catch(Exception exception){
+			System.out.println(exception.getMessage());
+			return res;
+		}
+
 	}
 
 	public static void makeAnOrder(int customerId, String productId){

@@ -11,6 +11,11 @@ public class Customer extends User implements UserInterface{
 		this.searchResult = null;
 	}
 
+	public Customer(int id, String password){
+		super(id, password);
+		this.searchResult = null;
+	}
+
 	// get trader name as a paramter
 	public void showSingleTrader(String name){
 		ArrayList<Product> products = ECommerce.getAllProducts(name);

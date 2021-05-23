@@ -15,6 +15,13 @@ public class User {
 		this.orders = null;
 	}
 
+	public User(int id, String password){
+		this.id = id;
+		this.password = password;
+		this.orders = null;
+		this.name = ECommerce.getUserName(id);
+	}
+
 	public int getId(){
 		return this.id;
 	}

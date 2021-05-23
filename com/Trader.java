@@ -8,6 +8,10 @@ public class Trader extends User implements UserInterface{
 		super(id, name, password);
 	}
 
+	public Trader(int id, String password){
+		super(id, password);
+	}
+
 	public void showAllProducts(){
 		ArrayList<Product> products = ECommerce.getAllProducts(this.getName());
 

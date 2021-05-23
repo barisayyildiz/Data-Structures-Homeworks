@@ -6,7 +6,7 @@ public class Main
 {
 	public static void menu(){
 		
-		ECommerce.initDataBase();
+		// ECommerce.initDataBase();
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -31,18 +31,18 @@ public class Main
 
 		switch(role){
 			case 0:
-				traderMenu();
+				traderMenu(new Trader(id, password));
 			case 1:
-				customerMenu();
+				customerMenu(new Customer(id, password));
 		}
 
 
 		scanner.close();
 	}
 
-	public static void traderMenu(){
+	public static void traderMenu(Trader trader){
 
-		Trader trader = new Trader(63876974, "Alisha", "3ySYve");
+		// Trader trader = new Trader(63876974, "Alisha", "3ySYve");
 
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
@@ -129,9 +129,9 @@ public class Main
 
 	}
 
-	public static void customerMenu(){
+	public static void customerMenu(Customer customer){
 
-		Customer customer = new Customer(39469264, "Barış Ayyıldız", "123456");
+		// Customer customer = new Customer(39469264, "Barış Ayyıldız", "123456");
 
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
@@ -240,8 +240,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		traderMenu();
-		// customerMenu();
+		// traderMenu(new Trader(63876974, "lk13ZR"));
+		customerMenu(new Customer(39469264, "123456"));
 
 	}
 }
