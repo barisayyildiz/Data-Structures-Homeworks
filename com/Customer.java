@@ -64,15 +64,19 @@ public class Customer extends User implements UserInterface{
 	}
 
 	public void getSearchResult(){
-		if(this.searchResult == null){
-			System.out.println("First you need to search...\n");
-			return;
+		if(this.searchResult.size() == 0){
+			System.out.println("No products found with the query...\n");
 		}
 		printProducts(this.searchResult);
 	}
 
 
 	public void filterByPriceLowerBound(int lowerBound){
+
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
 
 		ArrayList<Product> temp = new ArrayList<Product>();
 
@@ -93,6 +97,11 @@ public class Customer extends User implements UserInterface{
 
 	public void filterByPriceUpperBound(int upperBound){
 
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
+
 		ArrayList<Product> temp = new ArrayList<Product>();
 
 		Iterator<Product> iter = this.searchResult.iterator();
@@ -112,6 +121,11 @@ public class Customer extends User implements UserInterface{
 
 	public void filterByPrice(int lowerBound, int upperBound){
 
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
+
 		ArrayList<Product> temp = new ArrayList<Product>();
 
 		Iterator<Product> iter = this.searchResult.iterator();
@@ -129,7 +143,13 @@ public class Customer extends User implements UserInterface{
 
 	}
 
-	public ArrayList<Product> filterByCategory(String query){
+	public void filterByCategory(String query){
+
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
+
 		ArrayList<Product> temp = new ArrayList<Product>();
 		Iterator<Product> iter = this.searchResult.iterator();
 		Product current;
@@ -142,12 +162,17 @@ public class Customer extends User implements UserInterface{
 		}
 		
 		this.searchResult = temp;
-		return this.searchResult;
+		printProducts(this.searchResult);
 
 	}
 
 	// quick sort is used
 	public void sortByName(){
+
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
 
 		quickSort(this.searchResult, 0, this.searchResult.size()-1);
 
@@ -156,12 +181,22 @@ public class Customer extends User implements UserInterface{
 
 	public void sortByPrice(){
 
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
+
 		bubbleSort(this.searchResult);
 		
 		printProducts(this.searchResult);
 	}
 
 	public void sortByDiscount(){
+
+		if(this.searchResult == null){
+			System.out.println("First you need to search...\n");
+			return;
+		}
 
 		this.searchResult = mergeSort(this.searchResult);
 

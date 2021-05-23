@@ -195,21 +195,21 @@ public class Main
 					customer.filterByPrice(lowerBound, upperBound);
 					break;
 				case "8":
-					System.out.println("Lower bound : ");
+					System.out.print("Lower bound : ");
 					lowerBound = scanner.nextInt();
 					scanner.nextLine();
 					customer.filterByPriceLowerBound(lowerBound);
 					break;
 				case "9":
-					System.out.println("Upper bound : ");
+					System.out.print("Upper bound : ");
 					upperBound = scanner.nextInt();
 					scanner.nextLine();
 					customer.filterByPriceUpperBound(upperBound);
 					break;
 				case "10":
-					System.out.println("Category name : ");
+					System.out.print("Category name : ");
 					query = scanner.nextLine();
-					System.out.println(customer.filterByCategory(query));
+					customer.filterByCategory(query);
 					break;
 				case "11":
 					customer.sortByName();
