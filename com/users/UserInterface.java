@@ -1,5 +1,5 @@
 
-package com;
+package com.users;
 
 /**
  * @author Barış Ayyıldız

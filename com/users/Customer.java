@@ -1,4 +1,6 @@
-package com;
+package com.users;
+
+import com.ecommerce.*;
 
 import java.util.*;
 
@@ -137,8 +139,7 @@ public class Customer extends User implements UserInterface{
 			}
 		}
 
-		this.searchResult = temp;
-		printProducts(this.searchResult);
+		printProducts(temp);
 
 	}
 
@@ -165,8 +166,7 @@ public class Customer extends User implements UserInterface{
 			}
 		}
 
-		this.searchResult = temp;
-		printProducts(this.searchResult);
+		printProducts(temp);
 		
 	}
 
@@ -194,8 +194,7 @@ public class Customer extends User implements UserInterface{
 			}
 		}
 
-		this.searchResult = temp;
-		printProducts(this.searchResult);
+		printProducts(temp);
 
 	}
 
@@ -220,9 +219,8 @@ public class Customer extends User implements UserInterface{
 				temp.add(current);
 			}
 		}
-		
-		this.searchResult = temp;
-		printProducts(this.searchResult);
+
+		printProducts(temp);
 
 	}
 

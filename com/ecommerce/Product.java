@@ -1,4 +1,4 @@
-package com;
+package com.ecommerce;
 
 import java.util.Iterator;
 import java.util.TreeSet;

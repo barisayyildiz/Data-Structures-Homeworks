@@ -1,4 +1,5 @@
-package com;
+package com.ecommerce;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

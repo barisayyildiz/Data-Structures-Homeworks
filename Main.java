@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-import com.*;
+import com.ecommerce.*;
+import com.users.*;
 
 public class Main
 {
@@ -210,6 +211,7 @@ public class Main
 					System.out.print("Category name : ");
 					query = scanner.nextLine();
 					customer.filterByCategory(query);
+					// scanner.nextLine();
 					break;
 				case "11":
 					customer.sortByName();
