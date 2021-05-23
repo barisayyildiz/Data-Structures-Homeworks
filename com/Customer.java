@@ -2,21 +2,44 @@ package com;
 
 import java.util.*;
 
+/**
+ * @author Barış Ayyıldız
+ */
+
+ /**
+	* Customer class, represents a customer in the ECommerce application
+	* Extends from User and implements UserInterface
+  */
 public class Customer extends User implements UserInterface{
 
+	/** search results (Product objects) are stored here */
 	private ArrayList<Product> searchResult;
-
+	
+	/**
+	 * Customer constructor
+	 * @param id id of the customer
+	 * @param name name of the customer
+	 * @param password password of the customer
+	 */
 	public Customer(int id, String name, String password){
 		super(id, name, password);
 		this.searchResult = null;
 	}
 
+	/**
+	 * Customer constructor without the name parameter, name is fetched from users.txt
+	 * @param id customer id
+	 * @param password customer password
+	 */
 	public Customer(int id, String password){
 		super(id, password);
 		this.searchResult = null;
 	}
 
-	// get trader name as a paramter
+	/**
+	 * Prints all the products of a single trader
+	 * @param name name of the trader
+	 */
 	public void showSingleTrader(String name){
 		ArrayList<Product> products = ECommerce.getAllProducts(name);
 
@@ -24,6 +47,9 @@ public class Customer extends User implements UserInterface{
 
 	}
 
+	/**
+	 * Prints all the trader names
+	 */
 	public void showAllTraderNames(){
 		LinkedList<String> traderNames = ECommerce.getAllTraders();
 		Iterator<String> iter = traderNames.iterator();
@@ -33,17 +59,28 @@ public class Customer extends User implements UserInterface{
 		}	
 	}
 
+	/**
+	 * Gets a product id and makes an order
+	 * Writes the order on orders.txt
+	 * @param productId product id
+	 */
 	public void makeAnOrder(String productId){
 		
 		ECommerce.makeAnOrder(this.getId(), productId);
 
 	}
 
+	/**
+	 * Synchronize orders with the database
+	 */
 	private void syncOrders(){
 		this.orders = ECommerce.getOrders(this.getName(), false);
 		System.out.println(this.orders == null);
 	}
 
+	/**
+	 * Prints all the orders of the customer
+	 */
 	public void getOrders(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();
@@ -52,6 +89,10 @@ public class Customer extends User implements UserInterface{
 		}
 	}
 
+	/**
+	 * Prints all the products that contains the query in their name or description
+	 * @param query query passed as a parameter
+	 */
 	public void search(String query){
 
 		this.searchResult = ECommerce.getProductsByQuery(query);
@@ -63,6 +104,9 @@ public class Customer extends User implements UserInterface{
 
 	}
 
+	/**
+	 * Prints the search result
+	 */
 	public void getSearchResult(){
 		if(this.searchResult.size() == 0){
 			System.out.println("No products found with the query...\n");
@@ -70,7 +114,10 @@ public class Customer extends User implements UserInterface{
 		printProducts(this.searchResult);
 	}
 
-
+	/**
+	 * Filters search results by the lower bound
+	 * @param lowerBound lower bound
+	 */
 	public void filterByPriceLowerBound(int lowerBound){
 
 		if(this.searchResult == null){
@@ -95,6 +142,10 @@ public class Customer extends User implements UserInterface{
 
 	}
 
+	/**
+	 * Filters search results by the upper bound
+	 * @param upperBound upper bound
+	 */
 	public void filterByPriceUpperBound(int upperBound){
 
 		if(this.searchResult == null){
@@ -119,6 +170,11 @@ public class Customer extends User implements UserInterface{
 		
 	}
 
+	/**
+	 * Filters search results by the lower and the upper bounds
+	 * @param lowerBound lower bound
+	 * @param upperBound upper bound
+	 */
 	public void filterByPrice(int lowerBound, int upperBound){
 
 		if(this.searchResult == null){
@@ -143,6 +199,10 @@ public class Customer extends User implements UserInterface{
 
 	}
 
+	/**
+	 * Filters search results by the category
+	 * @param query category name
+	 */
 	public void filterByCategory(String query){
 
 		if(this.searchResult == null){
@@ -166,7 +226,9 @@ public class Customer extends User implements UserInterface{
 
 	}
 
-	// quick sort is used
+	/**
+	 * Sorts the search result by the name with decreasing order
+	 */
 	public void sortByName(){
 
 		if(this.searchResult == null){
@@ -179,6 +241,9 @@ public class Customer extends User implements UserInterface{
 		printProducts(this.searchResult);		
 	}
 
+	/**
+	 * Sorts the search result by the price with increasing order
+	 */
 	public void sortByPrice(){
 
 		if(this.searchResult == null){
@@ -191,6 +256,9 @@ public class Customer extends User implements UserInterface{
 		printProducts(this.searchResult);
 	}
 
+	/**
+	 * Sorts the search result by the price with increasing order
+	 */
 	public void sortByDiscount(){
 
 		if(this.searchResult == null){

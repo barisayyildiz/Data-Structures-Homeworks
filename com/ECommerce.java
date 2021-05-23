@@ -14,8 +14,19 @@ import java.util.TreeSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+/**
+ * @author Barış Ayyıldız
+ */
+
+
+ /**
+	* Main ECommerce class that contains all the database related methods
+  */
 public class ECommerce {
 
+	/**
+	 * Tokenizes e-commerce-samples.csv and creates users.txt, orders.txt and products.txt
+	 */
 	public static void initDataBase(){
 		ArrayList<String> traderNames = new ArrayList<String>();
 		Hashtable<String,String> traders = new Hashtable<String,String>();
@@ -44,11 +55,7 @@ public class ECommerce {
 					String name = data[6];
 
 					if(!traderNames.contains(name)){
-						// traderNames.add(name);
-
 						traders.put(name, generatePassword());
-
-						// tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + "123456" + ";" +  "trader" + "\n");
 					}
 
 					productsWriter.write(row + "\n");
@@ -103,6 +110,12 @@ public class ECommerce {
 	// -1	not found
 	// 0		trader
 	// 1		customer
+	/**
+	 * gets id and password and checks if the user exists
+	 * @param id id
+	 * @param password password
+	 * @return 1 if the user is customer, 0 if the user is trader, -1 when the user is not found or password is not matching
+	 */
 	public static int login(int id, String password){
 		String row;
 
@@ -134,6 +147,11 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Gets all the products of a single trader
+	 * @param name trader name
+	 * @return product of arraylist
+	 */
 	public static ArrayList<Product> getAllProducts(String name){
 
 		String row;
@@ -166,6 +184,10 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Gets a product object and writes it on products.txt
+	 * @param product product object
+	 */
 	public static void addProduct(Product product){
 
 		try{
@@ -186,6 +208,10 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Removes product from products.txt by the id given by the user
+	 * @param id id of a product
+	 */
 	public static void removeProduct(String id){
 
 		String row;
@@ -223,6 +249,11 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Edits a product's description
+	 * @param id product id
+	 * @param description product description
+	 */
 	public static void editProduct(String id, String description){
 
 		String row;
@@ -263,6 +294,10 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Returns linkedlist of trader names
+	 * @return linkedlist of trader names
+	 */
 	public static LinkedList<String> getAllTraders(){
 
 		String row;
@@ -319,6 +354,11 @@ public class ECommerce {
 		}
 	}
 
+	/**
+	 * Returns the user name by the user id
+	 * @param id user id
+	 * @return user name
+	 */
 	public static String getUserName(int id){
 		String row;
 		BufferedReader myreader;
@@ -348,6 +388,11 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Gets a customer and product id and writes the order on orders.txt
+	 * @param customerId customer id
+	 * @param productId product id
+	 */
 	public static void makeAnOrder(int customerId, String productId){
 
 		String row;
@@ -383,6 +428,12 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Gets all the orders by the user name
+	 * @param name user name
+	 * @param isTrader if true, only looks for the traders
+	 * @return Linkedlist of Order objects
+	 */
 	public static LinkedList<Order> getOrders(String name, boolean isTrader){
 
 		String row;
@@ -423,6 +474,11 @@ public class ECommerce {
 
 	}
 
+	/**
+	 * Updates order with order state
+	 * @param order Order object
+	 * @param state OrderState enum
+	 */
 	public static void updateOrders(Order order, OrderState state){
 
 		String row;
@@ -466,7 +522,11 @@ public class ECommerce {
 
 	}
 
-
+	/**
+	 * Gets all the products by the query
+	 * @param query query given by the user
+	 * @return ArrayList of Product objects
+	 */
 	public static ArrayList<Product> getProductsByQuery(String query){
 
 		String row;
