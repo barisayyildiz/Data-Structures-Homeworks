@@ -185,11 +185,12 @@ public class Main
 					customer.getSearchResult();
 					break;
 				case "7":
-					System.out.println("Lower bound : ");
+					System.out.print("Lower bound : ");
 					lowerBound = scanner.nextInt();
 					scanner.nextLine();
-					System.out.println("Upper bound : ");
+					System.out.print("Upper bound : ");
 					upperBound = scanner.nextInt();
+					scanner.nextLine();
 
 					customer.filterByPrice(lowerBound, upperBound);
 					break;
