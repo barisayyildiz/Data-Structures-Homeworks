@@ -9,13 +9,16 @@ import java.io.FileWriter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.TreeSet;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class ECommerce {
 
 	public static void initDataBase(){
 		ArrayList<String> traderNames = new ArrayList<String>();
+		HashMap<String,String> traders = new HashMap<String,String>();
 
 		// read csv
 		try{
@@ -27,30 +30,42 @@ public class ECommerce {
 			try{
 				FileWriter productsWriter = new FileWriter("products.txt");
 				FileWriter tradersWriter = new FileWriter("users.txt");
+				FileWriter ordersWriter = new FileWriter("orders.txt");
 
 				// reading header
 				row = csvReader.readLine();
 
 				productsWriter.write(row + "\n");
 				tradersWriter.write("id;trader;password;role" + "\n");
+				ordersWriter.write("product_id;from;to;status" + "\n");
 
 				while((row = csvReader.readLine()) != null){
 					String[] data = row.split(";");
 					String name = data[6];
 
 					if(!traderNames.contains(name)){
-						traderNames.add(name);
+						// traderNames.add(name);
 
-						tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + "123456" + ";" +  "trader" + "\n");
+						traders.put(name, generatePassword());
+
+						// tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + "123456" + ";" +  "trader" + "\n");
 					}
 
 					productsWriter.write(row + "\n");
 				}
 
+				// write traders
+				for (String name: traders.keySet()) {
+					tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + traders.get(name) + ";" +  "trader" + "\n");
+				}
+
+
 				tradersWriter.write("39469264;Barış Ayyıldız;123456;customer" + "\n");
+				tradersWriter.write(String.valueOf(generateId("Barış The Trader")) +  ";Barış The Trader;123456;trader" + "\n");
 
 				productsWriter.close();
 				tradersWriter.close();
+				ordersWriter.close();
 
 			}catch(Exception exception){
 				System.out.println(exception.getMessage());
@@ -64,9 +79,24 @@ public class ECommerce {
 
 	}
 
+	private static String generatePassword(){
+		Random rand = new Random();
+
+		String str = "qwertyuiasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+		String password = "";
+		int length = str.length();
+
+		for(int i=0; i<6; i++){
+			password += str.charAt(rand.nextInt(length));
+		}
+
+		return password;
+	}
+
 	private static int generateId(String str){
 		int id = str.hashCode() % 100000000;
-		if(id < 0)	id += 100000000;
+		if(id < 0)	id = -id;
+		if(id < 10000000) id += 10000000;
 		return id;
 	}
 

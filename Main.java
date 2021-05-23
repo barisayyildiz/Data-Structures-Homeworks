@@ -42,7 +42,7 @@ public class Main
 
 	public static void traderMenu(){
 
-		Trader trader = new Trader(63876974, "Alisha", "123456");
+		Trader trader = new Trader(63876974, "Alisha", "3ySYve");
 
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
