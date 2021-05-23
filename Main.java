@@ -42,8 +42,6 @@ public class Main
 
 	public static void traderMenu(Trader trader){
 
-		// Trader trader = new Trader(63876974, "Alisha", "3ySYve");
-
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
 		String command;
@@ -89,14 +87,12 @@ public class Main
 					scanner.nextLine();
 
 					trader.addProduct(productName, description, price, discountedPrice, categoryTree);
-
 					break;
 				case "3":
 					System.out.print("Product id : ");
 					id = scanner.nextLine();
 
 					trader.removeProduct(id);
-
 					break;
 				case "4":
 					System.out.print("Product id : ");
@@ -130,8 +126,6 @@ public class Main
 	}
 
 	public static void customerMenu(Customer customer){
-
-		// Customer customer = new Customer(39469264, "Barış Ayyıldız", "123456");
 
 		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
@@ -169,11 +163,13 @@ public class Main
 				case "2":
 					System.out.print("Trader name : ");
 					traderName = scanner.nextLine();
+
 					customer.showSingleTrader(traderName);
 					break;
 				case "3":
 					System.out.print("Product id : ");
 					productId = scanner.nextLine();
+
 					customer.makeAnOrder(productId);
 					break;
 				case "4":
@@ -182,6 +178,7 @@ public class Main
 				case "5":
 					System.out.print("Query : ");
 					query = scanner.nextLine();
+
 					customer.search(query);
 					break;
 				case "6":
@@ -194,20 +191,19 @@ public class Main
 					System.out.println("Upper bound : ");
 					upperBound = scanner.nextInt();
 
-					System.out.println(customer.filterByPrice(lowerBound, upperBound));
-
+					customer.filterByPrice(lowerBound, upperBound);
 					break;
 				case "8":
 					System.out.println("Lower bound : ");
 					lowerBound = scanner.nextInt();
 					scanner.nextLine();
-					System.out.println(customer.filterByPriceLowerBound(lowerBound));
+					customer.filterByPriceLowerBound(lowerBound);
 					break;
 				case "9":
 					System.out.println("Upper bound : ");
 					upperBound = scanner.nextInt();
 					scanner.nextLine();
-					System.out.println(customer.filterByPriceUpperBound(upperBound));
+					customer.filterByPriceUpperBound(upperBound);
 					break;
 				case "10":
 					System.out.println("Category name : ");

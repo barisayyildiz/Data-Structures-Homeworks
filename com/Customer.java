@@ -72,7 +72,7 @@ public class Customer extends User implements UserInterface{
 	}
 
 
-	public ArrayList<Product> filterByPriceLowerBound(int lowerBound){
+	public void filterByPriceLowerBound(int lowerBound){
 
 		ArrayList<Product> temp = new ArrayList<Product>();
 
@@ -87,11 +87,11 @@ public class Customer extends User implements UserInterface{
 		}
 
 		this.searchResult = temp;
-		return this.searchResult;
+		printProducts(this.searchResult);
 
 	}
 
-	public ArrayList<Product> filterByPriceUpperBound(int upperBound){
+	public void filterByPriceUpperBound(int upperBound){
 
 		ArrayList<Product> temp = new ArrayList<Product>();
 
@@ -106,11 +106,11 @@ public class Customer extends User implements UserInterface{
 		}
 
 		this.searchResult = temp;
-		return this.searchResult;
+		printProducts(this.searchResult);
 		
 	}
 
-	public ArrayList<Product> filterByPrice(int lowerBound, int upperBound){
+	public void filterByPrice(int lowerBound, int upperBound){
 
 		ArrayList<Product> temp = new ArrayList<Product>();
 
@@ -125,8 +125,7 @@ public class Customer extends User implements UserInterface{
 		}
 
 		this.searchResult = temp;
-
-		return this.searchResult;
+		printProducts(this.searchResult);
 
 	}
 
