@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.TreeSet;
 import java.util.Hashtable;
-import java.util.Iterator;
 
 /**
  * @author Barış Ayyıldız
@@ -192,9 +191,6 @@ public class ECommerce {
 
 		try{
 			FileWriter fw = new FileWriter("products.txt", true);
-
-			TreeSet<String> tree = product.getCategoryTree();
-			Iterator<String> iter = tree.iterator();
 
 			String str = product.getId() + ";" + product.getProductName() + ";" + product.getCategoryString() + ";" + product.getPrice() + ";" + product.discountedPrice() + ";" + product.getDescription() + ";" + product.getTrader() + "\n";
 	
