@@ -1,23 +1,49 @@
-import java.util.Iterator;
-import java.util.TreeSet;
+import com.ecommerce.*;
+import com.users.*;
 
 public class Test
 {
 	public static void main(String args[]){
-		
-		TreeSet<String> tree = new TreeSet<String>();
 
-		tree.add("g");
-		tree.add("a");
-		tree.add("b");
+		User user = ECommerce.login(63876975, "lk13ZR");
+		Customer customer;
+		Trader trader;
 
-		System.out.println(tree.last());
+		// System.out.println(user.getId() + ", " + user == null);
+		// System.out.println(user.getName());
 
-		// Iterator<String> iter = tree.iterator();
-		// while(iter.hasNext()){
-		// 	System.out.println(iter.next());
+		if(user == null){
+			// not found
+		}
+
+		try{
+
+			trader = (Trader)user;
+
+			
+			customer = (Customer)user;
+			if(customer != null)
+
+			// call trader 
+
+		}catch(ClassCastException exception){
+
+			user = 
+
+		}
+
+		customer = (Customer)user;
+
+		System.out.println(customer);
+
+		// try{
+		// 	Customer customer = (Customer)user;
+
 		// }
-		// System.out.println(tree.toArray());
 
+		// System.out.println(customer == null);
+
+
+		
 	}
 }

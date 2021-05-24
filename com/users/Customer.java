@@ -83,6 +83,7 @@ public class Customer extends User implements UserInterface{
 	/**
 	 * Prints all the orders of the customer
 	 */
+	@Override
 	public void getOrders(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();

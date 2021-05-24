@@ -1,5 +1,6 @@
 package com.ecommerce;
 
+import com.users.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -116,7 +117,7 @@ public class ECommerce {
 	 * @param password password
 	 * @return 1 if the user is customer, 0 if the user is trader, -1 when the user is not found or password is not matching
 	 */
-	public static int login(int id, String password){
+	public static User login(int id, String password){
 		String row;
 
 		try{
@@ -131,18 +132,18 @@ public class ECommerce {
 				if(Integer.parseInt(data[0]) == id && data[2].equals(password)){
 					myreader.close();
 
-					if(data[3].equals("trader")) return 0;
-					return 1;
+					if(data[3].equals("trader")) return new Trader(id, password);
+					return new Customer(id, password);
 
 				}
 			}
 
 			myreader.close();
 
-			return -1;
+			return null;
 		}catch(Exception exception){
 			System.out.println(exception.getMessage());
-			return -1;
+			return null;
 		}
 
 	}
@@ -209,7 +210,7 @@ public class ECommerce {
 	 * Removes product from products.txt by the id given by the user
 	 * @param id id of a product
 	 */
-	public static void removeProduct(String id){
+	public static void removeProduct(String id, Trader trader){
 
 		String row;
 		BufferedReader myreader;
@@ -226,7 +227,7 @@ public class ECommerce {
 			while((row = myreader.readLine()) != null){
 				String[] data = row.split(";");
 				
-				if(data[0].equals(id)) continue;
+				if(data[0].equals(id) && data[6].equals(trader.getName())) continue;
 				mywriter.write(row + "\n");
 			}
 
@@ -251,7 +252,7 @@ public class ECommerce {
 	 * @param id product id
 	 * @param description product description
 	 */
-	public static void editProduct(String id, String description){
+	public static void editProduct(String id, String description, Trader trader){
 
 		String row;
 		BufferedReader myreader;
@@ -270,7 +271,7 @@ public class ECommerce {
 
 				String[] data = row.split(";");
 				
-				if(data[0].equals(id)){
+				if(data[0].equals(id) && data[6].equals(trader.getName())){
 					row = data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";"	+ description + ";" + data[6];
 				}
 

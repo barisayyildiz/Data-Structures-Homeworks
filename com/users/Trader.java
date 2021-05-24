@@ -66,7 +66,7 @@ public class Trader extends User implements UserInterface{
 	 * @param id prodcut id
 	 */
 	public void removeProduct(String id){
-		ECommerce.removeProduct(id);
+		ECommerce.removeProduct(id, this);
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class Trader extends User implements UserInterface{
 	 * @param description product description
 	 */
 	public void editProduct(String id, String description){
-		ECommerce.editProduct(id, description);
+		ECommerce.editProduct(id, description, this);
 	}
 
 	private void syncOrders(){
@@ -86,6 +86,7 @@ public class Trader extends User implements UserInterface{
 	/**
 	 * Prints all the orders of the trader
 	 */
+	@Override
 	public void getOrders(){
 		this.syncOrders();
 		Iterator<Order> iter = this.orders.iterator();

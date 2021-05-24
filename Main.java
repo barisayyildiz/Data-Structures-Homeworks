@@ -10,8 +10,11 @@ public class Main
 		// ECommerce.initDataBase();
 
 		Scanner scanner = new Scanner(System.in);
+		User user;
+		Trader trader;
+		Customer customer;
 
-		int id, role;
+		int id;
 		String password;
 
 		System.out.println("Welcome to my ECommerce App");
@@ -23,27 +26,33 @@ public class Main
 			System.out.print("Password : ");
 			password = scanner.nextLine();
 
-			role = ECommerce.login(id, password);
-			if(role == -1){
+			user = ECommerce.login(id, password);
+
+			System.out.println("user : " + user);
+
+			if(user == null){
 				System.out.println("User is not found...\n");
+				continue;
 			}
+
 			break;
+			
+		}
+		
+		try{
+			trader = (Trader)user;
+			// scanner.close();
+			traderMenu(trader, scanner);
+		}catch(ClassCastException exception){
+			customer = (Customer)user;
+			// scanner.close();
+			customerMenu(customer, scanner);
 		}
 
-		switch(role){
-			case 0:
-				traderMenu(new Trader(id, password));
-			case 1:
-				customerMenu(new Customer(id, password));
-		}
-
-
-		scanner.close();
 	}
 
-	public static void traderMenu(Trader trader){
+	public static void traderMenu(Trader trader, Scanner scanner){
 
-		Scanner scanner = new Scanner(System.in);		
 		boolean flag = true;
 		String command;
 
@@ -126,9 +135,8 @@ public class Main
 
 	}
 
-	public static void customerMenu(Customer customer){
-
-		Scanner scanner = new Scanner(System.in);		
+	public static void customerMenu(Customer customer, Scanner scanner){
+		
 		boolean flag = true;
 		String command;
 
@@ -239,8 +247,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		// traderMenu(new Trader(63876974, "lk13ZR"));
-		customerMenu(new Customer(39469264, "123456"));
+		traderMenu(new Trader(63876974, "lk13ZR"), new Scanner(System.in));
+		// customerMenu(new Customer(39469264, "123456"), , new Scanner(System.in));
 
 	}
 }
