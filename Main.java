@@ -7,7 +7,7 @@ public class Main
 {
 	public static void menu(){
 		
-		// ECommerce.initDataBase();
+		ECommerce.initDataBase();
 
 		Scanner scanner = new Scanner(System.in);
 		User user;
@@ -243,12 +243,148 @@ public class Main
 
 	}
 
+	public static void testCases(){
+
+		System.out.println("Test case ID : 000");
+		ECommerce.initDataBase();
+		System.out.println("Database is initialized");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("Test case ID : 001");
+		Customer customer = (Customer)ECommerce.login(39469264, "123456");
+		System.out.println(customer + "\n");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("Test case ID : 002");
+		Trader trader = (Trader)ECommerce.login(63876974, "123456");
+		System.out.println(trader + "\n");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("Test case ID : 003");
+		User user = ECommerce.login(10000000, "123456");
+		System.out.println("User is : " + user);
+
+		System.out.println("===================================================================================");
+
+		System.out.println("Test case ID : 004");
+		trader.addProduct("product test name", "product test description", 100, 90, "a >> b >> c");
+		System.out.println("Product has added");
+
+		System.out.println("===================================================================================");
+		
+		System.out.println("\nTest case ID : 005");
+		trader.showAllProducts();
+
+		System.out.println("===================================================================================");
+		
+		System.out.println("\nTest case ID : 006");
+		trader.removeProduct("SRTEH2FF9KEDEFGF");
+		System.out.println("Product has removed");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 007");
+		trader.editProduct("SBEEH3QGU7MFYJFY", "test description!!!");
+		System.out.println("Product has updated");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 008");
+		System.out.println("Orders : ");
+		trader.getOrders();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 009");
+		trader.meetOrder();
+		System.out.println("Orders : ");
+		trader.getOrders();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 010");
+		trader.cancelOrder();
+		System.out.println("Orders : ");
+		trader.getOrders();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 011");
+		customer.showSingleTrader("Alisha");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 012");
+		customer.showAllTraderNames();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 013");
+		customer.makeAnOrder("SBEEH3QGYGHFUEXN");
+		System.out.println("Order has saved\n");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 014");
+		System.out.println("Orders : ");
+		customer.getOrders();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 015");
+		customer.search("mug");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 016");
+		customer.getSearchResult();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 017");
+		customer.filterByPriceLowerBound(1000);
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 018");
+		customer.filterByPriceUpperBound(2000);
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 019");
+		customer.filterByPrice(1000, 2000);
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 020");
+		customer.filterByCategory("Noritake");
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 021");
+		customer.sortByName();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 022");
+		customer.sortByPrice();
+
+		System.out.println("===================================================================================");
+
+		System.out.println("\nTest case ID : 023");
+		customer.sortByDiscount();
+
+
+	}
+
 
 	public static void main(String args[]){
 		
-		// menu();
-		// traderMenu(new Trader(63876974, "lk13ZR"), new Scanner(System.in));
-		customerMenu(new Customer(39469264, "123456"), new Scanner(System.in));
+		testCases();
+		menu();
 
 	}
 }

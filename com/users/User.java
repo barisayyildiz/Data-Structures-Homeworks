@@ -77,4 +77,13 @@ public class User {
 		this.password = password;
 	}
 
+	/**
+	 * Returns string representation of User object
+	 * @return String representation of User object
+	 */
+	@Override
+	public String toString(){
+		return "id : " + this.id + ", name : " + this.name;
+	}
+
 }

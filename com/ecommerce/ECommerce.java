@@ -64,11 +64,16 @@ public class ECommerce {
 
 				// write traders
 				for (String name: traders.keySet()) {
+					if(name.equals("Alisha")){
+						// for test cases, set password to 123456
+						tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + "123456" + ";" +  "trader" + "\n");
+						continue;
+					}
 					tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + traders.get(name) + ";" +  "trader" + "\n");
 				}
 
 				// some users and orders added for testing
-				tradersWriter.write(String.valueOf(generateId("Barış Ayyıldız")) + "Barış Ayyıldız;123456;customer" + "\n");
+				tradersWriter.write(String.valueOf(generateId("Barış Ayyıldız")) + ";Barış Ayyıldız;123456;customer" + "\n");
 				tradersWriter.write(String.valueOf(generateId("Barış The Trader")) +  ";Barış The Trader;123456;trader" + "\n");
 
 				ordersWriter.write("SRTEH2FGBDJGX8FW;39469264;63876974;WAITING\n");

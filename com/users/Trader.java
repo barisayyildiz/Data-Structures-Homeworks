@@ -70,7 +70,6 @@ public class Trader extends User implements UserInterface{
 
 	private void syncOrders(){
 		this.orders = ECommerce.getOrders(this.getName(), true);
-		System.out.println(this.orders == null);
 	}
 
 	/**
@@ -90,6 +89,9 @@ public class Trader extends User implements UserInterface{
 	 */
 	public void meetOrder(){
 
+		this.syncOrders();
+		if(this.orders.size() == 0)	return;
+
 		ECommerce.updateOrders(this.orders.getFirst(), OrderState.ACCEPTED);
 		this.orders.poll();
 	}
@@ -98,9 +100,22 @@ public class Trader extends User implements UserInterface{
 	 * Cancels the first order in the list
 	 */
 	public void cancelOrder(){
+		
+		this.syncOrders();
+		if(this.orders.size() == 0)	return;
 
 		ECommerce.updateOrders(this.orders.getFirst(), OrderState.CANCELLED);
 		this.orders.poll();
+	}
+
+
+	/**
+	 * Returns string representation of Trader object
+	 * @return String representation of Trader object
+	 */
+	@Override
+	public String toString(){
+		return super.toString() + ", trader";
 	}
 
 

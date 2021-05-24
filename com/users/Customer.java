@@ -358,5 +358,14 @@ public class Customer extends User implements UserInterface{
 		arr.set(i, arr.get(j));
 		arr.set(j, temp);
 	}
+
+	/**
+	 * Returns string representation of Customer object
+	 * @return String representation of Customer object
+	 */
+	@Override
+	public String toString(){
+		return super.toString() + ", customer";
+	}
 	
 }
