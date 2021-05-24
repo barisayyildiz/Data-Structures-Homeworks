@@ -17,19 +17,9 @@ public class Customer extends User implements UserInterface{
 	/** search results (Product objects) are stored here */
 	private ArrayList<Product> searchResult;
 	
-	/**
-	 * Customer constructor
-	 * @param id id of the customer
-	 * @param name name of the customer
-	 * @param password password of the customer
-	 */
-	public Customer(int id, String name, String password){
-		super(id, name, password);
-		this.searchResult = null;
-	}
 
 	/**
-	 * Customer constructor without the name parameter, name is fetched from users.txt
+	 * Customer constructor
 	 * @param id customer id
 	 * @param password customer password
 	 */

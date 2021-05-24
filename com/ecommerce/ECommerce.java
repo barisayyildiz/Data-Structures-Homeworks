@@ -67,9 +67,14 @@ public class ECommerce {
 					tradersWriter.write(String.valueOf(generateId(name)) + ";" + name + ";" + traders.get(name) + ";" +  "trader" + "\n");
 				}
 
-
-				tradersWriter.write("39469264;Barış Ayyıldız;123456;customer" + "\n");
+				// some users and orders added for testing
+				tradersWriter.write(String.valueOf(generateId("Barış Ayyıldız")) + "Barış Ayyıldız;123456;customer" + "\n");
 				tradersWriter.write(String.valueOf(generateId("Barış The Trader")) +  ";Barış The Trader;123456;trader" + "\n");
+
+				ordersWriter.write("SRTEH2FGBDJGX8FW;39469264;63876974;WAITING\n");
+				ordersWriter.write("BKPEGAHY2PQZHGYZ;39469264;61823543;WAITING\n");
+				ordersWriter.write("SRTEH2FVUHAAVH9X;39469264;63876974;WAITING\n");
+
 
 				productsWriter.close();
 				tradersWriter.close();
@@ -108,14 +113,11 @@ public class ECommerce {
 		return id;
 	}
 
-	// -1	not found
-	// 0		trader
-	// 1		customer
 	/**
 	 * gets id and password and checks if the user exists
 	 * @param id id
 	 * @param password password
-	 * @return 1 if the user is customer, 0 if the user is trader, -1 when the user is not found or password is not matching
+	 * @return If the user with the stated id is a Customer, customer object; if the user with the stated id is a Trader, trader object is returned. If not found returns null
 	 */
 	public static User login(int id, String password){
 		String row;

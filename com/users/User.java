@@ -16,22 +16,9 @@ public class User {
 	private String name;
 	private String password;
 	protected LinkedList<Order> orders;
-	
-	/**
-	 * User constructor
-	 * @param id user id
-	 * @param name user name
-	 * @param password user password
-	 */
-	public User(int id, String name, String password){
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.orders = null;
-	}
 
 	/**
-	 * User constructor without name, name is fetched from users.txt
+	 * User constructor
 	 * @param id user id
 	 * @param password user password
 	 */

@@ -16,16 +16,6 @@ public class Trader extends User implements UserInterface{
 	
 	/**
 	 * Trader constructor
-	 * @param id id of the trader
-	 * @param name name of the trader
-	 * @param password password of the trader
-	 */
-	public Trader(int id, String name, String password){
-		super(id, name, password);
-	}
-
-	/**
-	 * Trader constructor without the name parameter, name is fetched from users.txt
 	 * @param id trader id
 	 * @param password trader password
 	 */

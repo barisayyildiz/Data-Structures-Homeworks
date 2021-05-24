@@ -247,8 +247,8 @@ public class Main
 	public static void main(String args[]){
 		
 		// menu();
-		traderMenu(new Trader(63876974, "lk13ZR"), new Scanner(System.in));
-		// customerMenu(new Customer(39469264, "123456"), , new Scanner(System.in));
+		// traderMenu(new Trader(63876974, "lk13ZR"), new Scanner(System.in));
+		customerMenu(new Customer(39469264, "123456"), new Scanner(System.in));
 
 	}
 }
