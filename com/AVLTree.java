@@ -1,5 +1,11 @@
 package com;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+
 /** Self-balancing binary search tree using the algorithm defined
  *  by Adelson-Velskii and Landis.
  *  @author Koffman and Wolfgang
@@ -526,5 +532,87 @@ public class AVLTree < E
       increase = false;
     }
   }
+
+
+	// HW7 - PART1
+	public boolean insert(E key) throws Exception{
+		return this.add(key);
+	}
+
+	public Iterator<E> descendingIterator() throws Exception{
+		throw new Exception();
+	};
+	public Iterator<E> iterator() throws Exception{
+		AVLTreeIterator<E> iter = new AVLTreeIterator<E>();
+		return iter;
+	};
+	public SortedSet<E> headSet(E toElement) throws Exception{
+		TreeSet<E> treeSet = new TreeSet<E>();
+		
+		AVLTreeIterator<E> iter = new AVLTreeIterator<E>();
+		E current;
+		while(iter.hasNext()){
+			current = iter.next();
+			if(toElement.compareTo(current) >= 0){
+				treeSet.add(current);
+			}
+		}
+
+		return treeSet;
+	
+	};
+	public SortedSet<E> tailSet(E fromElement) throws Exception{
+
+		TreeSet<E> treeSet = new TreeSet<E>();
+		
+		AVLTreeIterator<E> iter = new AVLTreeIterator<E>();
+		E current;
+		while(iter.hasNext()){
+			current = iter.next();
+			if(fromElement.compareTo(current) <= 0){
+				treeSet.add(current);
+			}
+		}
+
+		return treeSet;
+	};
+
+	class AVLTreeIterator<E extends Comparable<E>> implements Iterator<E>{
+
+		private Object[] items;
+		private LinkedList<E> list;
+		private Iterator<E> iter;
+
+		@SuppressWarnings("unchecked")
+		public AVLTreeIterator(){
+
+			Node<E> current = (Node<E>)root;
+			list = new LinkedList<E>();
+			initItemsArray(current);
+
+			iter = list.iterator();
+
+		}
+
+		private void initItemsArray(Node<E> current){
+
+			if(current == null)	return;
+
+			initItemsArray(current.left);
+			this.list.offer(current.data);
+			initItemsArray(current.right);
+		}
+
+		public boolean hasNext(){
+			return iter.hasNext();
+		}
+
+		public E next(){
+			return iter.next();
+		}
+
+	}
+
+	
 
 }

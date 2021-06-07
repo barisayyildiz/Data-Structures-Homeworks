@@ -2,6 +2,15 @@ package com;
 
 import java.util.Arrays;
 import java.util.Random;
+import com.part1.NavigableSet;
+import java.util.LinkedList;
+
+import java.util.NoSuchElementException;
+
+// part-1
+import java.util.Iterator;
+import java.util.SortedSet;
+
 
 /**
  * Implementation of a Skip-List data structure
@@ -9,7 +18,7 @@ import java.util.Random;
  *
  *@param <E> The type of data stored. Must be a Comparable
  */
-public class SkipList<E extends Comparable<E>> {
+public class SkipList<E extends Comparable<E>> implements NavigableSet<E>{
 	/**
 	 * Head of the skip-list
 	 */
@@ -177,7 +186,7 @@ public class SkipList<E extends Comparable<E>> {
 	 *
 	 * @param <E> The type of data stored. Must be a Comparable
 	 */
-	static class SLNode<E>{
+	static class SLNode<E extends Comparable<E>>{
 		SLNode<E>[] links;
 		E data;
 		
@@ -196,4 +205,72 @@ public class SkipList<E extends Comparable<E>> {
 			return (data.toString() + " |" + links.length + "|"); 
 		}
 	}
+
+
+
+	// HW7 - PART1
+	public boolean insert(E key) throws Exception{
+		return this.add(key);
+	}
+
+	public boolean delete(E key) throws Exception{
+		return this.remove(key);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes"})
+	public Iterator<E> descendingIterator() throws Exception{
+		return new DescendingSkipListIterator();
+	};
+	public Iterator<E> iterator() throws Exception{
+		throw new Exception();
+	};
+	public SortedSet<E> headSet(E toElement) throws Exception{
+		throw new Exception();
+	};
+	public SortedSet<E> tailSet(E fromElement) throws Exception{
+		throw new Exception();
+	};
+
+
+	class DescendingSkipListIterator<E extends Comparable<E>> implements Iterator<E>{
+
+		private Object[] entries;
+		private int cursor;
+
+		@SuppressWarnings("unchecked")
+		public DescendingSkipListIterator(){
+			LinkedList<E> list = new LinkedList<E>();
+			this.cursor = 0;
+
+			SLNode<E> current = (SLNode<E>)head;
+			current = current.links[0];
+			while(current != null){
+				list.addFirst(current.data);
+				current = current.links[0];
+			}
+
+			entries = list.toArray();
+
+		}
+
+		public boolean hasNext(){
+			return cursor <= size-1;
+		}
+
+		@SuppressWarnings("unchecked")
+		public E next() throws NoSuchElementException {
+			if(cursor > size-1)	throw new NoSuchElementException ("Cursor is out of bounds...");
+			return (E)this.entries[this.cursor++];
+		}
+
+	}
+
+
+	
+
+
+
+
+
+
 }
