@@ -16,6 +16,9 @@ public class BinaryTree < E >
     /** The information stored in this node. */
     protected E data;
 
+		// HW7!!!
+		public boolean tempIsRed = true;
+
     /** Reference to the left child. */
     protected Node < E > left;
 

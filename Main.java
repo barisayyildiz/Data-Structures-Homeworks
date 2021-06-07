@@ -4,7 +4,7 @@ import com.part2.*;
 public class Main{
 	public static void main(String args[]){
 
-		BinarySearchTree<Integer> bst = new AVLTree<Integer>();
+		BinarySearchTree<Integer> bst = new RedBlackTree<Integer>();
 		bst.add(12);
 		bst.add(21);
 		bst.add(2);
@@ -15,17 +15,22 @@ public class Main{
 		bst.add(88);
 		bst.add(99);
 
+		// System.out.println(((RedBlackTree<Integer>)bst.getLeftSubtree()));
+		// System.out.println((bst.getLeftSubtree().getClass()));
+
+
 		// bst.delete(1222);
 
 		// // System.out.println(bst);
-		bastir(bst);
+		// bastir(bst);
 
 		// System.out.println(bst.size());
 
 		Part2<Integer> part2 = new Part2<Integer>();
-		// part2.isAVLTree(bst);
+		System.out.println(part2.isRedBlackTree(bst));
+		// // part2.isAVLTree(bst);
 
-		System.out.println("Is AVL : " + part2.isAVLTree(bst));
+		// System.out.println("Is AVL : " + part2.isAVLTree(bst));
 
 
 

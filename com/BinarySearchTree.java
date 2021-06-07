@@ -250,4 +250,13 @@ public class BinarySearchTree < E
     }
   }
 
+
+	// HW7!!!
+	public boolean isRed(){
+		if(this.size == 0)	return false;
+		return this.root.tempIsRed;
+	}
+
+
+
 }

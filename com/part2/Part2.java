@@ -48,8 +48,52 @@ public class Part2<E extends Comparable<E>>{
 
 
 	public boolean isRedBlackTree(BinarySearchTree<E> bst){
-		
-		return false;
+
+		if(bst.size() == 0)	return true;
+		if(bst.isRed())	return false;
+
+		Pair<Integer,Boolean> pair;
+
+		pair = isRedBlackTreeRec(bst);
+
+		return pair.second;
+
+	}
+
+	private Pair<Integer,Boolean> isRedBlackTreeRec(BinarySearchTree<E> bst){
+
+		int leftTotal = 0, rightTotal = 0;
+		BinarySearchTree<E> left = bst.getLeftSubtree();
+		BinarySearchTree<E> right = bst.getRightSubtree();
+		Pair<Integer, Boolean> pair;
+
+		// if leaf, the node is black
+		if(bst == null){
+			return new Pair<Integer,Boolean>(1,true);
+		}
+
+		// if current node is red and one of the child is not black, return false
+		if(bst.isRed()){
+			if((bst.getLeftSubtree() != null && bst.getLeftSubtree().isRed()) || (bst.getRightSubtree() != null && bst.getRightSubtree().isRed())){
+				return new Pair<Integer, Boolean>(0,false);
+			}
+		}
+
+		// count black nodes in every path
+		if(left != null){
+			pair = isRedBlackTreeRec(left);
+			leftTotal = bst.isRed() ? pair.first + 1: pair.first;
+			if(!pair.second)	return pair;
+		}
+
+		if(right != null){
+			pair = isRedBlackTreeRec(left);
+			rightTotal = bst.isRed() ? pair.first + 1: pair.first;
+			if(!pair.second)	return pair;
+		}
+
+		if(leftTotal != rightTotal)	return new Pair<Integer,Boolean>(0,false);
+		return new Pair<Integer,Boolean>(leftTotal,true);
 
 
 	}
