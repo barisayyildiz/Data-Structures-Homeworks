@@ -9,10 +9,7 @@ public class Part2<E extends Comparable<E>>{
 		
 		if(bst.size() == 0)	return true;
 
-		// System.out.println("giriş");
 		Pair<Integer, Boolean> pair = isAVLTreeRec(bst);
-
-		// System.out.println("çıkış");
 
 		return pair.second;
 
@@ -37,9 +34,6 @@ public class Part2<E extends Comparable<E>>{
 			rightHeight = ++pair.first;
 			if(!pair.second)	return pair;
 		}
-
-		// System.out.println("leftHeight : " + leftHeight);
-		// System.out.println("rightHeight : " + rightHeight);
 
 		if(Math.abs(leftHeight - rightHeight) > 1)	return new Pair<Integer,Boolean>(Math.max(leftHeight, rightHeight), false);
 		return new Pair<Integer,Boolean>(Math.max(leftHeight, rightHeight), true);
