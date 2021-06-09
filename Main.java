@@ -3,7 +3,6 @@ import java.util.Random;
 
 import com.*;
 import com.part2.*;
-import com.Pair;
 
 public class Main{
 
@@ -471,8 +470,8 @@ public class Main{
 	public static void main(String args[]){
 
 		partOneTest();
-		partThreeTest();
 		partTwoTest();
+		partThreeTest();
 
 	}
 
