@@ -62,15 +62,15 @@ public class Part2<E extends Comparable<E>>{
 
 	private Pair<Integer,Boolean> isRedBlackTreeRec(BinarySearchTree<E> bst){
 
-		int leftTotal = 0, rightTotal = 0;
-		BinarySearchTree<E> left = bst.getLeftSubtree();
-		BinarySearchTree<E> right = bst.getRightSubtree();
-		Pair<Integer, Boolean> pair;
-
 		// if leaf, the node is black
 		if(bst == null){
 			return new Pair<Integer,Boolean>(1,true);
 		}
+
+		int leftTotal = 0, rightTotal = 0;
+		BinarySearchTree<E> left = bst.getLeftSubtree();
+		BinarySearchTree<E> right = bst.getRightSubtree();
+		Pair<Integer, Boolean> pair;
 
 		// if current node is red and one of the child is not black, return false
 		if(bst.isRed()){
@@ -87,7 +87,7 @@ public class Part2<E extends Comparable<E>>{
 		}
 
 		if(right != null){
-			pair = isRedBlackTreeRec(left);
+			pair = isRedBlackTreeRec(right);
 			rightTotal = bst.isRed() ? pair.first + 1: pair.first;
 			if(!pair.second)	return pair;
 		}

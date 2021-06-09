@@ -212,11 +212,11 @@ public class SkipList<E extends Comparable<E>> implements NavigableSet<E>{
 
 
 	// HW7 - PART1
-	public boolean insert(E key) throws Exception{
+	public boolean insert(E key){
 		return this.add(key);
 	}
 
-	public boolean delete(E key) throws Exception{
+	public boolean delete(E key){
 		return this.remove(key);
 	}
 

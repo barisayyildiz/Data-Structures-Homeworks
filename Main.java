@@ -3,16 +3,107 @@ import java.util.Random;
 
 import com.*;
 import com.part2.*;
+import com.Pair;
 
 public class Main{
 
+	public static void partOneTest(){
+
+		System.out.println("=========================== PART1 ===========================");
+
+		SkipList<Integer> skipList = new SkipList<Integer>();
+		AVLTree<Integer> avlTree = new AVLTree<Integer>();
+		
+		System.out.println("=========== SkipList ===========");
+		System.out.println("insert method");
+		skipList.insert(10);
+		skipList.insert(20);
+		skipList.insert(30);
+		skipList.insert(40);
+		skipList.insert(50);
+
+		System.out.println(skipList);
+		System.out.println("remove method");
+		skipList.delete(40);
+		System.out.println(skipList);
+
+		System.out.println("descendingIterator method");
+		Iterator<Integer> iter = skipList.descendingIterator();
+		while(iter.hasNext()){
+			System.out.println("item : " + iter.next());
+		}
+
+		System.out.println("\n=========== AVLTree ===========");
+		System.out.println("insert method");
+		avlTree.insert(10);
+		avlTree.insert(20);
+		avlTree.insert(30);
+		avlTree.insert(40);
+		avlTree.insert(50);
+
+		System.out.println(avlTree);
+
+		System.out.println("iterator method");
+		iter = avlTree.iterator();
+		while(iter.hasNext()){
+			System.out.println("item : " + iter.next());
+		}
+
+		System.out.println("headSet method, 30");
+		System.out.println(avlTree.headSet(30));
+
+		System.out.println("tailSet method, 10");
+		System.out.println(avlTree.headSet(20));
+
+
+	}
+
+	public static void partTwoTest(){
+
+		System.out.println("=========================== PART2 ===========================");
+
+		Part2<Integer> p2 = new Part2<Integer>();
+
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		System.out.println("Binary Search Tree : ");
+		bst.add(12);bst.add(6);bst.add(1);bst.add(45);
+		bst.add(3);bst.add(-3);bst.add(44);bst.add(78);
+		bst.add(2);bst.add(5);bst.add(0);bst.add(99);
+		System.out.println(bst);
+
+		System.out.println("Is AVLTree : " + p2.isAVLTree(bst));
+		System.out.println("Is RedBlackTree : " + p2.isRedBlackTree(bst));
+
+		AVLTree<Integer> avl = new AVLTree<Integer>();
+		System.out.println("AVLTree : ");
+		avl.add(12);avl.add(6);avl.add(1);avl.add(45);
+		avl.add(3);avl.add(-3);avl.add(44);avl.add(78);
+		avl.add(2);avl.add(5);avl.add(0);avl.add(99);
+		System.out.println(avl);
+
+		System.out.println("Is AVLTree : " + p2.isAVLTree(avl));
+		System.out.println("Is RedBlackTree : " + p2.isRedBlackTree(avl));
+
+		RedBlackTree<Integer> rbt = new RedBlackTree<Integer>();
+		System.out.println("RedBlackTree : ");
+		rbt.add(12);rbt.add(6);rbt.add(1);rbt.add(45);
+		rbt.add(3);rbt.add(-3);rbt.add(44);rbt.add(78);
+		rbt.add(2);rbt.add(5);rbt.add(0);rbt.add(99);
+		System.out.println(rbt);
+
+		System.out.println("Is AVLTree : " + p2.isAVLTree(rbt));
+		System.out.println("Is RedBlackTree : " + p2.isRedBlackTree(rbt));
+
+	}
+
 	public static void partThreeTest(){
+
+		System.out.println("=========================== PART3 ===========================");
 
 		Random rand = new Random();
 		long startTime;
 		long bstTime, rbtTime, slTime, ttTime, btTime;
 
-		// PART-3
 		int temp;
 
 		// objects
@@ -379,111 +470,10 @@ public class Main{
 
 	public static void main(String args[]){
 
+		partOneTest();
 		partThreeTest();
+		partTwoTest();
 
-
-		// BinarySearchTree<Integer> bsTree = new BinarySearchTree<Integer>();
-		// RedBlackTree<Integer> rbTree = new RedBlackTree<Integer>();
-		// SkipList<Integer> sList = new SkipList<Integer>();
-
-		// for(int i=0; i<80000; i++){
-		// 	temp = rand.nextInt(Integer.MAX_VALUE);
-		// 	bsTree.add(temp);
-		// 	rbTree.add(temp);
-		// 	sList.add(temp);
-		// }
-
-		// System.out.println(bsTree.size());
-		// System.out.println(rbTree.size());
-		// System.out.println(sList.size());
-
-
-
-		// RedBlackTree<Integer> rbTree = new RedBlackTree<Integer>();
-		// BTree<Integer> bTree = new BTree<Integer>(5);
-		// SkipList<Integer> skipList = new SkipList<Integer>();
-		
-
-
-
-		// SkipList<Integer> sList = new SkipList<Integer>();
-		// sList.add(12);
-		// sList.add(5);
-		// sList.add(13);
-		// sList.add(25);
-
-		// System.out.println(sList);
-
-		// AVLTree<Integer> avlTree = new AVLTree<Integer>();
-		// avlTree.add(3);
-		// avlTree.add(8);
-		// avlTree.add(12);
-		// avlTree.add(21);
-		// avlTree.add(1);
-		
-		// try{
-		// 	Iterator<Integer> iter = avlTree.iterator();
-		// 	while(iter.hasNext()){
-		// 		System.out.println(iter.next());
-		// 	}
-		// 	System.out.println(avlTree.headSet(8));
-		// }catch(Exception exception){
-		// 	System.out.println(exception.getMessage());
-		// }
-
-		// try{
-		// 	Iterator<Integer> iter = sList.descendingIterator();
-		// 	while(iter.hasNext()){
-		// 		System.out.println(iter.next());
-		// 	}
-		// }catch(Exception exception){
-		// 	System.out.println(exception.getMessage());
-		// }
-
-
-
-
-
-
-
-
-
-
-
-		// BinarySearchTree<Integer> bst = new RedBlackTree<Integer>();
-		// bst.add(12);
-		// bst.add(21);
-		// bst.add(2);
-		// bst.add(33);
-		// bst.add(55);
-		// bst.add(66);
-		// bst.add(77);
-		// bst.add(88);
-		// bst.add(99);
-
-		// System.out.println(((RedBlackTree<Integer>)bst.getLeftSubtree()));
-		// System.out.println((bst.getLeftSubtree().getClass()));
-
-
-		// bst.delete(1222);
-
-		// // System.out.println(bst);
-		// bastir(bst);
-
-		// System.out.println(bst.size());
-
-		// Part2<Integer> part2 = new Part2<Integer>();
-		// System.out.println(part2.isRedBlackTree(bst));
-		// // part2.isAVLTree(bst);
-
-		// System.out.println("Is AVL : " + part2.isAVLTree(bst));
-
-
-
-	}
-
-	public static void bastir(BinarySearchTree<Integer> bst){
-		System.out.println(bst.toString());
 	}
 
 }
