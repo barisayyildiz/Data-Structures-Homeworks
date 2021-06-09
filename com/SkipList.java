@@ -266,10 +266,9 @@ public class SkipList<E extends Comparable<E>> implements NavigableSet<E>{
 	}
 
 
-	
-
-
-
+	public int size(){
+		return this.size;
+	}
 
 
 
