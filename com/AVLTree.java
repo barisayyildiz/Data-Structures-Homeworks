@@ -1,9 +1,12 @@
 package com;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.NavigableSet;
 
 
 /** Self-balancing binary search tree using the algorithm defined
@@ -11,9 +14,7 @@ import java.util.TreeSet;
  *  @author Koffman and Wolfgang
  */
 
-public class AVLTree < E
-    extends Comparable < E >>
-    extends BinarySearchTreeWithRotate < E > {
+public class AVLTree < E extends Comparable < E >> extends BinarySearchTreeWithRotate < E > implements NavigableSet<E> {
 
   // Insert nested class AVLNode<E> here.
 
@@ -535,18 +536,15 @@ public class AVLTree < E
 
 
 	// HW7 - PART1
-	public boolean insert(E key) throws Exception{
+	public boolean insert(E key){
 		return this.add(key);
 	}
 
-	public Iterator<E> descendingIterator() throws Exception{
-		throw new Exception();
-	};
-	public Iterator<E> iterator() throws Exception{
+	public Iterator<E> iterator(){
 		AVLTreeIterator<E> iter = new AVLTreeIterator<E>();
 		return iter;
 	};
-	public SortedSet<E> headSet(E toElement) throws Exception{
+	public SortedSet<E> headSet(E toElement){
 		TreeSet<E> treeSet = new TreeSet<E>();
 		
 		AVLTreeIterator<E> iter = new AVLTreeIterator<E>();
@@ -561,7 +559,7 @@ public class AVLTree < E
 		return treeSet;
 	
 	};
-	public SortedSet<E> tailSet(E fromElement) throws Exception{
+	public SortedSet<E> tailSet(E fromElement){
 
 		TreeSet<E> treeSet = new TreeSet<E>();
 		
@@ -611,6 +609,156 @@ public class AVLTree < E
 			return iter.next();
 		}
 
+	}
+
+	@Override
+	public Comparator<? super E> comparator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E first() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addAll(Collection<? extends E> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean contains(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean containsAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean retainAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> T[] toArray(T[] a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E ceiling(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> descendingSet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E floor(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> headSet(E arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E higher(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E lower(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SortedSet<E> subSet(E arg0, E arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> subSet(E arg0, boolean arg1, E arg2, boolean arg3) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> tailSet(E arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterator<E> descendingIterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

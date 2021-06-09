@@ -1,9 +1,12 @@
 package com;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Random;
-import com.part1.NavigableSet;
+import java.util.NavigableSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 import java.util.NoSuchElementException;
 
@@ -218,17 +221,14 @@ public class SkipList<E extends Comparable<E>> implements NavigableSet<E>{
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes"})
-	public Iterator<E> descendingIterator() throws Exception{
+	@Override
+	public Iterator<E> descendingIterator(){
 		return new DescendingSkipListIterator();
 	};
-	public Iterator<E> iterator() throws Exception{
-		throw new Exception();
-	};
-	public SortedSet<E> headSet(E toElement) throws Exception{
-		throw new Exception();
-	};
-	public SortedSet<E> tailSet(E fromElement) throws Exception{
-		throw new Exception();
+
+	@Override
+	public Iterator<E> iterator(){
+		return null;
 	};
 
 
@@ -269,6 +269,163 @@ public class SkipList<E extends Comparable<E>> implements NavigableSet<E>{
 	public int size(){
 		return this.size;
 	}
+
+	@Override
+	public Comparator<? super E> comparator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E first() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addAll(Collection<? extends E> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean contains(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean containsAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean retainAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> T[] toArray(T[] a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E ceiling(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> descendingSet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E floor(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E higher(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E lower(E e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SortedSet<E> subSet(E arg0, E arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> subSet(E arg0, boolean arg1, E arg2, boolean arg3) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SortedSet<E> headSet(E toElement) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> headSet(E arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SortedSet<E> tailSet(E fromElement) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NavigableSet<E> tailSet(E arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 
