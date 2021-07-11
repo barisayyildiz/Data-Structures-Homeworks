@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.users","l":"Customer"},{"p":"com.ecommerce","l":"ECommerce"},{"p":"com.ecommerce","l":"Order"},{"p":"com.ecommerce","l":"OrderState"},{"p":"com.ecommerce","l":"Product"},{"p":"com.users","l":"Trader"},{"p":"com.users","l":"User"},{"p":"com.users","l":"UserInterface"}]
